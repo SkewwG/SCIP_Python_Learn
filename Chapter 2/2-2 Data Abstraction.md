@@ -122,4 +122,5 @@ The fewer functions that depend on a particular representation, the fewer change
 
 ## 2.2.4 The Properties of Data
 ```In general, we can think of an abstract data type as defined by some collection of selectors and constructors, together with some behavior conditions. As long as the behavior conditions are met (such as the division property above), these functions constitute a valid representation of the data type.```
+
 一个抽象数据：选择器、构造器、行为条件。当行为条件触发的时候，能够正确的执行行为。
