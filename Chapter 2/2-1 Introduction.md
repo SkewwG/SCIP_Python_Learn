@@ -1,68 +1,68 @@
-# µÚ¶şÕÂ½Ú
-## ÃæÏò¶ÔÏó±à³Ì
-### 2.1.1¡¢½éÉÜ
-### 2.1.2¡¢Ë¼Ïë·½·¨£ºÊı¾İ³éÏó
+# ç¬¬äºŒç« èŠ‚
+## é¢å‘å¯¹è±¡ç¼–ç¨‹
+### 2.1.1ã€ä»‹ç»
+### 2.1.2ã€æ€æƒ³æ–¹æ³•ï¼šæ•°æ®æŠ½è±¡
 
-**compound data types ¸´ºÏÊı¾İÀàĞÍ**
+**compound data types å¤åˆæ•°æ®ç±»å‹**
 
-### 2.1.1 ¶ÔÏóÒşÓ÷£¨²»ÊÇ±ÈÓ÷£©£º±à³ÌÁìÓò ÒıÈë ¡°¶ÔÏó¡±ÕâÖÖÄ£Ê½£¬À´½â¾öÎÊÌâ¡£
+### 2.1.1 å¯¹è±¡éšå–»ï¼ˆä¸æ˜¯æ¯”å–»ï¼‰ï¼šç¼–ç¨‹é¢†åŸŸ å¼•å…¥ â€œå¯¹è±¡â€è¿™ç§æ¨¡å¼ï¼Œæ¥è§£å†³é—®é¢˜ã€‚
 `functions performed operations and data were operated upon. When we included function values among our data, we acknowledged that data too can have behavior. Functions could be operated upon like data, but could also be called to perform computation.`
 
-functionÊÇÒ»¸öĞĞÎª£¬±»ÒıÓÃµ½Êı¾İ£¬Êı¾İÒ²¾ÍÓĞÁËĞĞÎª£»
-º¯Êı¿ÉÒÔÏòÊı¾İÒ»Ñù±»²Ù×÷£¬Ò²¿ÉÒÔ±»µ÷ÓÃ
+functionæ˜¯ä¸€ä¸ªè¡Œä¸ºï¼Œè¢«å¼•ç”¨åˆ°æ•°æ®ï¼Œæ•°æ®ä¹Ÿå°±æœ‰äº†è¡Œä¸ºï¼›
+å‡½æ•°å¯ä»¥å‘æ•°æ®ä¸€æ ·è¢«æ“ä½œï¼Œä¹Ÿå¯ä»¥è¢«è°ƒç”¨
 
 `Objects represent information, but also _behave_ like the abstract concepts that they represent. The logic of how an object interacts with other objects is bundled along with the information that encodes the object's value.`
-¶ÔÏó£ºÊı¾İºÍĞĞÎª£»
-**¶ÔÏóºÍ¶ÔÏóµÄ½»»¥ÊÇÓÃ¶ÔÏóÄÚµÄÖµ£¨Êı¾İºÍº¯Êı£©½øĞĞÁªÏµ**
+å¯¹è±¡ï¼šæ•°æ®å’Œè¡Œä¸ºï¼›
+  **å¯¹è±¡å’Œå¯¹è±¡çš„äº¤äº’æ˜¯ç”¨å¯¹è±¡å†…çš„å€¼ï¼ˆæ•°æ®å’Œå‡½æ•°ï¼‰è¿›è¡Œè”ç³»**
 
 `Objects are both information and processes, bundled together to represent the properties, interactions, and behaviors of complex things.`
-¶ÔÏó¼´ÊÇÊı¾İÒ²ÊÇ´¦Àí¹ı³Ì£¬ÓÃÀ´±í´ïÊôĞÔ¡¢½»»¥ºÍĞĞÎª
+å¯¹è±¡å³æ˜¯æ•°æ®ä¹Ÿæ˜¯å¤„ç†è¿‡ç¨‹ï¼Œç”¨æ¥è¡¨è¾¾å±æ€§ã€äº¤äº’å’Œè¡Œä¸º
 
 
-ÒıÓÃobject½â¾ö¸´ÔÓµÄÊı¾İ
+å¼•ç”¨objectè§£å†³å¤æ‚çš„æ•°æ®
 
 `The name `date` is bound to a _class_. A class represents a kind of object. Individual dates are called _instances_ of that class, and they can be _constructed_ by calling the class as a function on arguments that characterize the instance.`
-class´ú±íÁËÒ»ÀàµÄoebjce
-**¶ÀÁ¢µÄ¶ÔÏó£¨boject£©½Ğ×öÀàµÄÊµÀı£¨instances£©**
+classä»£è¡¨äº†ä¸€ç±»çš„oebjce
+**ç‹¬ç«‹çš„å¯¹è±¡ï¼ˆbojectï¼‰å«åšç±»çš„å®ä¾‹ï¼ˆinstancesï¼‰**
 
 
-ÎÒµÄÀí½âÊÇ
-³µÊÇÒ»¸öÀà
-Ê²Ã´Ê²Ã´³µÊÇ¶ÔÏó
-Ä³¸ö¾ßÌåµÄ³µÊÇÊµÀı
+æˆ‘çš„ç†è§£æ˜¯
+è½¦æ˜¯ä¸€ä¸ªç±»
+ä»€ä¹ˆä»€ä¹ˆè½¦æ˜¯å¯¹è±¡
+æŸä¸ªå…·ä½“çš„è½¦æ˜¯å®ä¾‹
 
 `Objects have _attributes_, which are named values that are part of the object. In Python, we use dot notation to designated an attribute of an object.`
-¶ÔÏó¾ßÓĞÊôĞÔ£¬ÊôĞÔÊÇ¶ÔÏóµÄÒ»²¿·Ö¡£
-**ÊôĞÔ£¨±»ÃüÃûµÄvalue£©**
+å¯¹è±¡å…·æœ‰å±æ€§ï¼Œå±æ€§æ˜¯å¯¹è±¡çš„ä¸€éƒ¨åˆ†ã€‚
+**å±æ€§ï¼ˆè¢«å‘½åçš„valueï¼‰**
 
 `> <expression> . <name>`
-today.yearÀí½â
-**todayÊÇ±í´ïÊ½£¬±í´ïÊ½ÇóÖµÖ®ºó¾ÍÊÇ¶ÔÏó**
-ËùÒÔÓÃexpressioopn.name
+today.yearç†è§£
+**todayæ˜¯è¡¨è¾¾å¼ï¼Œè¡¨è¾¾å¼æ±‚å€¼ä¹‹åå°±æ˜¯å¯¹è±¡**
+æ‰€ä»¥ç”¨expressioopn.name
 
 
 `Objects also have _methods_, which are function-valued attributes. Metaphorically, the object "knows" how to carry out those methods. Methods compute their results from both their arguments and their object. For example, The `strftime` method of `today` takes a single argument that specifies how to display a date (e.g., `%A` means that the day of the week should be spelled out in full).`
-¶ÔÏóÒ²ÓĞ·½·¨£¬·½·¨ÊÇº¯ÊıµÄÊôĞÔ
+å¯¹è±¡ä¹Ÿæœ‰æ–¹æ³•ï¼Œæ–¹æ³•æ˜¯å‡½æ•°çš„å±æ€§
 
 
 
-### 2.1.2Ô­Ê¼Êı¾İÀàĞÍ
+### 2.1.2åŸå§‹æ•°æ®ç±»å‹
 `Every object in Python has a _type_.`
-pythonÀïµÄÃ¿¸ö¶ÔÏó¶¼ÓĞÒ»¸öÀàĞÍ
+pythoné‡Œçš„æ¯ä¸ªå¯¹è±¡éƒ½æœ‰ä¸€ä¸ªç±»å‹
 `So far, the only kinds of objects we have studied are numbers, functions, Booleans, and now dates.`
-Êı×Ö¡¢º¯Êı¡¢²¼¶û¡¢ÈÕÆÚ¡¢¼¯ºÏ¡¢×Ö·û´®
+æ•°å­—ã€å‡½æ•°ã€å¸ƒå°”ã€æ—¥æœŸã€é›†åˆã€å­—ç¬¦ä¸²
 
 ```
 Native data types have the following properties:
 1.  There are primitive expressions that evaluate to objects of these types, called _literals_.
 2.  There are built-in functions, operators, and methods to manipulate these objects.
 ```
-×ñÑ­2Ìõ¹æÔò
-Ô­Ê¼±í´ïÊ½¶Ô¶ÔÏóÇóÖµ£¨±êÁ¿£©
-ÄÚÖÃº¯Êı¡¢²Ù×÷·û¡¢·½·¨
+éµå¾ª2æ¡è§„åˆ™
+åŸå§‹è¡¨è¾¾å¼å¯¹å¯¹è±¡æ±‚å€¼ï¼ˆæ ‡é‡ï¼‰
+å†…ç½®å‡½æ•°ã€æ“ä½œç¬¦ã€æ–¹æ³•
 
 ```In fact, Python includes three native numeric types: integers (`int`), real numbers (`float`), and complex numbers (`complex`).```
-python3ÖĞÊıÖµÀàĞÍ£ºÕûÊı¡¢ÊµÊı¡¢¸´Êı
+python3ä¸­æ•°å€¼ç±»å‹ï¼šæ•´æ•°ã€å®æ•°ã€å¤æ•°
 
 
 
