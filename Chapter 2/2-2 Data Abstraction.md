@@ -24,11 +24,14 @@
 ```The basic idea of data abstraction is to structure programs so that they operate on abstract data. That is, our programs should use data in such a way as to make as few assumptions about the data as possible. At the same time, a concrete data representation is defined, independently of the programs that use the data. The interface between these two parts of our system will be a set of functions, called selectors and constructors, that implement the abstract data in terms of the concrete representation. To illustrate this technique, we will consider how to design a set of functions for manipulating rational numbers.```
 
 **不先去构造对象，而是先去考虑怎么使用。
+
 个人理解：写类的时候，先不写具体的函数内容，而是先定义一个个自己想要使用的功能（方法）。后期到用的时候再去完善方法内容**
 
 ---
 
 选择器（a.b方法）、构造器（init）
+
+---
 
 ## 2.2.1有理数算数 rational（比率）
 `<numerator>/<denominator>`
@@ -38,6 +41,7 @@
 ```we would like to keep the numerator and denominator separate for the sake of precision, but treat them as a single unit.```
 
 有理数一定是精确的，用有限数的小数表达它是不精确的
+
 在计算机里做精度运算的时候，更倾向于把分子和分母都保留下来，而不把它求值。（防止精度损失）
 
 ---
@@ -86,6 +90,7 @@ getitem，从序列里取出元素
 
 读一下Further reading
 `Further reading.?The?str_rat?implementation above uses?_format strings_, which contain placeholders for values. The details of how to use format strings and the?format?method appear in the?[formatting strings](http://diveintopython3.ep.io/strings.html#formatting-strings)?section of Dive Into Python 3.`
+
 实现的str_rat格式字符串这个方法包含了占位符的值。有关如何使用格式字符串和格式方法的细节将出现在Python 3的格式化字符串部分中。
 
 ---
@@ -101,9 +106,11 @@ only背后的意义：个人理解
 
 ![](https://wizardforcel.gitbooks.io/sicp-in-python/content/img/barriers.png)
 
-**问题域这层只关心如何使用加法、乘法
-如何实现加分，乘法（如何实现make_rat，如何得到分子、得到分母）
-如何实现分子、实现分母、实现有理数，如何使用tuple、getitem**
+**问题域这层只关心如何使用加法、乘法**
+
+**如何实现加分，乘法（如何实现make_rat，如何得到分子、得到分母）**
+
+**如何实现分子、实现分母、实现有理数，如何使用tuple、getitem**
 
 ---
 
