@@ -22,11 +22,13 @@ function是一个行为，被引用到数据，数据也就有了行为；
 
 **对象和对象的交互是用对象内的值（数据和函数）进行联系**
 
+---
 
 `Objects are both information and processes, bundled together to represent the properties, interactions, and behaviors of complex things.`
 
 对象即是数据也是处理过程，用来表达属性、交互和行为
 
+---
 
 引用object解决复杂的数据
 
@@ -37,7 +39,7 @@ class代表了一类的oebjce
 
 **独立的对象（boject）叫做类的实例（instances）**
 
-
+---
 
 我的理解是
 
@@ -53,6 +55,7 @@ class代表了一类的oebjce
 
 **属性（被命名的value）**
 
+---
 
 `> <expression> . <name>`
 
@@ -62,13 +65,13 @@ today.year理解
 
 所以用expressioopn.name
 
-
+---
 
 `Objects also have _methods_, which are function-valued attributes. Metaphorically, the object "knows" how to carry out those methods. Methods compute their results from both their arguments and their object. For example, The `strftime` method of `today` takes a single argument that specifies how to display a date (e.g., `%A` means that the day of the week should be spelled out in full).`
 
 对象也有方法，方法是函数的属性
 
-
+---
 
 ### 2.1.2原始数据类型
 
@@ -76,9 +79,13 @@ today.year理解
 
 python里的每个对象都有一个类型
 
+---
+
 `So far, the only kinds of objects we have studied are numbers, functions, Booleans, and now dates.`
 
 数字、函数、布尔、日期、集合、字符串
+
+---
 
 ```
 Native data types have the following properties:
@@ -92,6 +99,7 @@ Native data types have the following properties:
 
 内置函数、操作符、方法
 
+---
 
 ```In fact, Python includes three native numeric types: integers (`int`), real numbers (`float`), and complex numbers (`complex`).```
 
