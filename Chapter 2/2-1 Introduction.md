@@ -13,8 +13,7 @@
 function是一个行为，被引用到数据，数据也就有了行为；
 
 函数可以向数据一样被操作，也可以被调用
-
-
+---
 `Objects represent information, but also _behave_ like the abstract concepts that they represent. The logic of how an object interacts with other objects is bundled along with the information that encodes the object's value.`
 
 对象：数据和行为；
