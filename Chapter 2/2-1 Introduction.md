@@ -79,9 +79,7 @@ Native data types have the following properties:
 ```
 
 遵循2条规则
-
 原始表达式对对象求值（标量）
-
 内置函数、操作符、方法
 
 ```In fact, Python includes three native numeric types: integers (`int`), real numbers (`float`), and complex numbers (`complex`).```
