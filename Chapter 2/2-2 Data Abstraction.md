@@ -1,34 +1,46 @@
-# 2.2 Êı¾İ³éÏó
+# 2.2 æ•°æ®æŠ½è±¡
 `a?_compound data_?value`
-¸´ºÏÊı¾İÖµ
+å¤åˆæ•°æ®å€¼
 
 ---
-Ä£¿é»¯
-Ä³ÖÖÊı¾İ½á¹¹¡¢Ä³ÖÖ³éÏóÊı¾İ¡£
-·Ö²ã´Î¡¢·Ö½á¹¹¡¢´óÎÊÌâ»¯ÎªĞ¡ÎÊÌâ
+æ¨¡å—åŒ–
+æŸç§æ•°æ®ç»“æ„ã€æŸç§æŠ½è±¡æ•°æ®ã€‚
+åˆ†å±‚æ¬¡ã€åˆ†ç»“æ„ã€å¤§é—®é¢˜åŒ–ä¸ºå°é—®é¢˜
 
 `The general technique of isolating the parts of a program that deal with how data are represented from the parts of a program that deal with how those data are manipulated is a powerful design methodology called?_data abstraction_. Data abstraction makes programs much easier to design, maintain, and modify.`
-**Ò»ÖÖ¼¼Êõ£º½«³ÌĞò´ÓÕ¹Ê¾µ½´¦Àí·Ö¸î³ÉÁ©²¿·Ö¡£±»½Ğ×öÊı¾İ³éÏó**
+
+**ä¸€ç§æŠ€æœ¯ï¼šå°†ç¨‹åºä»å±•ç¤ºåˆ°å¤„ç†åˆ†å‰²æˆä¿©éƒ¨åˆ†ã€‚è¢«å«åšæ•°æ®æŠ½è±¡**
+
+---
 
 `data abstraction is a methodology that enables us to isolate how a compound data object is used from the details of how it is constructed.`
-*Êı¾İ³éÏóÊÇÒ»¸ö·½·¨ÂÛ£º´Ó£¨Ê¹ÓÃ¡¢¹¹Ôì£©·Ö¸î¿ª¸´ºÏÊı¾İ¶ÔÏó*
 
-³éÏó¼¦Àß£º¶Ô·½ÏòµÄÀûÓÃ
+*æ•°æ®æŠ½è±¡æ˜¯ä¸€ä¸ªæ–¹æ³•è®ºï¼šä»ï¼ˆä½¿ç”¨ã€æ„é€ ï¼‰åˆ†å‰²å¼€å¤åˆæ•°æ®å¯¹è±¡*
+
+---
+
+æŠ½è±¡é¸¡è‚‹ï¼šå¯¹æ–¹å‘çš„åˆ©ç”¨
 
 ```The basic idea of data abstraction is to structure programs so that they operate on abstract data. That is, our programs should use data in such a way as to make as few assumptions about the data as possible. At the same time, a concrete data representation is defined, independently of the programs that use the data. The interface between these two parts of our system will be a set of functions, called selectors and constructors, that implement the abstract data in terms of the concrete representation. To illustrate this technique, we will consider how to design a set of functions for manipulating rational numbers.```
-**²»ÏÈÈ¥¹¹Ôì¶ÔÏó£¬¶øÊÇÏÈÈ¥¿¼ÂÇÔõÃ´Ê¹ÓÃ¡£
-¸öÈËÀí½â£ºĞ´ÀàµÄÊ±ºò£¬ÏÈ²»Ğ´¾ßÌåµÄº¯ÊıÄÚÈİ£¬¶øÊÇÏÈ¶¨ÒåÒ»¸ö¸ö×Ô¼ºÏëÒªÊ¹ÓÃµÄ¹¦ÄÜ£¨·½·¨£©¡£ºóÆÚµ½ÓÃµÄÊ±ºòÔÙÈ¥ÍêÉÆ·½·¨ÄÚÈİ**
 
-Ñ¡ÔñÆ÷£¨a.b·½·¨£©¡¢¹¹ÔìÆ÷£¨init£©
+**ä¸å…ˆå»æ„é€ å¯¹è±¡ï¼Œè€Œæ˜¯å…ˆå»è€ƒè™‘æ€ä¹ˆä½¿ç”¨ã€‚
+ä¸ªäººç†è§£ï¼šå†™ç±»çš„æ—¶å€™ï¼Œå…ˆä¸å†™å…·ä½“çš„å‡½æ•°å†…å®¹ï¼Œè€Œæ˜¯å…ˆå®šä¹‰ä¸€ä¸ªä¸ªè‡ªå·±æƒ³è¦ä½¿ç”¨çš„åŠŸèƒ½ï¼ˆæ–¹æ³•ï¼‰ã€‚åæœŸåˆ°ç”¨çš„æ—¶å€™å†å»å®Œå–„æ–¹æ³•å†…å®¹**
 
-## 2.2.1ÓĞÀíÊıËãÊı rational£¨±ÈÂÊ£©
+---
+
+é€‰æ‹©å™¨ï¼ˆa.bæ–¹æ³•ï¼‰ã€æ„é€ å™¨ï¼ˆinitï¼‰
+
+## 2.2.1æœ‰ç†æ•°ç®—æ•° rationalï¼ˆæ¯”ç‡ï¼‰
 `<numerator>/<denominator>`
 `Rational numbers are important in computer science`
 `Thus, working with rational numbers should, in principle, allow us to avoid approximation errors in our arithmetic.`
 
 ```we would like to keep the numerator and denominator separate for the sake of precision, but treat them as a single unit.```
-ÓĞÀíÊıÒ»¶¨ÊÇ¾«È·µÄ£¬ÓÃÓĞÏŞÊıµÄĞ¡Êı±í´ïËüÊÇ²»¾«È·µÄ
-ÔÚ¼ÆËã»úÀï×ö¾«¶ÈÔËËãµÄÊ±ºò£¬¸üÇãÏòÓÚ°Ñ·Ö×ÓºÍ·ÖÄ¸¶¼±£ÁôÏÂÀ´£¬¶ø²»°ÑËüÇóÖµ¡££¨·ÀÖ¹¾«¶ÈËğÊ§£©
+
+æœ‰ç†æ•°ä¸€å®šæ˜¯ç²¾ç¡®çš„ï¼Œç”¨æœ‰é™æ•°çš„å°æ•°è¡¨è¾¾å®ƒæ˜¯ä¸ç²¾ç¡®çš„
+åœ¨è®¡ç®—æœºé‡Œåšç²¾åº¦è¿ç®—çš„æ—¶å€™ï¼Œæ›´å€¾å‘äºæŠŠåˆ†å­å’Œåˆ†æ¯éƒ½ä¿ç•™ä¸‹æ¥ï¼Œè€Œä¸æŠŠå®ƒæ±‚å€¼ã€‚ï¼ˆé˜²æ­¢ç²¾åº¦æŸå¤±ï¼‰
+
+---
 
 ```
 We know from using functional abstractions that we can start programming productively before we have an implementation of some parts of our program. Let us begin by assuming that we already have a way of constructing a rational number from a numerator and a denominator. We also assume that, given a rational number, we have a way of extracting (or selecting) its numerator and its denominator. Let us further assume that the constructor and selectors are available as the following three functions:
@@ -37,49 +49,70 @@ make_rat(n, d)?returns the rational number with numerator?`n`?and denominator?`d
 numer(x)?returns the numerator of the rational number?`x`.
 denom(x)?returns the denominator of the rational number?`x`.
 ```
-3¸ö¼Ù×°£º
-1¡¢ÒÑ¾­ÓĞÁË¹¹ÔìÓĞÀíÊıµÄ·½·¨
-2¡¢ÓµÓĞÁíÍâµÄÒ»ÖÖ·½·¨£¬¸ø¶¨Ò»¸öÓĞÀíÊı£¬·Ö½âÎª·Ö×ÓºÍ·ÖÄ¸
-3¡¢´ÓÓĞÀíÊıÑ¡Ôñ·Ö×ÓºÍ·ÖÄ¸µÄ·½·¨
-make_rat(n,d) ¸ø·Ö×Ó·ÖÄ¸£¬·µ»ØÓĞÀíÊı
-number(x) ¸øÓĞÀíÊı£¬·µ»Ø·Ö×Ó
-denom(y) ¸øÓĞÀíÊı£¬·µ»Ø·ÖÄ¸
 
+3ä¸ªå‡è£…ï¼š
 
-## 2.2.2Ôª×é
+1ã€å·²ç»æœ‰äº†æ„é€ æœ‰ç†æ•°çš„æ–¹æ³•
+
+2ã€æ‹¥æœ‰å¦å¤–çš„ä¸€ç§æ–¹æ³•ï¼Œç»™å®šä¸€ä¸ªæœ‰ç†æ•°ï¼Œåˆ†è§£ä¸ºåˆ†å­å’Œåˆ†æ¯
+
+3ã€ä»æœ‰ç†æ•°é€‰æ‹©åˆ†å­å’Œåˆ†æ¯çš„æ–¹æ³•
+
+make_rat(n,d) ç»™åˆ†å­åˆ†æ¯ï¼Œè¿”å›æœ‰ç†æ•°
+
+number(x) ç»™æœ‰ç†æ•°ï¼Œè¿”å›åˆ†å­
+
+denom(y) ç»™æœ‰ç†æ•°ï¼Œè¿”å›åˆ†æ¯
+
+---
+
+## 2.2.2å…ƒç»„
 `multiple assignment.`
-¶àÖØ¸³Öµ£º
+å¤šé‡èµ‹å€¼ï¼š
 ``` python
 pair =(1, 2)
 a,b = pari
 ```
 
+---
+
 ```Tuples in Python (and sequences in most other programming languages) are 0-indexed, meaning that the index?`0`?picks out the first element, index?`1`?picks out the second, and so on. One intuition that underlies this indexing convention is that the index represents how far an element is offset from the beginning of the tuple.```
 
-**Ë÷ÒıÒÔ0¿ªÊ¼£¨¼ä¸ô¾àÀë£©£ºÕâ¸öÖµºÍµÚÒ»¸öÔªËØµÄ¾àÀë¼ä¸ô**
+**ç´¢å¼•ä»¥0å¼€å§‹ï¼ˆé—´éš”è·ç¦»ï¼‰ï¼šè¿™ä¸ªå€¼å’Œç¬¬ä¸€ä¸ªå…ƒç´ çš„è·ç¦»é—´éš”**
 
-getitem£¬´ÓĞòÁĞÀïÈ¡³öÔªËØ
+getitemï¼Œä»åºåˆ—é‡Œå–å‡ºå…ƒç´ 
 
+---
 
-¶ÁÒ»ÏÂFurther reading
+è¯»ä¸€ä¸‹Further reading
 `Further reading.?The?str_rat?implementation above uses?_format strings_, which contain placeholders for values. The details of how to use format strings and the?format?method appear in the?[formatting strings](http://diveintopython3.ep.io/strings.html#formatting-strings)?section of Dive Into Python 3.`
-ÊµÏÖµÄstr_rat¸ñÊ½×Ö·û´®Õâ¸ö·½·¨°üº¬ÁËÕ¼Î»·ûµÄÖµ¡£ÓĞ¹ØÈçºÎÊ¹ÓÃ¸ñÊ½×Ö·û´®ºÍ¸ñÊ½·½·¨µÄÏ¸½Ú½«³öÏÖÔÚPython 3µÄ¸ñÊ½»¯×Ö·û´®²¿·ÖÖĞ¡£
+å®ç°çš„str_ratæ ¼å¼å­—ç¬¦ä¸²è¿™ä¸ªæ–¹æ³•åŒ…å«äº†å ä½ç¬¦çš„å€¼ã€‚æœ‰å…³å¦‚ä½•ä½¿ç”¨æ ¼å¼å­—ç¬¦ä¸²å’Œæ ¼å¼æ–¹æ³•çš„ç»†èŠ‚å°†å‡ºç°åœ¨Python 3çš„æ ¼å¼åŒ–å­—ç¬¦ä¸²éƒ¨åˆ†ä¸­ã€‚
 
+---
 
-## 2.2.3 ³éÏó½çÏŞ
+## 2.2.3 æŠ½è±¡ç•Œé™
 ```In general, the underlying idea of data abstraction is to identify for each type of value a basic set of operations in terms of which all manipulations of values of that type will be expressed, and then to use only those operations in manipulating the data.```
-only±³ºóµÄÒâÒå£º¸öÈËÀí½â
-**Ò»¸öclassµÄÊôĞÔºÍ·½·¨Ö»ÄÜ±»×Ô¼ºµÄÊµÀıËùµ÷ÓÃ£¬²»ÄÜ±»±ğµÄÀàÊµÀıµ÷ÓÃ**
+
+onlyèƒŒåçš„æ„ä¹‰ï¼šä¸ªäººç†è§£
+
+**ä¸€ä¸ªclassçš„å±æ€§å’Œæ–¹æ³•åªèƒ½è¢«è‡ªå·±çš„å®ä¾‹æ‰€è°ƒç”¨ï¼Œä¸èƒ½è¢«åˆ«çš„ç±»å®ä¾‹è°ƒç”¨**
+
+---
 
 ![](https://wizardforcel.gitbooks.io/sicp-in-python/content/img/barriers.png)
 
-**ÎÊÌâÓòÕâ²ãÖ»¹ØĞÄÈçºÎÊ¹ÓÃ¼Ó·¨¡¢³Ë·¨
-ÈçºÎÊµÏÖ¼Ó·Ö£¬³Ë·¨£¨ÈçºÎÊµÏÖmake_rat£¬ÈçºÎµÃµ½·Ö×Ó¡¢µÃµ½·ÖÄ¸£©
-ÈçºÎÊµÏÖ·Ö×Ó¡¢ÊµÏÖ·ÖÄ¸¡¢ÊµÏÖÓĞÀíÊı£¬ÈçºÎÊ¹ÓÃtuple¡¢getitem**
+**é—®é¢˜åŸŸè¿™å±‚åªå…³å¿ƒå¦‚ä½•ä½¿ç”¨åŠ æ³•ã€ä¹˜æ³•
+å¦‚ä½•å®ç°åŠ åˆ†ï¼Œä¹˜æ³•ï¼ˆå¦‚ä½•å®ç°make_ratï¼Œå¦‚ä½•å¾—åˆ°åˆ†å­ã€å¾—åˆ°åˆ†æ¯ï¼‰
+å¦‚ä½•å®ç°åˆ†å­ã€å®ç°åˆ†æ¯ã€å®ç°æœ‰ç†æ•°ï¼Œå¦‚ä½•ä½¿ç”¨tupleã€getitem**
+
+---
 
 The fewer functions that depend on a particular representation, the fewer changes are required when one wants to change that representation.
-**ÒÀÀµÔ½ÉÙ£¬ÒÔºóĞŞ¸ÄµÄÊ±ºòÒ²¾ÍÔ½ÉÙ**
+
+**ä¾èµ–è¶Šå°‘ï¼Œä»¥åä¿®æ”¹çš„æ—¶å€™ä¹Ÿå°±è¶Šå°‘**
+
+---
 
 ## 2.2.4 The Properties of Data
 ```In general, we can think of an abstract data type as defined by some collection of selectors and constructors, together with some behavior conditions. As long as the behavior conditions are met (such as the division property above), these functions constitute a valid representation of the data type.```
-Ò»¸ö³éÏóÊı¾İ£ºÑ¡ÔñÆ÷¡¢¹¹ÔìÆ÷¡¢ĞĞÎªÌõ¼ş¡£µ±ĞĞÎªÌõ¼ş´¥·¢µÄÊ±ºò£¬ÄÜ¹»ÕıÈ·µÄÖ´ĞĞĞĞÎª¡£
+ä¸€ä¸ªæŠ½è±¡æ•°æ®ï¼šé€‰æ‹©å™¨ã€æ„é€ å™¨ã€è¡Œä¸ºæ¡ä»¶ã€‚å½“è¡Œä¸ºæ¡ä»¶è§¦å‘çš„æ—¶å€™ï¼Œèƒ½å¤Ÿæ­£ç¡®çš„æ‰§è¡Œè¡Œä¸ºã€‚
