@@ -1,24 +1,29 @@
-# 2.3Sequences£¨ĞòÁĞ£©
+# 2.3Sequencesï¼ˆåºåˆ—ï¼‰
 A sequence is an ordered collection of data values
-Êı¾İÖµµÄÓĞĞò¼¯ºÏ
+
+æ•°æ®å€¼çš„æœ‰åºé›†åˆ
 
 there are many kinds of sequences, but they all share certain properties
-ÕâÀïÓĞºÜ¶àÀàĞÍµÄĞòÁĞ£¬µ«ÊÇËûÃÇÓĞ¹²Í¬µÄÊôĞÔ
 
-¡¾*0¡¿ĞòÁĞµÄ2¸ö¹²ÓĞÊôĞÔ£º³¤¶È¡¢ÔªËØÑ¡Ôñ
+è¿™é‡Œæœ‰å¾ˆå¤šç±»å‹çš„åºåˆ—ï¼Œä½†æ˜¯ä»–ä»¬æœ‰å…±åŒçš„å±æ€§
+
+ã€*0ã€‘åºåˆ—çš„2ä¸ªå…±æœ‰å±æ€§ï¼šé•¿åº¦ã€å…ƒç´ é€‰æ‹©
 ---
 
 Sequences provide a layer of abstraction that may hide the details of exactly which sequence type is being manipulated by a particular program.
-×÷ÓÃ£ºĞòÁĞÌá¹©ÁËÒ»¸ö³éÏó²ã, Ëü¿ÉÒÔÒş²ØÌØ¶¨³ÌĞòËù²Ù×÷µÄĞòÁĞÀàĞÍµÄÏêÏ¸ĞÅÏ¢¡£
 
-## 2.3.1 Nested Pairs£¨Ç¶Ì×µÄÖµ¶Ô£©
+ä½œç”¨ï¼šåºåˆ—æä¾›äº†ä¸€ä¸ªæŠ½è±¡å±‚, å®ƒå¯ä»¥éšè—ç‰¹å®šç¨‹åºæ‰€æ“ä½œçš„åºåˆ—ç±»å‹çš„è¯¦ç»†ä¿¡æ¯ã€‚
+
+## 2.3.1 Nested Pairsï¼ˆåµŒå¥—çš„å€¼å¯¹ï¼‰
 A standard way to visualize a pair --- in this case, the pair `(1,2)` --- is called _box-and-pointer_ notation. Each value, compound or primitive, is depicted as a pointer to a box. The box for a primitive value contains a representation of that value. For example, the box for a number contains a numeral. The box for a pair is actually a double box: the left part contains (an arrow to) the first element of the pair and the right part contains the second.
-¿ÉÊÓ»¯Å¼¶ÔµÄÒ»¸ö±ê×¼·½·¨ -- ÕâÀïÒ²¾ÍÊÇÅ¼¶Ô`(1,2)`-- ½Ğ×öºĞ×ÓºÍÖ¸Õë¼ÇºÅ
-Å¼¶ÔµÄºĞ×ÓÊµ¼ÊÉÏÊÇÁ½¸öºĞ×Ó£º×ó±ßµÄ²¿·Ö£¨¼ıÍ·Ö¸ÏòµÄ£©°üº¬Å¼¶ÔµÄµÚÒ»¸öÔªËØ£¬ÓÒ±ßµÄ²¿·Ö°üº¬µÚ¶ş¸ö¡£
+
+å¯è§†åŒ–å¶å¯¹çš„ä¸€ä¸ªæ ‡å‡†æ–¹æ³• -- è¿™é‡Œä¹Ÿå°±æ˜¯å¶å¯¹`(1,2)`-- å«åšç›’å­å’ŒæŒ‡é’ˆè®°å·
+
+å¶å¯¹çš„ç›’å­å®é™…ä¸Šæ˜¯ä¸¤ä¸ªç›’å­ï¼šå·¦è¾¹çš„éƒ¨åˆ†ï¼ˆç®­å¤´æŒ‡å‘çš„ï¼‰åŒ…å«å¶å¯¹çš„ç¬¬ä¸€ä¸ªå…ƒç´ ï¼Œå³è¾¹çš„éƒ¨åˆ†åŒ…å«ç¬¬äºŒä¸ªã€‚
 
 ---
 ![](https://wizardforcel.gitbooks.io/sicp-in-python/content/img/pair.png)
-ÓÃpython±í´ï
+ç”¨pythonè¡¨è¾¾
 ```
 >>> ((1, 2), (3, 4))
 ((1, 2), (3, 4))
@@ -26,25 +31,28 @@ A standard way to visualize a pair --- in this case, the pair `(1,2)` --- is cal
 ![](https://wizardforcel.gitbooks.io/sicp-in-python/content/img/nested_pairs.png)
 
 Our ability to use tuples as the elements of other tuples provides a new means of combination in our programming language
-ÔÚ±à³ÌÓïÑÔÖĞÌá¹©ÁËÒ»¸öĞÂµÄ×éºÏÊÖ¶Î£ºÊ¹ÓÃÔª×é×÷ÎªÆäËüÔª×éµÄÔªËØ
+
+åœ¨ç¼–ç¨‹è¯­è¨€ä¸­æä¾›äº†ä¸€ä¸ªæ–°çš„ç»„åˆæ‰‹æ®µï¼šä½¿ç”¨å…ƒç»„ä½œä¸ºå…¶å®ƒå…ƒç»„çš„å…ƒç´ 
 
 ---
 a method for combining data values satisfies the closure property if the result of combination can itself be combined using the same method. Closure is the key to power in any means of combination because it permits us to create hierarchical structures --- structures made up of parts, which themselves are made up of parts, and so on. We will explore a range of hierarchical structures in Chapter 3\. For now, we consider a particularly important structure.
-·â±ÕĞÔ£º×Ô¼º°üº¬×Ô¼º£¨×Ô°üº¬£©£¬×éºÏÆğÀ´£¬ÔÊĞíÎÒÃÇÈ¥´´½¨²ã´Î½á¹¹
+
+å°é—­æ€§ï¼šè‡ªå·±åŒ…å«è‡ªå·±ï¼ˆè‡ªåŒ…å«ï¼‰ï¼Œç»„åˆèµ·æ¥ï¼Œå…è®¸æˆ‘ä»¬å»åˆ›å»ºå±‚æ¬¡ç»“æ„
 
 ---
-## 2.3.2 Recursive Lists£¨µİ¹éÁĞ±í£©
+## 2.3.2 Recursive Listsï¼ˆé€’å½’åˆ—è¡¨ï¼‰
 A non-empty sequence can be decomposed into:
 *   its first element, and
 *   the rest of the sequence.
 
-Ò»¸ö·Ç¿ÕĞòÁĞ¿ÉÒÔ»®·ÖÎª£º
-*   ËüµÄµÚÒ»¸öÔªËØ£¬ÒÔ¼°
-*   ĞòÁĞµÄÆäÓà²¿·Ö¡£
+ä¸€ä¸ªéç©ºåºåˆ—å¯ä»¥åˆ’åˆ†ä¸ºï¼š
+*   å®ƒçš„ç¬¬ä¸€ä¸ªå…ƒç´ ï¼Œä»¥åŠ
+*   åºåˆ—çš„å…¶ä½™éƒ¨åˆ†ã€‚
 
 ---
 These two selectors, one constructor, and one constant together implement the recursive list abstract data type. The single behavior condition for a recursive list is that, like a pair, its constructor and selectors are inverse functions.
-ÕâÁ½¸öÑ¡ÔñÆ÷ºÍÒ»¸ö¹¹ÔìÆ÷£¬ÒÔ¼°Ò»¸ö³£Á¿¹²Í¬ÊµÏÖÁË³éÏóÊı¾İÀàĞÍµÄµİ¹éÁĞ±í¡£µİ¹éÁĞ±íÎ¨Ò»µÄĞĞÎªÌõ¼şÊÇ£¬¾ÍÏñÅ¼¶ÔÄÇÑù£¬ËüµÄ¹¹ÔìÆ÷ºÍÑ¡ÔñÆ÷ÊÇÏà·´µÄº¯Êı¡£
+
+è¿™ä¸¤ä¸ªé€‰æ‹©å™¨å’Œä¸€ä¸ªæ„é€ å™¨ï¼Œä»¥åŠä¸€ä¸ªå¸¸é‡å…±åŒå®ç°äº†æŠ½è±¡æ•°æ®ç±»å‹çš„é€’å½’åˆ—è¡¨ã€‚é€’å½’åˆ—è¡¨å”¯ä¸€çš„è¡Œä¸ºæ¡ä»¶æ˜¯ï¼Œå°±åƒå¶å¯¹é‚£æ ·ï¼Œå®ƒçš„æ„é€ å™¨å’Œé€‰æ‹©å™¨æ˜¯ç›¸åçš„å‡½æ•°ã€‚
 
 *   If a recursive list `s` was constructed from element `f` and list `r`, then `first(s)` returns `f`, and `rest(s)` returns `r`.
 
@@ -58,9 +66,9 @@ We can use the constructor and selectors to manipulate recursive lists.
 (2, (3, (4, None)))
 ```
 ---
-*   Èç¹ûÒ»¸öµİ¹éÁĞ±í`s`ÓÉÔªËØ`f`ºÍÁĞ±í`r`¹¹Ôì£¬ÄÇÃ´`first(s)`·µ»Ø`f`£¬²¢ÇÒ`rest(s)`·µ»Ø`r`¡£
+*   å¦‚æœä¸€ä¸ªé€’å½’åˆ—è¡¨`s`ç”±å…ƒç´ `f`å’Œåˆ—è¡¨`r`æ„é€ ï¼Œé‚£ä¹ˆ`first(s)`è¿”å›`f`ï¼Œå¹¶ä¸”`rest(s)`è¿”å›`r`ã€‚
 
-ÎÒÃÇ¿ÉÒÔÊ¹ÓÃ¹¹ÔìÆ÷ºÍÑ¡ÔñÆ÷À´²Ù×÷µİ¹éÁĞ±í¡£
+æˆ‘ä»¬å¯ä»¥ä½¿ç”¨æ„é€ å™¨å’Œé€‰æ‹©å™¨æ¥æ“ä½œé€’å½’åˆ—è¡¨ã€‚
 
 ```source-python
 >>> counts = make_rlist(1, make_rlist(2, make_rlist(3, make_rlist(4, empty_rlist))))
@@ -73,7 +81,7 @@ We can use the constructor and selectors to manipulate recursive lists.
 
 The recursive list can store a sequence of values in order, but it does not yet implement the sequence abstraction. Using the abstract data type we have defined, we can implement the two behaviors that characterize a sequence: length and element selection.
 
-µİ¹éÁĞ±í¿ÉÒÔ°´Ë³Ğò´æ´¢Ò»ÏµÁĞÖµ, µ«Ëü»¹Ã»ÓĞÊµÏÖĞòÁĞ³éÏó¡£Ê¹ÓÃÎÒÃÇ¶¨ÒåµÄ³éÏóÊı¾İÀàĞÍ, ÎÒÃÇ¿ÉÒÔÊµÏÖÁ½¸öĞòÁĞµÄÌØÕ÷ĞĞÎª: ³¤¶ÈºÍÔªËØÑ¡Ôñ¡£
+é€’å½’åˆ—è¡¨å¯ä»¥æŒ‰é¡ºåºå­˜å‚¨ä¸€ç³»åˆ—å€¼, ä½†å®ƒè¿˜æ²¡æœ‰å®ç°åºåˆ—æŠ½è±¡ã€‚ä½¿ç”¨æˆ‘ä»¬å®šä¹‰çš„æŠ½è±¡æ•°æ®ç±»å‹, æˆ‘ä»¬å¯ä»¥å®ç°ä¸¤ä¸ªåºåˆ—çš„ç‰¹å¾è¡Œä¸º: é•¿åº¦å’Œå…ƒç´ é€‰æ‹©ã€‚
 
 ```
 >>> def len_rlist(s):
@@ -96,7 +104,7 @@ The recursive list can store a sequence of values in order, but it does not yet 
 
 Now, we can manipulate a recursive list as a sequence:
 
-ÏÖÔÚ, ÎÒÃÇ¿ÉÒÔ½«µİ¹éÁĞ±í²Ù×÷ÎªÒ»¸öĞòÁĞ:
+ç°åœ¨, æˆ‘ä»¬å¯ä»¥å°†é€’å½’åˆ—è¡¨æ“ä½œä¸ºä¸€ä¸ªåºåˆ—:
 ```
 >>> len_rlist(counts)
 4
@@ -105,9 +113,9 @@ Now, we can manipulate a recursive list as a sequence:
 ```
 ---
 
-## 2.3.3 Tuples II£¨Ôª×é£©
+## 2.3.3 Tuples IIï¼ˆå…ƒç»„ï¼‰
 Tuples can have arbitrary length, and they exhibit the two principal behaviors of the sequence abstraction: length and element selection. Below, `digits` is a tuple with four elements.
-Ôª×é¾ßÓĞÈÎÒâµÄ³¤¶È£¬²¢ÇÒÒ²ÓµÓĞĞòÁĞ³éÏóµÄÁ½¸ö»ù±¾ĞĞÎª£º³¤¶ÈºÍÔªËØÑ¡Ôñ¡£ÏÂÃæµÄ`digits`ÊÇÒ»¸öËÄÔªËØÔª×é¡£
+å…ƒç»„å…·æœ‰ä»»æ„çš„é•¿åº¦ï¼Œå¹¶ä¸”ä¹Ÿæ‹¥æœ‰åºåˆ—æŠ½è±¡çš„ä¸¤ä¸ªåŸºæœ¬è¡Œä¸ºï¼šé•¿åº¦å’Œå…ƒç´ é€‰æ‹©ã€‚ä¸‹é¢çš„`digits`æ˜¯ä¸€ä¸ªå››å…ƒç´ å…ƒç»„ã€‚
 ```
 >>> digits = (1, 8, 2, 8)
 >>> len(digits)
@@ -117,12 +125,12 @@ Tuples can have arbitrary length, and they exhibit the two principal behaviors o
 ```
 
 Additionally, tuples can be added together and multiplied by integers. For tuples, addition and multiplication do not add or multiply elements, but instead combine and replicate the tuples themselves. That is, the `add`function in the `operator` module (and the `+` operator) returns a new tuple that is the conjunction of the added arguments. The `mul` function in `operator` (and the `*` operator) can take an integer `k` and a tuple and return a new tuple that consists of `k` copies of the tuple argument.
-´ËÍâ£¬Ôª×é¿ÉÒÔ±Ë´ËÏà¼ÓÒÔ¼°ÓëÕûÊıÏà³Ë¡£¶ÔÓÚÔª×é£¬¼Ó·¨ºÍ³Ë·¨²Ù×÷²¢²»¶ÔÔªËØÏà¼Ó»òÏà³Ë£¬¶øÊÇ×éºÏºÍÖØ¸´Ôª×é±¾Éí¡£Ò²¾ÍÊÇËµ£¬`operator`Ä£¿éÖĞµÄ`add`º¯Êı£¨ÒÔ¼°`+`ÔËËã·û£©·µ»ØÁ½¸ö±»¼ÓÔª×éÁ¬½Ó³ÉµÄĞÂÔª×é¡£`operator`Ä£¿éÖĞµÄ`mul`º¯Êı£¨ÒÔ¼°`*`ÔËËã·û£©½ÓÊÜÕûÊı`k`ºÍÔª×é£¬²¢·µ»Øº¬ÓĞÔª×é²ÎÊı`k`¸ö¸±±¾µÄĞÂÔª×é¡£
+æ­¤å¤–ï¼Œå…ƒç»„å¯ä»¥å½¼æ­¤ç›¸åŠ ä»¥åŠä¸æ•´æ•°ç›¸ä¹˜ã€‚å¯¹äºå…ƒç»„ï¼ŒåŠ æ³•å’Œä¹˜æ³•æ“ä½œå¹¶ä¸å¯¹å…ƒç´ ç›¸åŠ æˆ–ç›¸ä¹˜ï¼Œè€Œæ˜¯ç»„åˆå’Œé‡å¤å…ƒç»„æœ¬èº«ã€‚ä¹Ÿå°±æ˜¯è¯´ï¼Œ`operator`æ¨¡å—ä¸­çš„`add`å‡½æ•°ï¼ˆä»¥åŠ`+`è¿ç®—ç¬¦ï¼‰è¿”å›ä¸¤ä¸ªè¢«åŠ å…ƒç»„è¿æ¥æˆçš„æ–°å…ƒç»„ã€‚`operator`æ¨¡å—ä¸­çš„`mul`å‡½æ•°ï¼ˆä»¥åŠ`*`è¿ç®—ç¬¦ï¼‰æ¥å—æ•´æ•°`k`å’Œå…ƒç»„ï¼Œå¹¶è¿”å›å«æœ‰å…ƒç»„å‚æ•°`k`ä¸ªå‰¯æœ¬çš„æ–°å…ƒç»„ã€‚
 
-¡¾*1¡¿¼Ó·¨ºÍ³Ë·¨£º¡ı
+ã€*1ã€‘åŠ æ³•å’Œä¹˜æ³•ï¼šâ†“
 ---
-Ôª×é¿ÉÒÔ¼ÓÆäËüµÄÔª×é
-Ôª×é¿ÉÒÔ³ËÒÔÕûÊı
+å…ƒç»„å¯ä»¥åŠ å…¶å®ƒçš„å…ƒç»„
+å…ƒç»„å¯ä»¥ä¹˜ä»¥æ•´æ•°
 
 
 ```source-python
@@ -130,8 +138,8 @@ Additionally, tuples can be added together and multiplied by integers. For tuple
 (2, 7, 1, 8, 2, 8, 1, 8, 2, 8)
 ```
 **Mapping.** A powerful method of transforming one tuple into another is by applying a function to each element and collecting the results.
-**Ó³Éä¡£**map(º¯Êı£¬ĞòÁĞ) ĞòÁĞÀïµÄÃ¿¸öÔªËØ¶¼µ±×öº¯ÊıµÄ²ÎÊı´«µİ¸øº¯Êı£¬Ò»Ò»µ÷ÓÃº¯ÊıµÃµ½½á¹û¡£
-ptyhon3·µ»ØµÄÊÇmapÀàĞÍ£¬¿ÉÒÔÍ¨¹ıtuple»òÕßlistÇ¿ÖÆÀàĞÍ×ª»»
+**æ˜ å°„ã€‚**map(å‡½æ•°ï¼Œåºåˆ—) åºåˆ—é‡Œçš„æ¯ä¸ªå…ƒç´ éƒ½å½“åšå‡½æ•°çš„å‚æ•°ä¼ é€’ç»™å‡½æ•°ï¼Œä¸€ä¸€è°ƒç”¨å‡½æ•°å¾—åˆ°ç»“æœã€‚
+ptyhon3è¿”å›çš„æ˜¯mapç±»å‹ï¼Œå¯ä»¥é€šè¿‡tupleæˆ–è€…listå¼ºåˆ¶ç±»å‹è½¬æ¢
 
 ```source-python
 >>> alternates = (-1, 2, -3, 4, -5)
@@ -142,18 +150,18 @@ ptyhon3·µ»ØµÄÊÇmapÀàĞÍ£¬¿ÉÒÔÍ¨¹ıtuple»òÕßlistÇ¿ÖÆÀàĞÍ×ª»»
 The `map` function is important because it relies on the sequence abstraction: we do not need to be concerned about the structure of the underlying tuple; only that we can access each one of its elements individually in order to pass it as an argument to the mapped function (`abs`, in this case).
 
 ---
-¡¾*2¡¿mapº¯Êı·Ç³£ÖØÒª£¬ÒòÎªËüÒÀÀµÓÚĞòÁĞ³éÏó£ºÎÒÃÇ²»ĞèÒª¹ØĞÄµ×²ãÔª×éµÄ½á¹¹£¬Ö»ĞèÒªÄÜ¹»¶ÀÁ¢·ÃÎÊÃ¿¸öÔªËØ£¬ÒÔ±ã½«Ëü×÷Îª²ÎÊı´«ÈëÓÃÓÚÓ³ÉäµÄº¯ÊıÖĞ£¨ÕâÀïÊÇabs£©¡£
+ã€*2ã€‘mapå‡½æ•°éå¸¸é‡è¦ï¼Œå› ä¸ºå®ƒä¾èµ–äºåºåˆ—æŠ½è±¡ï¼šæˆ‘ä»¬ä¸éœ€è¦å…³å¿ƒåº•å±‚å…ƒç»„çš„ç»“æ„ï¼Œåªéœ€è¦èƒ½å¤Ÿç‹¬ç«‹è®¿é—®æ¯ä¸ªå…ƒç´ ï¼Œä»¥ä¾¿å°†å®ƒä½œä¸ºå‚æ•°ä¼ å…¥ç”¨äºæ˜ å°„çš„å‡½æ•°ä¸­ï¼ˆè¿™é‡Œæ˜¯absï¼‰ã€‚
 ---
 
-## 2.3.4 Sequence Iteration£¨ĞòÁĞµÄµü´ú£©
+## 2.3.4 Sequence Iterationï¼ˆåºåˆ—çš„è¿­ä»£ï¼‰
 Mapping is itself an instance of a general pattern of computation: iterating over all elements in a sequence.
-Ò»´ÎÒ»¸ö·ÃÎÊĞòÁĞÀïµÄÔªËØ£¬Ö±µ½·ÃÎÊÍêĞòÁĞÀïµÄÔªËØ
+ä¸€æ¬¡ä¸€ä¸ªè®¿é—®åºåˆ—é‡Œçš„å…ƒç´ ï¼Œç›´åˆ°è®¿é—®å®Œåºåˆ—é‡Œçš„å…ƒç´ 
 Python has an additional control statement to process sequential data: the `for`statement.
-Python Ìí¼Ó¿ØÖÆÓï¾äÀ´´¦ÀíĞòÁĞÊı¾İ£º`for`Óï¾ä
+Python æ·»åŠ æ§åˆ¶è¯­å¥æ¥å¤„ç†åºåˆ—æ•°æ®ï¼š`for`è¯­å¥
 
 ---
 Consider the problem of counting how many times a value appears in a sequence. We can implement a function to compute this count using a `while` loop.
-¿¼ÂÇ¼ÆËãÒ»¸öÖµÔÚĞòÁĞÖĞ³öÏÖÁË¶àÉÙ´ÎµÄÎÊÌâ£¬¡£ÎÒÃÇ¿ÉÒÔÊ¹ÓÃ`while`Ñ­»·ÊµÏÖÒ»¸öº¯ÊıÀ´¼ÆËãÕâ¸öÊıÁ¿¡£
+è€ƒè™‘è®¡ç®—ä¸€ä¸ªå€¼åœ¨åºåˆ—ä¸­å‡ºç°äº†å¤šå°‘æ¬¡çš„é—®é¢˜ï¼Œã€‚æˆ‘ä»¬å¯ä»¥ä½¿ç”¨`while`å¾ªç¯å®ç°ä¸€ä¸ªå‡½æ•°æ¥è®¡ç®—è¿™ä¸ªæ•°é‡ã€‚
 
 ```
 >>> def count(s, value):
@@ -175,7 +183,7 @@ Consider the problem of counting how many times a value appears in a sequence. W
 
 The Python `for` statement can simplify this function body by iterating over the element values directly, without introducing the name `index` at all. `For` example (pun intended), we can write:
 
-Python `for`Óï¾ä¿ÉÒÔÍ¨¹ıÖ±½Óµü´úÔªËØÖµÀ´¼ò»¯Õâ¸öº¯ÊıÌå£¬ÍêÈ«²»ĞèÒªÒıÈë`index`¡£ÎÒÃÇ¿ÉÒÔĞ´³É£º
+Python `for`è¯­å¥å¯ä»¥é€šè¿‡ç›´æ¥è¿­ä»£å…ƒç´ å€¼æ¥ç®€åŒ–è¿™ä¸ªå‡½æ•°ä½“ï¼Œå®Œå…¨ä¸éœ€è¦å¼•å…¥`index`ã€‚æˆ‘ä»¬å¯ä»¥å†™æˆï¼š
 ```
 >>> def count(s, value):
         """Count the number of occurrences of value in sequence s."""
@@ -191,13 +199,13 @@ Python `for`Óï¾ä¿ÉÒÔÍ¨¹ıÖ±½Óµü´úÔªËØÖµÀ´¼ò»¯Õâ¸öº¯ÊıÌå£¬ÍêÈ«²»ĞèÒªÒıÈë`index`¡£Î
 >>> count(digits, 8)
 2
 ```
-¡¾*3¡¿Ñ­»·ÓÃwhileÓï¾ä£¬µü´úÓÃforÓï¾ä
+ã€*3ã€‘å¾ªç¯ç”¨whileè¯­å¥ï¼Œè¿­ä»£ç”¨forè¯­å¥
 ---
 ---
 
 A `for` statement consists of a single clause with the form:
 
-for Óï¾äµÄ×é³É
+for è¯­å¥çš„ç»„æˆ
 
 ```
 for <name> in <expression>:
@@ -207,24 +215,24 @@ for <name> in <expression>:
 
 A `for` statement is executed by the following procedure:
 
-`for`Óï¾ä°´ÕÕÒÔÏÂ¹ı³ÌÀ´Ö´ĞĞ£º
+`for`è¯­å¥æŒ‰ç…§ä»¥ä¸‹è¿‡ç¨‹æ¥æ‰§è¡Œï¼š
 
 1.  Evaluate the header `&lt;expression&gt;`, which must yield an iterable value.
-<expression>±ØĞë²úÉúÒ»¸ö¿Éµü´úµÄÖµ
+<expression>å¿…é¡»äº§ç”Ÿä¸€ä¸ªå¯è¿­ä»£çš„å€¼
 2.  For each element value in that sequence, in order:
     1.  Bind `&lt;name&gt;` to that value in the local environment.
-ĞòÁĞÀïµÄÃ¿Ò»¸öÖµ£¬°ó¶¨µ½name¾Ö²¿±äÁ¿Àï
+åºåˆ—é‡Œçš„æ¯ä¸€ä¸ªå€¼ï¼Œç»‘å®šåˆ°nameå±€éƒ¨å˜é‡é‡Œ
     2.  Execute the `&lt;suite&gt;`.
-È»ºóÖ´ĞĞsuite
+ç„¶åæ‰§è¡Œsuite
 
 An important consequence of this evaluation procedure is that `&lt;name&gt;` will be bound to the last element of the sequence after the `for` statement is executed.
 
-¡¾*4¡¿Õâ¸öÇóÖµ¹ı³ÌµÄÒ»¸öÖØÒª½á¹ûÊÇ£¬ÔÚforÓï¾äÖ´ĞĞÍê±ÏÖ®ºó£¬name»á°ó¶¨µ½ĞòÁĞµÄ×îºóÒ»¸öÔªËØÉÏ¡£
+ã€*4ã€‘è¿™ä¸ªæ±‚å€¼è¿‡ç¨‹çš„ä¸€ä¸ªé‡è¦ç»“æœæ˜¯ï¼Œåœ¨forè¯­å¥æ‰§è¡Œå®Œæ¯•ä¹‹åï¼Œnameä¼šç»‘å®šåˆ°åºåˆ—çš„æœ€åä¸€ä¸ªå…ƒç´ ä¸Šã€‚
 ---
 
-**Sequence unpacking£¨ĞòÁĞ½â°ü£©.**
+**Sequence unpackingï¼ˆåºåˆ—è§£åŒ…ï¼‰.**
 A common pattern in programs is to have a sequence of elements that are themselves sequences, but all of a fixed length. `For` statements may include multiple names in their header to "unpack" each element sequence into its respective elements. For example, we may have a sequence of pairs (that is, two-element tuples),
-³ÌĞòÖĞµÄÒ»¸ö³£¼ûÄ£Ê½ÊÇ£¬ĞòÁĞµÄÔªËØ±¾Éí¾ÍÊÇĞòÁĞ£¬µ«ÊÇ¾ßÓĞ¹Ì¶¨µÄ³¤¶È¡£`for`Óï¾ä¿ÉÔÚÍ·²¿ÖĞ°üº¬¶à¸öÃû³Æ£¬½«Ã¿¸öÔªËØĞòÁĞ¡°½â¹¹¡±Îª¸÷¸öÔªËØ¡£ÀıÈç£¬ÎÒÃÇÓµÓĞÒ»¸öÅ¼¶Ô£¨Ò²¾ÍÊÇ¶şÔª×é£©µÄĞòÁĞ£º
+ç¨‹åºä¸­çš„ä¸€ä¸ªå¸¸è§æ¨¡å¼æ˜¯ï¼Œåºåˆ—çš„å…ƒç´ æœ¬èº«å°±æ˜¯åºåˆ—ï¼Œä½†æ˜¯å…·æœ‰å›ºå®šçš„é•¿åº¦ã€‚`for`è¯­å¥å¯åœ¨å¤´éƒ¨ä¸­åŒ…å«å¤šä¸ªåç§°ï¼Œå°†æ¯ä¸ªå…ƒç´ åºåˆ—â€œè§£æ„â€ä¸ºå„ä¸ªå…ƒç´ ã€‚ä¾‹å¦‚ï¼Œæˆ‘ä»¬æ‹¥æœ‰ä¸€ä¸ªå¶å¯¹ï¼ˆä¹Ÿå°±æ˜¯äºŒå…ƒç»„ï¼‰çš„åºåˆ—ï¼š
 ```
 >>> pairs = ((1, 2), (2, 2), (2, 3), (4, 4))
 
@@ -238,7 +246,7 @@ and wish to find the number of pairs that have the same first and second element
 ```
 
 The following `for` statement with two names in its header will bind each name `x` and `y` to the first and second elements in each pair, respectively.
-¡¾*5¡¿ÏÂÃæµÄ`for`Óï¾äµÄÍ·²¿´øÓĞÁ½¸öÃû´Ê£¬»á½«Ã¿¸öÃû³Æ`x`ºÍ`y`·Ö±ğ°ó¶¨µ½Ã¿¸öÅ¼¶ÔµÄµÚÒ»¸öºÍµÚ¶ş¸öÔªËØÉÏ¡£
+ã€*5ã€‘ä¸‹é¢çš„`for`è¯­å¥çš„å¤´éƒ¨å¸¦æœ‰ä¸¤ä¸ªåè¯ï¼Œä¼šå°†æ¯ä¸ªåç§°`x`å’Œ`y`åˆ†åˆ«ç»‘å®šåˆ°æ¯ä¸ªå¶å¯¹çš„ç¬¬ä¸€ä¸ªå’Œç¬¬äºŒä¸ªå…ƒç´ ä¸Šã€‚
 ---
 
 ```
@@ -255,11 +263,11 @@ The following `for` statement with two names in its header will bind each name `
 ```
 
 This pattern of binding multiple names to multiple values in a fixed-length sequence is called _sequence unpacking_; it is the same pattern that we see in assignment statements that bind multiple names to multiple values.
-**Õâ¸ö°ó¶¨¶à¸öÃû³Æµ½¶¨³¤ĞòÁĞÖĞ¶à¸öÖµµÄÄ£Ê½£¬½Ğ×öĞòÁĞ½â°ü¡£ËüµÄÄ£Ê½ºÍÎÒÃÇÔÚ¸³ÖµÓï¾äÖĞ¿´µ½µÄ£¬½«¶à¸öÃû³Æ°ó¶¨µ½¶à¸öÖµµÄÄ£Ê½ÏàÍ¬¡£**
-¡¾*6¡¿RangeÒ²ÊÇÒ»¸öĞòÁĞ¡£
+**è¿™ä¸ªç»‘å®šå¤šä¸ªåç§°åˆ°å®šé•¿åºåˆ—ä¸­å¤šä¸ªå€¼çš„æ¨¡å¼ï¼Œå«åšåºåˆ—è§£åŒ…ã€‚å®ƒçš„æ¨¡å¼å’Œæˆ‘ä»¬åœ¨èµ‹å€¼è¯­å¥ä¸­çœ‹åˆ°çš„ï¼Œå°†å¤šä¸ªåç§°ç»‘å®šåˆ°å¤šä¸ªå€¼çš„æ¨¡å¼ç›¸åŒã€‚**
+ã€*6ã€‘Rangeä¹Ÿæ˜¯ä¸€ä¸ªåºåˆ—ã€‚
 ---
 **Ranges.** A `range` is another built-in type of sequence in Python, which represents a range of integers. Ranges are created with the `range` function, which takes two integer arguments: the first number and one beyond the last number in the desired range.
-`range`ÊÇÁíÒ»ÖÖ Python µÄÄÚ½¨ĞòÁĞÀàĞÍ£¬Ëü±íÊ¾Ò»¸öÕûÊı·¶Î§¡£·¶Î§¿ÉÒÔÊ¹ÓÃ`range`º¯ÊıÀ´´´½¨£¬Ëü½ÓÊÜÁ½¸öÕûÊı²ÎÊı£ºËùµÃ·¶Î§µÄµÚÒ»¸öÊıÖµºÍ×îºóÒ»¸öÊıÖµ¼ÓÒ»¡£
+`range`æ˜¯å¦ä¸€ç§ Python çš„å†…å»ºåºåˆ—ç±»å‹ï¼Œå®ƒè¡¨ç¤ºä¸€ä¸ªæ•´æ•°èŒƒå›´ã€‚èŒƒå›´å¯ä»¥ä½¿ç”¨`range`å‡½æ•°æ¥åˆ›å»ºï¼Œå®ƒæ¥å—ä¸¤ä¸ªæ•´æ•°å‚æ•°ï¼šæ‰€å¾—èŒƒå›´çš„ç¬¬ä¸€ä¸ªæ•°å€¼å’Œæœ€åä¸€ä¸ªæ•°å€¼åŠ ä¸€ã€‚
 
 ---
 ```
@@ -270,14 +278,14 @@ range(1, 10)
 
 Calling the `tuple` constructor on a range will create a tuple with the same elements as the range, so that the elements can be easily inspected.
 
-ÔÚ·¶Î§ÉÏµ÷ÓÃ`tuple`¹¹ÔìÆ÷»á´´½¨Óë·¶Î§¾ßÓĞÏàÍ¬ÔªËØµÄÔª×é£¬Ê¹ÔªËØÒ×ÓÚ²é¿´¡£
+åœ¨èŒƒå›´ä¸Šè°ƒç”¨`tuple`æ„é€ å™¨ä¼šåˆ›å»ºä¸èŒƒå›´å…·æœ‰ç›¸åŒå…ƒç´ çš„å…ƒç»„ï¼Œä½¿å…ƒç´ æ˜“äºæŸ¥çœ‹ã€‚
 ```
 >>> tuple(range(5, 8))
 (5, 6, 7)
 ```
 If only one argument is given, it is interpreted as one beyond the last value for a range that starts at 0.
 
-Èç¹ûÖ»Ìá¹©ÁËÒ»¸öÔªËØ£¬Ëü»á½âÊÍÎª×îºóÒ»¸öÊıÖµ¼ÓÒ»£¬·¶Î§¿ªÊ¼ÓÚ 0¡£
+å¦‚æœåªæä¾›äº†ä¸€ä¸ªå…ƒç´ ï¼Œå®ƒä¼šè§£é‡Šä¸ºæœ€åä¸€ä¸ªæ•°å€¼åŠ ä¸€ï¼ŒèŒƒå›´å¼€å§‹äº 0ã€‚
 ```
 >>> tuple(range(4))
 (0, 1, 2, 3)
@@ -301,7 +309,7 @@ Ranges commonly appear as the expression in a `for` header to specify the number
 
 A common convention is to use a single underscore character for the name in the `for` header if the name is unused in the suite:
 
-¡¾*7¡¿Ô¼¶¨Ë×³É£ºÈç¹û²»ÓÃ±äÁ¿£¬ÓÃÏÂ»®Ïß£¨_£©¸³Öµ¡£
+ã€*7ã€‘çº¦å®šä¿—æˆï¼šå¦‚æœä¸ç”¨å˜é‡ï¼Œç”¨ä¸‹åˆ’çº¿ï¼ˆ_ï¼‰èµ‹å€¼ã€‚
 ---
 ```
 >>> for _ in range(3):
@@ -314,31 +322,31 @@ Go Bears!
 ```
 
 Note that an underscore is just another name in the environment as far as the interpreter is concerned, but has a conventional meaning among programmers that indicates the name will not appear in any expressions.
-¶Ô½âÊÍÆ÷À´Ëµ£¬ÏÂ»®ÏßÊÇÁíÒ»¸öÃû³Æ£¬µ«ÊÇÔÚ³ÌĞòÔ±ÖĞ¾ßÓĞ¹Ì¶¨º¬Òå£¬Ëü±íÃ÷Õâ¸öÃû³Æ²»Ó¦³öÏÖÔÚÈÎºÎ±í´ïÊ½ÖĞ¡£
+å¯¹è§£é‡Šå™¨æ¥è¯´ï¼Œä¸‹åˆ’çº¿æ˜¯å¦ä¸€ä¸ªåç§°ï¼Œä½†æ˜¯åœ¨ç¨‹åºå‘˜ä¸­å…·æœ‰å›ºå®šå«ä¹‰ï¼Œå®ƒè¡¨æ˜è¿™ä¸ªåç§°ä¸åº”å‡ºç°åœ¨ä»»ä½•è¡¨è¾¾å¼ä¸­ã€‚
 
-## 2.3.5 Sequence Abstraction£¨ĞòÁĞ³éÏó£©
+## 2.3.5 Sequence Abstractionï¼ˆåºåˆ—æŠ½è±¡ï¼‰
 We have now introduced two types of native data types that implement the sequence abstraction: tuples and ranges. Both satisfy the conditions with which we began this section: length and element selection. Python includes two more behaviors of sequence types that extend the sequence abstraction.
-**ÎÒÃÇÒÑ¾­½éÉÜÁËÁ½ÖÖÔ­ÉúÊı¾İÀàĞÍ£¬ËüÃÇÊµÏÖÁËĞòÁĞ³éÏó£ºÔª×éºÍRange¡£Á½¸ö¶¼Âú×ãÕâÒ»ÕÂ¿ªÊ¼Ê±µÄÌõ¼ş£º³¤¶ÈºÍÔªËØÑ¡Ôñ¡£**
+**æˆ‘ä»¬å·²ç»ä»‹ç»äº†ä¸¤ç§åŸç”Ÿæ•°æ®ç±»å‹ï¼Œå®ƒä»¬å®ç°äº†åºåˆ—æŠ½è±¡ï¼šå…ƒç»„å’ŒRangeã€‚ä¸¤ä¸ªéƒ½æ»¡è¶³è¿™ä¸€ç« å¼€å§‹æ—¶çš„æ¡ä»¶ï¼šé•¿åº¦å’Œå…ƒç´ é€‰æ‹©ã€‚**
 ``` python
 >>> a = (1,2,3)
->>> len(a)             #ĞòÁĞµÄ³¤¶È
+>>> len(a)             #åºåˆ—çš„é•¿åº¦
 3
->>> a[2]               #ĞòÁĞµÄÔªËØÑ¡Ôñ
+>>> a[2]               #åºåˆ—çš„å…ƒç´ é€‰æ‹©
 3
 >>> b = range(10)
->>> b[1]               #ĞòÁĞµÄÔªËØÑ¡Ôñ
+>>> b[1]               #åºåˆ—çš„å…ƒç´ é€‰æ‹©
 1
->>> len(b)             #ĞòÁĞµÄ³¤¶È
+>>> len(b)             #åºåˆ—çš„é•¿åº¦
 10
 ```
-**Python »¹°üº¬ÁËÁ½ÖÖĞòÁĞÀàĞÍµÄĞĞÎª£¬ËüÃÇÀ©Õ¹ÁËĞòÁĞ³éÏó¡£**
+**Python è¿˜åŒ…å«äº†ä¸¤ç§åºåˆ—ç±»å‹çš„è¡Œä¸ºï¼Œå®ƒä»¬æ‰©å±•äº†åºåˆ—æŠ½è±¡ã€‚**
 
-¡¾*8¡¿ĞòÁĞµÄ2¸öĞĞÎª£º³ÉÔ±²âÊÔ¡¢ÇĞÆ¬
+ã€*8ã€‘åºåˆ—çš„2ä¸ªè¡Œä¸ºï¼šæˆå‘˜æµ‹è¯•ã€åˆ‡ç‰‡
 --
-**³ÉÔ±²âÊÔ£ºÅĞ¶ÏÒ»¸öÔªËØÊÇ·ñÔÚĞòÁĞµ±ÖĞ£¨in | not in£©**
-**ÇĞÆ¬**
-**Membership£¨³ÉÔ±²âÊÔ£©.** A value can be tested for membership in a sequence. Python has two operators `in` and `not in` that evaluate to `True` or `False` depending on whether an element appears in a sequence.
-¿ÉÒÔ²âÊÔÒ»¸öÖµÔÚĞòÁĞÖĞµÄ³ÉÔ±ĞÔ¡£Python ÓµÓĞÁ½¸ö²Ù×÷·û`in`ºÍ`not in`£¬È¡¾öÓÚÔªËØÊÇ·ñÔÚĞòÁĞÖĞ³öÏÖ¶øÇóÖµÎª`True`ºÍ`False`¡£
+**æˆå‘˜æµ‹è¯•ï¼šåˆ¤æ–­ä¸€ä¸ªå…ƒç´ æ˜¯å¦åœ¨åºåˆ—å½“ä¸­ï¼ˆin | not inï¼‰**
+**åˆ‡ç‰‡**
+**Membershipï¼ˆæˆå‘˜æµ‹è¯•ï¼‰.** A value can be tested for membership in a sequence. Python has two operators `in` and `not in` that evaluate to `True` or `False` depending on whether an element appears in a sequence.
+å¯ä»¥æµ‹è¯•ä¸€ä¸ªå€¼åœ¨åºåˆ—ä¸­çš„æˆå‘˜æ€§ã€‚Python æ‹¥æœ‰ä¸¤ä¸ªæ“ä½œç¬¦`in`å’Œ`not in`ï¼Œå–å†³äºå…ƒç´ æ˜¯å¦åœ¨åºåˆ—ä¸­å‡ºç°è€Œæ±‚å€¼ä¸º`True`å’Œ`False`ã€‚
 
 ```
 >>> digits
@@ -352,15 +360,15 @@ True
 
 All sequences also have methods called `index` and `count`, which return the index of (or count of) a value in a sequence.
 
-**ËùÓĞĞòÁĞ¶¼ÓĞ½Ğ×ö`index`ºÍ`count`µÄ·½·¨£¬Ëü»á·µ»ØĞòÁĞÖĞÄ³¸öÖµµÄÏÂ±ê£¨»òÕßÊıÁ¿£©¡£**
+**æ‰€æœ‰åºåˆ—éƒ½æœ‰å«åš`index`å’Œ`count`çš„æ–¹æ³•ï¼Œå®ƒä¼šè¿”å›åºåˆ—ä¸­æŸä¸ªå€¼çš„ä¸‹æ ‡ï¼ˆæˆ–è€…æ•°é‡ï¼‰ã€‚**
 ``` python
 >>> a = (1,1,1,2,3,4,4,5)
 >>> a.count(1)
 3
 ```
-**Slicing£¨ÇĞÆ¬£©.** 
+**Slicingï¼ˆåˆ‡ç‰‡ï¼‰.** 
 In Python, sequence slicing is expressed similarly to element selection, using square brackets. A colon separates the starting and ending indices. Any bound that is omitted is assumed to be an extreme value: 0 for the starting index, and the length of the sequence for the ending index.
-**Python ÖĞ£¬ĞòÁĞÇĞÆ¬µÄ±íÊ¾ÀàËÆÓÚÔªËØÑ¡Ôñ£¬Ê¹ÓÃ·½À¨ºÅ¡£Ã°ºÅ·Ö¸îÁËÆğÊ¼ºÍ½áÊøÏÂ±ê¡£ÈÎºÎ±ß½çÉÏµÄÊ¡ÂÔ¶¼±»µ±×÷¼«ÏŞÖµ£ºÆğÊ¼ÏÂ±êÎª 0£¬½áÊøÏÂ±êÊÇĞòÁĞ³¤¶È¡£**
+**Python ä¸­ï¼Œåºåˆ—åˆ‡ç‰‡çš„è¡¨ç¤ºç±»ä¼¼äºå…ƒç´ é€‰æ‹©ï¼Œä½¿ç”¨æ–¹æ‹¬å·ã€‚å†’å·åˆ†å‰²äº†èµ·å§‹å’Œç»“æŸä¸‹æ ‡ã€‚ä»»ä½•è¾¹ç•Œä¸Šçš„çœç•¥éƒ½è¢«å½“ä½œæé™å€¼ï¼šèµ·å§‹ä¸‹æ ‡ä¸º 0ï¼Œç»“æŸä¸‹æ ‡æ˜¯åºåˆ—é•¿åº¦ã€‚**
 
 ```
 >>> digits[0:2]
@@ -369,24 +377,24 @@ In Python, sequence slicing is expressed similarly to element selection, using s
 (8, 2, 8)
 ```
 
-## 2.3.6 Strings£¨×Ö·û´®£©
+## 2.3.6 Stringsï¼ˆå­—ç¬¦ä¸²ï¼‰
 The native data type for text in Python is called a string, and corresponds to the constructor `str`.
-Python ÖĞÔ­ÉúµÄÎÄ±¾Êı¾İÀàĞÍ½Ğ×ö×Ö·û´®£¬ÏàÓ¦µÄ¹¹ÔìÆ÷ÊÇ`str`¡£
+Python ä¸­åŸç”Ÿçš„æ–‡æœ¬æ•°æ®ç±»å‹å«åšå­—ç¬¦ä¸²ï¼Œç›¸åº”çš„æ„é€ å™¨æ˜¯`str`ã€‚
 
 String literals can express arbitrary text, surrounded by either single or double quotation marks.
-×Ö·û´®¿ÉÒÔ±í´ïÈÎÒâÎÄ±¾£¬±»µ¥ÒıºÅ»òÕßË«ÒıºÅ°üÎ§¡£
+å­—ç¬¦ä¸²å¯ä»¥è¡¨è¾¾ä»»æ„æ–‡æœ¬ï¼Œè¢«å•å¼•å·æˆ–è€…åŒå¼•å·åŒ…å›´ã€‚
 
 ```
 >>> 'I am string!'
 'I am string!'
 >>> "I've got an apostrophe"
 "I've got an apostrophe"
->>> 'ÄúºÃ'
-'ÄúºÃ'
+>>> 'æ‚¨å¥½'
+'æ‚¨å¥½'
 
 ```
 Strings satisfy the two basic conditions of a sequence that we introduced at the beginning of this section: they have a length and they support element selection.
-×Ö·û´®Âú×ãÁ½¸ö»ù±¾µÄĞòÁĞÌõ¼ş£¬ÎÒÃÇÔÚÕâÒ»½Ú¿ªÊ¼½éÉÜ¹ıËüÃÇ£ºËüÃÇÓµÓĞ³¤¶ÈºÍÔªËØÑ¡Ôñ
+å­—ç¬¦ä¸²æ»¡è¶³ä¸¤ä¸ªåŸºæœ¬çš„åºåˆ—æ¡ä»¶ï¼Œæˆ‘ä»¬åœ¨è¿™ä¸€èŠ‚å¼€å§‹ä»‹ç»è¿‡å®ƒä»¬ï¼šå®ƒä»¬æ‹¥æœ‰é•¿åº¦å’Œå…ƒç´ é€‰æ‹©
 
 ```
 >>> city = 'Berkeley'
@@ -398,10 +406,10 @@ Strings satisfy the two basic conditions of a sequence that we introduced at the
 ```
 
 The elements of a string are themselves strings that have only a single character. A character is any single letter of the alphabet, punctuation mark, or other symbol. Unlike many other programming languages, Python does not have a separate character type; any text is a string, and strings that represent single characters have a length of 1.
-×Ö·û´®µÄÔªËØ±¾Éí¾ÍÊÇ°üº¬µ¥Ò»×Ö·ûµÄ×Ö·û´®¡£×Ö·ûÊÇ×ÖÄ¸±íÖĞµÄÈÎÒâµ¥Ò»×Ö·û£¬±êµã·ûºÅ£¬»òÕßÆäËü·ûºÅ¡£²»ÏñĞí¶àÆäËü±à³ÌÓïÑÔÄÇÑù£¬Python Ã»ÓĞµ¥¶ÀµÄ×Ö·ûÀàĞÍ£¬ÈÎºÎÎÄ±¾¶¼ÊÇ×Ö·û´®£¬±íÊ¾µ¥Ò»×Ö·ûµÄ×Ö·û´®³¤¶ÈÎª 1
+å­—ç¬¦ä¸²çš„å…ƒç´ æœ¬èº«å°±æ˜¯åŒ…å«å•ä¸€å­—ç¬¦çš„å­—ç¬¦ä¸²ã€‚å­—ç¬¦æ˜¯å­—æ¯è¡¨ä¸­çš„ä»»æ„å•ä¸€å­—ç¬¦ï¼Œæ ‡ç‚¹ç¬¦å·ï¼Œæˆ–è€…å…¶å®ƒç¬¦å·ã€‚ä¸åƒè®¸å¤šå…¶å®ƒç¼–ç¨‹è¯­è¨€é‚£æ ·ï¼ŒPython æ²¡æœ‰å•ç‹¬çš„å­—ç¬¦ç±»å‹ï¼Œä»»ä½•æ–‡æœ¬éƒ½æ˜¯å­—ç¬¦ä¸²ï¼Œè¡¨ç¤ºå•ä¸€å­—ç¬¦çš„å­—ç¬¦ä¸²é•¿åº¦ä¸º 1
 
 Like tuples, strings can also be combined via addition and multiplication.
-¡¾*10¡¿×Ö·û´®Ò²¿ÉÒÔÍ¨¹ı¼Ó·¨ºÍ³Ë·¨À´×éºÏ£º
+ã€*10ã€‘å­—ç¬¦ä¸²ä¹Ÿå¯ä»¥é€šè¿‡åŠ æ³•å’Œä¹˜æ³•æ¥ç»„åˆï¼š
 ---
 ```
 >>> 'Berkeley' + ', CA'
@@ -412,7 +420,7 @@ Like tuples, strings can also be combined via addition and multiplication.
 ```
 
 **Membership.** The behavior of strings diverges from other sequence types in Python. The string abstraction does not conform to the full sequence abstraction that we described for tuples and ranges. In particular, the membership operator `in` applies to strings, but has an entirely different behavior than when it is applied to sequences. It matches substrings rather than elements.
-×Ö·û´®µÄĞĞÎª²»Í¬ÓÚ Python ÖĞÆäËüĞòÁĞÀàĞÍ¡£×Ö·û´®³éÏóÃ»ÓĞÊµÏÖÎÒÃÇÎªÔª×éºÍRangesÃèÊöµÄÍêÕûĞòÁĞ³éÏó¡£ÌØ±ğµØ£¬×Ö·û´®ÉÏÊµÏÖÁË³ÉÔ±ĞÔÔËËã·û`in`£¬µ«ÊÇÓëĞòÁĞÉÏµÄÊµÏÖ¾ßÓĞÍêÈ«²»Í¬µÄĞĞÎª¡£ËüÆ¥Åä×Ó×Ö·û´®¶ø²»ÊÇÔªËØ¡£
+å­—ç¬¦ä¸²çš„è¡Œä¸ºä¸åŒäº Python ä¸­å…¶å®ƒåºåˆ—ç±»å‹ã€‚å­—ç¬¦ä¸²æŠ½è±¡æ²¡æœ‰å®ç°æˆ‘ä»¬ä¸ºå…ƒç»„å’ŒRangesæè¿°çš„å®Œæ•´åºåˆ—æŠ½è±¡ã€‚ç‰¹åˆ«åœ°ï¼Œå­—ç¬¦ä¸²ä¸Šå®ç°äº†æˆå‘˜æ€§è¿ç®—ç¬¦`in`ï¼Œä½†æ˜¯ä¸åºåˆ—ä¸Šçš„å®ç°å…·æœ‰å®Œå…¨ä¸åŒçš„è¡Œä¸ºã€‚å®ƒåŒ¹é…å­å­—ç¬¦ä¸²è€Œä¸æ˜¯å…ƒç´ ã€‚
 ```
 >>> 'here' in "Where's Waldo?"
 True
@@ -420,8 +428,8 @@ True
 ```
 
 Likewise, the `count` and `index` methods on strings take substrings as arguments, rather than single-character elements. The behavior of `count` is particularly nuanced; it counts the number of non-overlapping occurrences of a substring in a string.
-ÓëÖ®ÏàËÆ£¬×Ö·û´®ÉÏµÄ`count`ºÍ`index`·½·¨½ÓÊÜ×Ó´®×÷Îª²ÎÊı£¬¶ø²»ÊÇµ¥Ò»×Ö·û¡£`count`µÄĞĞÎªÓĞÏ¸Î¢²î±ğ£¬ËüÍ³¼Æ×Ö·û´®ÖĞ·ÇÖØµş×Ö´®µÄ³öÏÖ´ÎÊı¡£
-¡¾*11¡¿count·½·¨
+ä¸ä¹‹ç›¸ä¼¼ï¼Œå­—ç¬¦ä¸²ä¸Šçš„`count`å’Œ`index`æ–¹æ³•æ¥å—å­ä¸²ä½œä¸ºå‚æ•°ï¼Œè€Œä¸æ˜¯å•ä¸€å­—ç¬¦ã€‚`count`çš„è¡Œä¸ºæœ‰ç»†å¾®å·®åˆ«ï¼Œå®ƒç»Ÿè®¡å­—ç¬¦ä¸²ä¸­éé‡å å­—ä¸²çš„å‡ºç°æ¬¡æ•°ã€‚
+ã€*11ã€‘countæ–¹æ³•
 ---
 ```
 >>> 'Mississippi'.count('i')
@@ -431,7 +439,7 @@ Likewise, the `count` and `index` methods on strings take substrings as argument
 ```
 ---
 **Multiline Literals.** Strings aren't limited to a single line. Triple quotes delimit string literals that span multiple lines. We have used this triple quoting extensively already for docstrings.
-**¶àĞĞÎÄ±¾¡£**×Ö·û´®²¢²»ÏŞÖÆÓÚµ¥ĞĞÎÄ±¾£¬Èı¸öÒıºÅ·Ö¸ôµÄ×Ö·û´®¿ÉÒÔ¿çÔ½¶àĞĞ¡£ÎÒÃÇÒÑ¾­ÔÚÎÄµµ×Ö·û´®ÖĞÊ¹ÓÃÁËÈı¸öÒıºÅ¡£
+**å¤šè¡Œæ–‡æœ¬ã€‚**å­—ç¬¦ä¸²å¹¶ä¸é™åˆ¶äºå•è¡Œæ–‡æœ¬ï¼Œä¸‰ä¸ªå¼•å·åˆ†éš”çš„å­—ç¬¦ä¸²å¯ä»¥è·¨è¶Šå¤šè¡Œã€‚æˆ‘ä»¬å·²ç»åœ¨æ–‡æ¡£å­—ç¬¦ä¸²ä¸­ä½¿ç”¨äº†ä¸‰ä¸ªå¼•å·ã€‚
 
 ```
 >>> """The Zen of Python
@@ -443,36 +451,36 @@ Read more: import this."""
 
 In the printed result above, the `\n` (pronounced "_backslash en_") is a single element that represents a new line. Although it appears as two characters (backslash and "n"), it is considered a single character for the purposes of length and element selection.
 
-¡¾*12] Èı¸öÒıºÅµÄ¶àĞĞÎÄ±¾£º\n£¨½Ğ×ö¡°·´Ğ±¸Ü¼Ó n¡±£©ÊÇ±íÊ¾ĞÂĞĞµÄµ¥Ò»ÔªËØ¡£ËäÈ»Ëü±íÊ¾ÎªÁ½¸ö×Ö·û£¨·´Ğ±¸ÜºÍ n£©¡£ËüÔÚ³¤¶ÈºÍÔªËØÑ¡ÔñÉÏ±»ÈÏÎªÊÇµ¥¸ö×Ö·û¡£
+ã€*12] ä¸‰ä¸ªå¼•å·çš„å¤šè¡Œæ–‡æœ¬ï¼š\nï¼ˆå«åšâ€œåæ–œæ åŠ  nâ€ï¼‰æ˜¯è¡¨ç¤ºæ–°è¡Œçš„å•ä¸€å…ƒç´ ã€‚è™½ç„¶å®ƒè¡¨ç¤ºä¸ºä¸¤ä¸ªå­—ç¬¦ï¼ˆåæ–œæ å’Œ nï¼‰ã€‚å®ƒåœ¨é•¿åº¦å’Œå…ƒç´ é€‰æ‹©ä¸Šè¢«è®¤ä¸ºæ˜¯å•ä¸ªå­—ç¬¦ã€‚
 ---
 ``` python
-#¶àĞĞÎÄ±¾£º
+#å¤šè¡Œæ–‡æœ¬ï¼š
 >>> '''asdfasdf
 zxcvzxcv
 qweqweqwe
 '''
 'asdfasdf\nzxcvzxcv\nqweqweqwe\n'
-»»ĞĞµØ·½£¬Ä¬ÈÏ¼ÓÉÏÁË»»ĞĞ·û£¡
-½á¹ûÊÇ£º11111111111111\n222222222222222
+æ¢è¡Œåœ°æ–¹ï¼Œé»˜è®¤åŠ ä¸Šäº†æ¢è¡Œç¬¦ï¼
+ç»“æœæ˜¯ï¼š11111111111111\n222222222222222
 ```
 
-¡¾*13¡¿³¬³¤×Ö·û´®±í´ï·½Ê½£¬ÓÃÀ¨ºÅÀ¨ÆğÀ´
+ã€*13ã€‘è¶…é•¿å­—ç¬¦ä¸²è¡¨è¾¾æ–¹å¼ï¼Œç”¨æ‹¬å·æ‹¬èµ·æ¥
 ---
 ``` python
-#³¬³¤×Ö·û´®£º("11111111111"
+#è¶…é•¿å­—ç¬¦ä¸²ï¼š("11111111111"
             "22222222222")
-½á¹ûÊÇ£º1111111111122222222222
+ç»“æœæ˜¯ï¼š1111111111122222222222
 ```
 
 **String Coercion.** A string can be created from any object in Python by calling the `str` constructor function with an object value as its argument. This feature of strings is useful for constructing descriptive strings from objects of various types.
-×Ö·û´®¿ÉÒÔ´Ó Python µÄÈÎºÎ¶ÔÏóÍ¨¹ıÒÔÄ³¸ö¶ÔÏóÖµ×÷Îª²ÎÊıµ÷ÓÃ`str`¹¹Ôìº¯ÊıÀ´´´½¨£¬Õâ¸ö×Ö·û´®µÄÌØĞÔ¶ÔÓÚ´Ó¶àÖÖÀàĞÍµÄ¶ÔÏóÖĞ¹¹ÔìÃèÊöĞÔ×Ö·û´®·Ç³£ÊµÓÃ¡£
+å­—ç¬¦ä¸²å¯ä»¥ä» Python çš„ä»»ä½•å¯¹è±¡é€šè¿‡ä»¥æŸä¸ªå¯¹è±¡å€¼ä½œä¸ºå‚æ•°è°ƒç”¨`str`æ„é€ å‡½æ•°æ¥åˆ›å»ºï¼Œè¿™ä¸ªå­—ç¬¦ä¸²çš„ç‰¹æ€§å¯¹äºä»å¤šç§ç±»å‹çš„å¯¹è±¡ä¸­æ„é€ æè¿°æ€§å­—ç¬¦ä¸²éå¸¸å®ç”¨ã€‚
 
 ```
 >>> str(2) + ' is an element of ' + str(digits)
 '2 is an element of (1, 8, 2, 8)'
 
 ```
-¡¾*14¡¿Methods£¨·½·¨£©
+ã€*14ã€‘Methodsï¼ˆæ–¹æ³•ï¼‰
 ---
 
 ```
@@ -484,9 +492,9 @@ True
 True
 ```
 
-## 2.3.7 Conventional Interfaces£¨³£¹æ½Ó¿Ú£©
+## 2.3.7 Conventional Interfacesï¼ˆå¸¸è§„æ¥å£ï¼‰
 
-¡¾*15¡¿ĞòÁĞ¼ÆËãÄ£Ê½£ºÃ¶¾Ù¡¢Ó³Éä¡¢É¸Ñ¡¡¢¼ÆËãµÄÄ£Ê½
+ã€*15ã€‘åºåˆ—è®¡ç®—æ¨¡å¼ï¼šæšä¸¾ã€æ˜ å°„ã€ç­›é€‰ã€è®¡ç®—çš„æ¨¡å¼
 ---
 ```
  enumerate     map    filter  accumulate
@@ -495,15 +503,15 @@ naturals(n)    fib    iseven     sum
 ```
 
 The filter function takes a sequence and returns those elements of a sequence for which a predicate is true
-´«µİÒ»¸öĞòÁĞ£¬·µ»ØĞòÁĞÖĞ¶ÏÑÔÎªÕæµÄÔªËØ¡£ ·µ»ØµÄÊÇfilter¶ÔÏó£¬¿ÉÒÔ×ª»»ÎªÔª×é
+ä¼ é€’ä¸€ä¸ªåºåˆ—ï¼Œè¿”å›åºåˆ—ä¸­æ–­è¨€ä¸ºçœŸçš„å…ƒç´ ã€‚ è¿”å›çš„æ˜¯filterå¯¹è±¡ï¼Œå¯ä»¥è½¬æ¢ä¸ºå…ƒç»„
 
-¡¾*16¡¿Generator expressions Éú³ÉÆ÷±í´ïÊ½£º´¦ÀíĞòÁĞÕâÖÖÊı¾İ½á¹¹µÄ·½·¨
+ã€*16ã€‘Generator expressions ç”Ÿæˆå™¨è¡¨è¾¾å¼ï¼šå¤„ç†åºåˆ—è¿™ç§æ•°æ®ç»“æ„çš„æ–¹æ³•
 ---
 ```
 <map expression> for <name> in <sequence expression> if <filter expression>
 ```
-(x*2 for x in range(5) if x%2==0) ·µ»ØµÄÊÇgeneratorÉú³ÉÆ÷ÀàĞÍ
-list(x*2 for x in range(5) if x%2==0) listÇ¿ÖÆ×ª»»Éú³ÉÆ÷³ÉÁĞ±í
+(x*2 for x in range(5) if x%2==0) è¿”å›çš„æ˜¯generatorç”Ÿæˆå™¨ç±»å‹
+list(x*2 for x in range(5) if x%2==0) listå¼ºåˆ¶è½¬æ¢ç”Ÿæˆå™¨æˆåˆ—è¡¨
 
 ``` python
 # <map expression> for <name> in <sequence expression> if <filter expression>
@@ -520,19 +528,19 @@ c = list((double(x) for x in range(10) if x % 2 == 0))
 print(c)            # [0, 4, 8, 12, 16]
 
 d = list(lambda x : x * 2 for x in range(10) if x % 2 == 0)
-print(d)            # ´íÎó
+print(d)            # é”™è¯¯
 
 e = lambda x : x * 2
 f = list(d for x in range(10) if x % 2 == 0)
 
-# ×Ü½á£ºÊ¹ÓÃÉú³ÉÆ÷±í´ïÊ½£¬ÒªÏÈ°Ñº¯Êı¶¨Òå³öÀ´£¡
+# æ€»ç»“ï¼šä½¿ç”¨ç”Ÿæˆå™¨è¡¨è¾¾å¼ï¼Œè¦å…ˆæŠŠå‡½æ•°å®šä¹‰å‡ºæ¥ï¼
 ```
 
-[17*] reduce(º¯Êı£¬ĞòÁĞ) 
+[17*] reduce(å‡½æ•°ï¼Œåºåˆ—) 
 ---
 Python includes `reduce` in the `functools` module, which applies a two-argument function cumulatively to the elements of a sequence from left to right, to reduce a sequence to a value.
-Python ÔÚ`functools`Ä£¿éÖĞ°üº¬`reduce`£¬Ëü½«ĞòÁĞÖĞµÄÔªËØÏÈÈ¡³ö2¸ö£¬´«µİ¸øº¯ÊıµÃµ½µÄÖµÓëĞòÁĞµÄÏÂÒ»¸öÔªËØ´«µİ¸øº¯Êı£¬ÒÀ´ÎÖ±µ½È¡ÍêËùÓĞÔªËØ£¬µÃµ½×îÖÕÖµ¡£
+Python åœ¨`functools`æ¨¡å—ä¸­åŒ…å«`reduce`ï¼Œå®ƒå°†åºåˆ—ä¸­çš„å…ƒç´ å…ˆå–å‡º2ä¸ªï¼Œä¼ é€’ç»™å‡½æ•°å¾—åˆ°çš„å€¼ä¸åºåˆ—çš„ä¸‹ä¸€ä¸ªå…ƒç´ ä¼ é€’ç»™å‡½æ•°ï¼Œä¾æ¬¡ç›´åˆ°å–å®Œæ‰€æœ‰å…ƒç´ ï¼Œå¾—åˆ°æœ€ç»ˆå€¼ã€‚
 ``` python
 reduce(lambda x, y:x*2+y*2, (1,2,3,4))
-ÏÈ´«µİ1ºÍ2£¬ÔÙ´«µİ6ºÍ3£¬×îºó´«µİ18ºÍ4
+å…ˆä¼ é€’1å’Œ2ï¼Œå†ä¼ é€’6å’Œ3ï¼Œæœ€åä¼ é€’18å’Œ4
 ```
