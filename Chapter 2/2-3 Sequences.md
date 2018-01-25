@@ -115,6 +115,7 @@ Now, we can manipulate a recursive list as a sequence:
 
 ## 2.3.3 Tuples II（元组）
 Tuples can have arbitrary length, and they exhibit the two principal behaviors of the sequence abstraction: length and element selection. Below, `digits` is a tuple with four elements.
+
 元组具有任意的长度，并且也拥有序列抽象的两个基本行为：长度和元素选择。下面的`digits`是一个四元素元组。
 ```
 >>> digits = (1, 8, 2, 8)
@@ -125,6 +126,7 @@ Tuples can have arbitrary length, and they exhibit the two principal behaviors o
 ```
 
 Additionally, tuples can be added together and multiplied by integers. For tuples, addition and multiplication do not add or multiply elements, but instead combine and replicate the tuples themselves. That is, the `add`function in the `operator` module (and the `+` operator) returns a new tuple that is the conjunction of the added arguments. The `mul` function in `operator` (and the `*` operator) can take an integer `k` and a tuple and return a new tuple that consists of `k` copies of the tuple argument.
+
 此外，元组可以彼此相加以及与整数相乘。对于元组，加法和乘法操作并不对元素相加或相乘，而是组合和重复元组本身。也就是说，`operator`模块中的`add`函数（以及`+`运算符）返回两个被加元组连接成的新元组。`operator`模块中的`mul`函数（以及`*`运算符）接受整数`k`和元组，并返回含有元组参数`k`个副本的新元组。
 
 【*1】加法和乘法：↓
@@ -138,6 +140,7 @@ Additionally, tuples can be added together and multiplied by integers. For tuple
 (2, 7, 1, 8, 2, 8, 1, 8, 2, 8)
 ```
 **Mapping.** A powerful method of transforming one tuple into another is by applying a function to each element and collecting the results.
+
 **映射。**map(函数，序列) 序列里的每个元素都当做函数的参数传递给函数，一一调用函数得到结果。
 ptyhon3返回的是map类型，可以通过tuple或者list强制类型转换
 
@@ -155,12 +158,16 @@ The `map` function is important because it relies on the sequence abstraction: w
 
 ## 2.3.4 Sequence Iteration（序列的迭代）
 Mapping is itself an instance of a general pattern of computation: iterating over all elements in a sequence.
+
 一次一个访问序列里的元素，直到访问完序列里的元素
+
 Python has an additional control statement to process sequential data: the `for`statement.
+
 Python 添加控制语句来处理序列数据：`for`语句
 
 ---
 Consider the problem of counting how many times a value appears in a sequence. We can implement a function to compute this count using a `while` loop.
+
 考虑计算一个值在序列中出现了多少次的问题，。我们可以使用`while`循环实现一个函数来计算这个数量。
 
 ```
@@ -218,11 +225,17 @@ A `for` statement is executed by the following procedure:
 `for`语句按照以下过程来执行：
 
 1.  Evaluate the header `&lt;expression&gt;`, which must yield an iterable value.
+
 <expression>必须产生一个可迭代的值
+        
 2.  For each element value in that sequence, in order:
+
     1.  Bind `&lt;name&gt;` to that value in the local environment.
+        
 序列里的每一个值，绑定到name局部变量里
+
     2.  Execute the `&lt;suite&gt;`.
+    
 然后执行suite
 
 An important consequence of this evaluation procedure is that `&lt;name&gt;` will be bound to the last element of the sequence after the `for` statement is executed.
