@@ -459,6 +459,7 @@ True
 Likewise, the `count` and `index` methods on strings take substrings as arguments, rather than single-character elements. The behavior of `count` is particularly nuanced; it counts the number of non-overlapping occurrences of a substring in a string.
 
 与之相似，字符串上的`count`和`index`方法接受子串作为参数，而不是单一字符。`count`的行为有细微差别，它统计字符串中非重叠字串的出现次数。
+
 【*11】count方法
 ---
 ```
