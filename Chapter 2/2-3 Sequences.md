@@ -259,6 +259,7 @@ and wish to find the number of pairs that have the same first and second element
 ```
 
 The following `for` statement with two names in its header will bind each name `x` and `y` to the first and second elements in each pair, respectively.
+
 【*5】下面的`for`语句的头部带有两个名词，会将每个名称`x`和`y`分别绑定到每个偶对的第一个和第二个元素上。
 ---
 
@@ -276,10 +277,13 @@ The following `for` statement with two names in its header will bind each name `
 ```
 
 This pattern of binding multiple names to multiple values in a fixed-length sequence is called _sequence unpacking_; it is the same pattern that we see in assignment statements that bind multiple names to multiple values.
+
 **这个绑定多个名称到定长序列中多个值的模式，叫做序列解包。它的模式和我们在赋值语句中看到的，将多个名称绑定到多个值的模式相同。**
+
 【*6】Range也是一个序列。
 ---
 **Ranges.** A `range` is another built-in type of sequence in Python, which represents a range of integers. Ranges are created with the `range` function, which takes two integer arguments: the first number and one beyond the last number in the desired range.
+
 `range`是另一种 Python 的内建序列类型，它表示一个整数范围。范围可以使用`range`函数来创建，它接受两个整数参数：所得范围的第一个数值和最后一个数值加一。
 
 ---
@@ -335,11 +339,15 @@ Go Bears!
 ```
 
 Note that an underscore is just another name in the environment as far as the interpreter is concerned, but has a conventional meaning among programmers that indicates the name will not appear in any expressions.
+
 对解释器来说，下划线是另一个名称，但是在程序员中具有固定含义，它表明这个名称不应出现在任何表达式中。
 
 ## 2.3.5 Sequence Abstraction（序列抽象）
+
 We have now introduced two types of native data types that implement the sequence abstraction: tuples and ranges. Both satisfy the conditions with which we began this section: length and element selection. Python includes two more behaviors of sequence types that extend the sequence abstraction.
+
 **我们已经介绍了两种原生数据类型，它们实现了序列抽象：元组和Range。两个都满足这一章开始时的条件：长度和元素选择。**
+
 ``` python
 >>> a = (1,2,3)
 >>> len(a)             #序列的长度
@@ -374,6 +382,7 @@ True
 All sequences also have methods called `index` and `count`, which return the index of (or count of) a value in a sequence.
 
 **所有序列都有叫做`index`和`count`的方法，它会返回序列中某个值的下标（或者数量）。**
+
 ``` python
 >>> a = (1,1,1,2,3,4,4,5)
 >>> a.count(1)
@@ -381,6 +390,7 @@ All sequences also have methods called `index` and `count`, which return the ind
 ```
 **Slicing（切片）.** 
 In Python, sequence slicing is expressed similarly to element selection, using square brackets. A colon separates the starting and ending indices. Any bound that is omitted is assumed to be an extreme value: 0 for the starting index, and the length of the sequence for the ending index.
+
 **Python 中，序列切片的表示类似于元素选择，使用方括号。冒号分割了起始和结束下标。任何边界上的省略都被当作极限值：起始下标为 0，结束下标是序列长度。**
 
 ```
@@ -392,9 +402,11 @@ In Python, sequence slicing is expressed similarly to element selection, using s
 
 ## 2.3.6 Strings（字符串）
 The native data type for text in Python is called a string, and corresponds to the constructor `str`.
+
 Python 中原生的文本数据类型叫做字符串，相应的构造器是`str`。
 
 String literals can express arbitrary text, surrounded by either single or double quotation marks.
+
 字符串可以表达任意文本，被单引号或者双引号包围。
 
 ```
@@ -407,6 +419,7 @@ String literals can express arbitrary text, surrounded by either single or doubl
 
 ```
 Strings satisfy the two basic conditions of a sequence that we introduced at the beginning of this section: they have a length and they support element selection.
+
 字符串满足两个基本的序列条件，我们在这一节开始介绍过它们：它们拥有长度和元素选择
 
 ```
@@ -419,9 +432,11 @@ Strings satisfy the two basic conditions of a sequence that we introduced at the
 ```
 
 The elements of a string are themselves strings that have only a single character. A character is any single letter of the alphabet, punctuation mark, or other symbol. Unlike many other programming languages, Python does not have a separate character type; any text is a string, and strings that represent single characters have a length of 1.
+
 字符串的元素本身就是包含单一字符的字符串。字符是字母表中的任意单一字符，标点符号，或者其它符号。不像许多其它编程语言那样，Python 没有单独的字符类型，任何文本都是字符串，表示单一字符的字符串长度为 1
 
 Like tuples, strings can also be combined via addition and multiplication.
+
 【*10】字符串也可以通过加法和乘法来组合：
 ---
 ```
@@ -433,6 +448,7 @@ Like tuples, strings can also be combined via addition and multiplication.
 ```
 
 **Membership.** The behavior of strings diverges from other sequence types in Python. The string abstraction does not conform to the full sequence abstraction that we described for tuples and ranges. In particular, the membership operator `in` applies to strings, but has an entirely different behavior than when it is applied to sequences. It matches substrings rather than elements.
+
 字符串的行为不同于 Python 中其它序列类型。字符串抽象没有实现我们为元组和Ranges描述的完整序列抽象。特别地，字符串上实现了成员性运算符`in`，但是与序列上的实现具有完全不同的行为。它匹配子字符串而不是元素。
 ```
 >>> 'here' in "Where's Waldo?"
@@ -441,6 +457,7 @@ True
 ```
 
 Likewise, the `count` and `index` methods on strings take substrings as arguments, rather than single-character elements. The behavior of `count` is particularly nuanced; it counts the number of non-overlapping occurrences of a substring in a string.
+
 与之相似，字符串上的`count`和`index`方法接受子串作为参数，而不是单一字符。`count`的行为有细微差别，它统计字符串中非重叠字串的出现次数。
 【*11】count方法
 ---
@@ -452,6 +469,7 @@ Likewise, the `count` and `index` methods on strings take substrings as argument
 ```
 ---
 **Multiline Literals.** Strings aren't limited to a single line. Triple quotes delimit string literals that span multiple lines. We have used this triple quoting extensively already for docstrings.
+
 **多行文本。**字符串并不限制于单行文本，三个引号分隔的字符串可以跨越多行。我们已经在文档字符串中使用了三个引号。
 
 ```
@@ -486,6 +504,7 @@ qweqweqwe
 ```
 
 **String Coercion.** A string can be created from any object in Python by calling the `str` constructor function with an object value as its argument. This feature of strings is useful for constructing descriptive strings from objects of various types.
+
 字符串可以从 Python 的任何对象通过以某个对象值作为参数调用`str`构造函数来创建，这个字符串的特性对于从多种类型的对象中构造描述性字符串非常实用。
 
 ```
@@ -516,6 +535,7 @@ naturals(n)    fib    iseven     sum
 ```
 
 The filter function takes a sequence and returns those elements of a sequence for which a predicate is true
+
 传递一个序列，返回序列中断言为真的元素。 返回的是filter对象，可以转换为元组
 
 【*16】Generator expressions 生成器表达式：处理序列这种数据结构的方法
@@ -552,6 +572,7 @@ f = list(d for x in range(10) if x % 2 == 0)
 [17*] reduce(函数，序列) 
 ---
 Python includes `reduce` in the `functools` module, which applies a two-argument function cumulatively to the elements of a sequence from left to right, to reduce a sequence to a value.
+
 Python 在`functools`模块中包含`reduce`，它将序列中的元素先取出2个，传递给函数得到的值与序列的下一个元素传递给函数，依次直到取完所有元素，得到最终值。
 ``` python
 reduce(lambda x, y:x*2+y*2, (1,2,3,4))
