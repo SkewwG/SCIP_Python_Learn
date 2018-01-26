@@ -1,30 +1,43 @@
-# 2.4 Mutable Data(¿É±äÊı¾İ)
+# 2.4 Mutable Data(å¯å˜æ•°æ®)
 
 we need strategies to help us structure large systems so that they will be _modular_, that is, so that they can be divided "naturally" into coherent parts that can be separately developed and maintained.
-Ä£¿é»¯£º·Ö³ÉÒ»ĞòÁĞµÄ¸÷¸ö²¿·Ö£¬Ã¿¸ö²¿·Ö¶¼ÊÇÏà¶Ô¶ÀÁ¢µÄ¿ª·¢ÓëÎ¬»¤
+
+æ¨¡å—åŒ–ï¼šåˆ†æˆä¸€åºåˆ—çš„å„ä¸ªéƒ¨åˆ†ï¼Œæ¯ä¸ªéƒ¨åˆ†éƒ½æ˜¯ç›¸å¯¹ç‹¬ç«‹çš„å¼€å‘ä¸ç»´æŠ¤
 
 One powerful technique for creating modular programs is to introduce new kinds of data that may change state over time.
-´´½¨Ä£¿é»¯³ÌĞòÒıÈëÒ»ÖÖĞÂĞÍµÄÊı¾İÀàĞÍ£¬ÕâÖÖÊı¾İÀàĞÍÊÇËæ×ÅÊ±¼äµÄ±ä»¯¶ø±ä»¯
+
+åˆ›å»ºæ¨¡å—åŒ–ç¨‹åºå¼•å…¥ä¸€ç§æ–°å‹çš„æ•°æ®ç±»å‹ï¼Œè¿™ç§æ•°æ®ç±»å‹æ˜¯éšç€æ—¶é—´çš„å˜åŒ–è€Œå˜åŒ–
 
 a single data object can represent something that evolves independently of the rest of the program.
-µ¥¸öÊı¾İ¶ÔÏó¿ÉÒÔ±íÊ¾Óë³ÌĞòµÄÆäÓà²¿·ÖÎŞ¹ØµÄ¶«Î÷
 
-<font color=#FF0000  size=5  face="¿¬Ìå">¡¾*1¡¿´æ´¢×÷ÓÃ£º×´Ì¬µÄÑÓĞø</font>
-**´¿º¯ÊıÊÇÎŞ×´Ì¬µÄ£¬µ÷ÓÃÒ»´ÎºÍµ÷ÓÃ¶ş´Î¶¼ÊÇÒ»ÑùµÄ½á¹û¡£**
+å•ä¸ªæ•°æ®å¯¹è±¡å¯ä»¥è¡¨ç¤ºä¸ç¨‹åºçš„å…¶ä½™éƒ¨åˆ†æ— å…³çš„ä¸œè¥¿
+
+ã€*1ã€‘å­˜å‚¨ä½œç”¨ï¼šçŠ¶æ€çš„å»¶ç»­
+---
+
+**çº¯å‡½æ•°æ˜¯æ— çŠ¶æ€çš„ï¼Œè°ƒç”¨ä¸€æ¬¡å’Œè°ƒç”¨äºŒæ¬¡éƒ½æ˜¯ä¸€æ ·çš„ç»“æœã€‚**
 
  numbers, Booleans, tuples, ranges, and strings --- are all types of _immutable_ objects. While names may change bindings to different values in the environment during the course of execution, the values themselves do not change.
-Êı×Ö¡¢²¼¶ûÖµ¡¢Ôª×é¡¢·¶Î§ºÍ×Ö·û´®---¶¼ÊÇ²»¿É±ä¶ÔÏóµÄÀàĞÍ¡£ÔÚÖ´ĞĞ¹ı³ÌÖĞ, Ãû³Æ¿ÉÄÜ»á°ó¶¨»·¾³ÖĞ²»Í¬µÄÖµ, µ«ÕâĞ©Öµ±¾Éí²»»á¸ü¸Ä¡£
+ 
+æ•°å­—ã€å¸ƒå°”å€¼ã€å…ƒç»„ã€èŒƒå›´å’Œå­—ç¬¦ä¸²---éƒ½æ˜¯ä¸å¯å˜å¯¹è±¡çš„ç±»å‹ã€‚åœ¨æ‰§è¡Œè¿‡ç¨‹ä¸­, åç§°å¯èƒ½ä¼šç»‘å®šç¯å¢ƒä¸­ä¸åŒçš„å€¼, ä½†è¿™äº›å€¼æœ¬èº«ä¸ä¼šæ›´æ”¹ã€‚
 
-<font color=#FF0000  size=5  face="¿¬Ìå">¡¾*2¡¿Êı×Ö¡¢²¼¶û¡¢Ôª×é¡¢Ranges¡¢×Ö·û´®¶¼ÊÇ²»¿É±ä¶ÔÏó
-¡¾*3¡¿±ä»¯µÄÖ»ÊÇ°ó¶¨¹ØÏµ£¬¶ø²»´æÔÚÕâ¸öÖµ±¾Éí·¢Éú±ä»¯
-¡¾*4¡¿¿É±äÊı¾İÀàĞÍ£ºÔÊĞíÔÚ³ÌĞòµÄÔËĞĞ¹ı³ÌÖĞ£¬¸Ä±äÊı¾İÀàĞÍÕâ¸öÖµµÄ±¾Éí</font>
+ã€*2ã€‘æ•°å­—ã€å¸ƒå°”ã€å…ƒç»„ã€Rangesã€å­—ç¬¦ä¸²éƒ½æ˜¯ä¸å¯å˜å¯¹è±¡
+---
 
-## 2.4.1 Local State£¨¾Ö²¿×´Ì¬£©
-<font color=#FF0000  size=5  face="¿¬Ìå">¡¾5*¡¿Ò»¸öº¯Êı¿ÉÒÔÓµÓĞ×Ô¼ºµÄ¾Ö²¿×´Ì¬£¬Ê¹ÓÃ´øÓĞ¾Ö²¿×´Ì¬£¨nonlocal£©µÄº¯Êı£¬ÎÒÃÇ¾ÍÄÜÊµÏÖ¿É±äÊı¾İÀàĞÍ</font>
+ã€*3ã€‘å˜åŒ–çš„åªæ˜¯ç»‘å®šå…³ç³»ï¼Œè€Œä¸å­˜åœ¨è¿™ä¸ªå€¼æœ¬èº«å‘ç”Ÿå˜åŒ–
+---
+
+ã€*4ã€‘å¯å˜æ•°æ®ç±»å‹ï¼šå…è®¸åœ¨ç¨‹åºçš„è¿è¡Œè¿‡ç¨‹ä¸­ï¼Œæ”¹å˜æ•°æ®ç±»å‹è¿™ä¸ªå€¼çš„æœ¬èº«
+---
+
+## 2.4.1 Local Stateï¼ˆå±€éƒ¨çŠ¶æ€ï¼‰
+ã€5*ã€‘ä¸€ä¸ªå‡½æ•°å¯ä»¥æ‹¥æœ‰è‡ªå·±çš„å±€éƒ¨çŠ¶æ€ï¼Œä½¿ç”¨å¸¦æœ‰å±€éƒ¨çŠ¶æ€ï¼ˆnonlocalï¼‰çš„å‡½æ•°ï¼Œæˆ‘ä»¬å°±èƒ½å®ç°å¯å˜æ•°æ®ç±»å‹
+---
 
 We will do so by creating a function called `withdraw`, which takes as its argument an amount to be withdrawn. If there is enough money in the account to accommodate the withdrawal, then `withdraw` should return the balance remaining after the withdrawal. Otherwise, `withdraw`should return the message `'Insufficient funds'`. For example, if we begin with $100 in the account, we would like to obtain the following sequence of return values by calling withdraw:
 
-ÎÒÃÇÍ¨¹ı´´½¨½Ğ×ö`withdraw`µÄº¯ÊıÀ´ÊµÏÖËü£¬Ëü½«ÒªÈ¡³öµÄ½ğ¶î×÷Îª²ÎÊı¡£Èç¹ûÕË»§ÖĞÓĞ×ã¹»µÄÇ®À´È¡³ö£¬`withdraw`Ó¦¸Ã·µ»ØÈ¡Ç®Ö®ºóµÄÓà¶î¡£·ñÔò£¬`withdraw`Ó¦¸Ã·µ»ØÏûÏ¢`'Insufficient funds'`¡£ÀıÈç£¬Èç¹ûÎÒÃÇÒÔÕË»§ÖĞµÄ`$100`¿ªÊ¼£¬ÎÒÃÇÏ£ÍûÍ¨¹ıµ÷ÓÃ`withdraw`À´µÃµ½ÏÂÃæµÄĞòÁĞ£º
+æˆ‘ä»¬é€šè¿‡åˆ›å»ºå«åš`withdraw`çš„å‡½æ•°æ¥å®ç°å®ƒï¼Œå®ƒå°†è¦å–å‡ºçš„é‡‘é¢ä½œä¸ºå‚æ•°ã€‚å¦‚æœè´¦æˆ·ä¸­æœ‰è¶³å¤Ÿçš„é’±æ¥å–å‡ºï¼Œ`withdraw`åº”è¯¥è¿”å›å–é’±ä¹‹åçš„ä½™é¢ã€‚å¦åˆ™ï¼Œ`withdraw`åº”è¯¥è¿”å›æ¶ˆæ¯`'Insufficient funds'`ã€‚ä¾‹å¦‚ï¼Œå¦‚æœæˆ‘ä»¬ä»¥è´¦æˆ·ä¸­çš„`$100`å¼€å§‹ï¼Œæˆ‘ä»¬å¸Œæœ›é€šè¿‡è°ƒç”¨`withdraw`æ¥å¾—åˆ°ä¸‹é¢çš„åºåˆ—ï¼š
+
 ```
 >>> withdraw(25)
 75
@@ -35,19 +48,22 @@ We will do so by creating a function called `withdraw`, which takes as its argum
 >>> withdraw(15)
 35
 ```
+
 Observe that the expression `withdraw(25)`, evaluated twice, yields different values. This is a new kind of behavior for a user-defined function: it is non-pure. Calling the function not only returns a value, but also has the side effect of changing the function in some way, so that the next call with the same argument will return a different result. All of our user-defined functions so far have been pure functions, unless they called a non-pure built-in function. They have remained pure because they have not been allowed to make any changes outside of their local environment frame!
 
-¹Û²ì±í´ïÊ½`withdraw(25)`£¬**ÇóÖµÁËÁ½´Î£¬²úÉúÁË²»Í¬µÄÖµ¡£ÕâÊÇÒ»ÖÖÓÃ»§¶¨Òåº¯ÊıµÄĞÂĞĞÎª£ºËüÊÇ·Ç´¿º¯Êı¡£µ÷ÓÃº¯Êı²»½ö½ö·µ»ØÒ»¸öÖµ£¬Í¬Ê±¾ßÓĞÒÔÒ»Ğ©·½Ê½ĞŞ¸Äº¯ÊıµÄ¸±×÷ÓÃ£¬Ê¹´øÓĞÏàÍ¬²ÎÊıµÄÏÂ´Îµ÷ÓÃ·µ»Ø²»Í¬µÄ½á¹û¡£**ÎÒÃÇËùÓĞÓÃ»§¶¨ÒåµÄº¯Êı£¬µ½Ä¿Ç°ÎªÖ¹¶¼ÊÇ´¿º¯Êı£¬³ı·ÇËûÃÇµ÷ÓÃÁË·Ç´¿µÄÄÚ½¨º¯Êı¡£ËüÃÇÈÔ¾ÉÊÇ´¿º¯Êı£¬ÒòÎªËüÃÇ²¢**²»ÔÊĞíĞŞ¸ÄÈÎºÎÔÚ¾Ö²¿»·¾³Ö¡Ö®ÍâµÄ¶«Î÷¡£**
+è§‚å¯Ÿè¡¨è¾¾å¼`withdraw(25)`ï¼Œ**æ±‚å€¼äº†ä¸¤æ¬¡ï¼Œäº§ç”Ÿäº†ä¸åŒçš„å€¼ã€‚è¿™æ˜¯ä¸€ç§ç”¨æˆ·å®šä¹‰å‡½æ•°çš„æ–°è¡Œä¸ºï¼šå®ƒæ˜¯éçº¯å‡½æ•°ã€‚è°ƒç”¨å‡½æ•°ä¸ä»…ä»…è¿”å›ä¸€ä¸ªå€¼ï¼ŒåŒæ—¶å…·æœ‰ä»¥ä¸€äº›æ–¹å¼ä¿®æ”¹å‡½æ•°çš„å‰¯ä½œç”¨ï¼Œä½¿å¸¦æœ‰ç›¸åŒå‚æ•°çš„ä¸‹æ¬¡è°ƒç”¨è¿”å›ä¸åŒçš„ç»“æœã€‚**æˆ‘ä»¬æ‰€æœ‰ç”¨æˆ·å®šä¹‰çš„å‡½æ•°ï¼Œåˆ°ç›®å‰ä¸ºæ­¢éƒ½æ˜¯çº¯å‡½æ•°ï¼Œé™¤éä»–ä»¬è°ƒç”¨äº†éçº¯çš„å†…å»ºå‡½æ•°ã€‚å®ƒä»¬ä»æ—§æ˜¯çº¯å‡½æ•°ï¼Œå› ä¸ºå®ƒä»¬å¹¶**ä¸å…è®¸ä¿®æ”¹ä»»ä½•åœ¨å±€éƒ¨ç¯å¢ƒå¸§ä¹‹å¤–çš„ä¸œè¥¿ã€‚**
 
 pure because they have not been allowed to make any changes outside of their local environment frame!
-<font color=#FF0000  size=5  face="¿¬Ìå">¡¾*6¡¿´¿º¯ÊıÔÚÖ´ĞĞÆÚ¼ä²»ÔÊĞíĞŞ¸ÄÈÎºÎÔÚ¾Ö²¿»·¾³Õ»Ö¡Ö®ÍâµÄ¶«Î÷</font>
 
+ã€*6ã€‘çº¯å‡½æ•°åœ¨æ‰§è¡ŒæœŸé—´ä¸å…è®¸ä¿®æ”¹ä»»ä½•åœ¨å±€éƒ¨ç¯å¢ƒæ ˆå¸§ä¹‹å¤–çš„ä¸œè¥¿
+---
 
-<font color=#FF0000  size=5  face="¿¬Ìå">¡¾*7¡¿·Ç´¿º¯Êı³ıÁË¸Ä±ä¾Ö²¿»·¾³µÄÕ»Ö¡Ö®Íâ£¬»¹»á¸Ä±ä³ıËüÕâ¸ö¾Ö²¿Õ»Ö¡Ö®ÍâµÄ¶«Î÷</font>
-
+ã€*7ã€‘éçº¯å‡½æ•°é™¤äº†æ”¹å˜å±€éƒ¨ç¯å¢ƒçš„æ ˆå¸§ä¹‹å¤–ï¼Œè¿˜ä¼šæ”¹å˜é™¤å®ƒè¿™ä¸ªå±€éƒ¨æ ˆå¸§ä¹‹å¤–çš„ä¸œè¥¿
+---
 
 is a higher-order function that takes a starting balance as an argument. The function `withdraw` is its return value.
-`make_withdraw`º¯ÊıÊÇ¸ö¸ß½×º¯Êı£¬½ÓÊÜÆğÊ¼Óà¶î×÷Îª²ÎÊı£¬`withdraw`º¯ÊıÊÇËüµÄ·µ»ØÖµ¡£
+
+`make_withdraw`å‡½æ•°æ˜¯ä¸ªé«˜é˜¶å‡½æ•°ï¼Œæ¥å—èµ·å§‹ä½™é¢ä½œä¸ºå‚æ•°ï¼Œ`withdraw`å‡½æ•°æ˜¯å®ƒçš„è¿”å›å€¼ã€‚
 
 
 ```
@@ -57,8 +73,9 @@ is a higher-order function that takes a starting balance as an argument. The fun
 
 An implementation of `make_withdraw` requires a new kind of statement: a `nonlocal` statement. When we call `make_withdraw`, we bind the name `balance` to the initial amount. We then define and return a local function, `withdraw`, which updates and returns the value of `balance` when called.
 
-`make_withdraw`µÄÊµÏÖĞèÒªĞÂÀàĞÍµÄÓï¾ä£º
-**`nonlocal`Óï¾ä¡£µ±ÎÒÃÇµ÷ÓÃ`make_withdraw`Ê±£¬ÎÒÃÇ½«Ãû³Æ`balance`°ó¶¨µ½³õÊ¼ÖµÉÏ¡£Ö®ºóÎÒÃÇ¶¨Òå²¢·µ»ØÁË¾Ö²¿º¯Êı£¬`withdraw`£¬ËüÔÚµ÷ÓÃÊ±¸üĞÂ²¢·µ»Ø`balance`µÄÖµ¡£**
+`make_withdraw`çš„å®ç°éœ€è¦æ–°ç±»å‹çš„è¯­å¥ï¼š
+
+**`nonlocal`è¯­å¥ã€‚å½“æˆ‘ä»¬è°ƒç”¨`make_withdraw`æ—¶ï¼Œæˆ‘ä»¬å°†åç§°`balance`ç»‘å®šåˆ°åˆå§‹å€¼ä¸Šã€‚ä¹‹åæˆ‘ä»¬å®šä¹‰å¹¶è¿”å›äº†å±€éƒ¨å‡½æ•°ï¼Œ`withdraw`ï¼Œå®ƒåœ¨è°ƒç”¨æ—¶æ›´æ–°å¹¶è¿”å›`balance`çš„å€¼ã€‚**
 
 ```
 >>> def make_withdraw(balance):
@@ -74,17 +91,21 @@ An implementation of `make_withdraw` requires a new kind of statement: a `nonloc
 ```
 
 The novel part of this implementation is the `nonlocal` statement, which mandates that whenever we change the binding of the name `balance`, the binding is changed in the first frame in which `balance` is already bound. Recall that without the `nonlocal` statement, an assignment statement would always bind a name in the first frame of the environment. The `nonlocal` statement indicates that the name appears somewhere in the environment other than the first (local) frame or the last (global) frame.
-`nonlocal`Óï¾ä£¬ÎŞÂÛÊ²Ã´Ê±ºòÎÒÃÇĞŞ¸ÄÁËÃû³Æ`balance`µÄ°ó¶¨£¬°ó¶¨¶¼»áÔÚ`balance`Ö®Ç°ÒÑ¾­°ó¶¨µÄµÚÒ»¸öÖ¡ÖĞĞŞ¸Ä¡£»ØÒäÒ»ÏÂ£¬ÔÚÃ»ÓĞ`nonlocal`Óï¾äµÄÇé¿öÏÂ£¬¸³ÖµÓï¾ä×ÜÊÇ»áÔÚ»·¾³µÄµÚÒ»¸öÖ¡ÖĞ°ó¶¨Ãû³Æ¡£`nonlocal`Óï¾ä±íÃ÷£¬Ãû³Æ³öÏÖÔÚ»·¾³ÖĞ²»ÊÇµÚÒ»¸ö£¨¾Ö²¿£©Ö¡£¬»òÕß×îºóÒ»¸ö£¨È«¾Ö£©Ö¡µÄÆäËüµØ·½¡£
-<font color=#FF0000  size=5  face="¿¬Ìå">¡¾*8¡¿nonlocalÓï¾äµÄ±äÁ¿×÷ÓÃÓòÔÚÍâ²ãº¯ÊıºÍÄÚ²ãº¯ÊıÖ®¼ä¡£</font>
 
+`nonlocal`è¯­å¥ï¼Œæ— è®ºä»€ä¹ˆæ—¶å€™æˆ‘ä»¬ä¿®æ”¹äº†åç§°`balance`çš„ç»‘å®šï¼Œç»‘å®šéƒ½ä¼šåœ¨`balance`ä¹‹å‰å·²ç»ç»‘å®šçš„ç¬¬ä¸€ä¸ªå¸§ä¸­ä¿®æ”¹ã€‚å›å¿†ä¸€ä¸‹ï¼Œåœ¨æ²¡æœ‰`nonlocal`è¯­å¥çš„æƒ…å†µä¸‹ï¼Œèµ‹å€¼è¯­å¥æ€»æ˜¯ä¼šåœ¨ç¯å¢ƒçš„ç¬¬ä¸€ä¸ªå¸§ä¸­ç»‘å®šåç§°ã€‚`nonlocal`è¯­å¥è¡¨æ˜ï¼Œåç§°å‡ºç°åœ¨ç¯å¢ƒä¸­ä¸æ˜¯ç¬¬ä¸€ä¸ªï¼ˆå±€éƒ¨ï¼‰å¸§ï¼Œæˆ–è€…æœ€åä¸€ä¸ªï¼ˆå…¨å±€ï¼‰å¸§çš„å…¶å®ƒåœ°æ–¹ã€‚
+
+ã€*8ã€‘nonlocalè¯­å¥çš„å˜é‡ä½œç”¨åŸŸåœ¨å¤–å±‚å‡½æ•°å’Œå†…å±‚å‡½æ•°ä¹‹é—´ã€‚
+---
 
 ![](https://wizardforcel.gitbooks.io/sicp-in-python/content/img/nonlocal_def.png)
 
 Our definition statement has the usual effect: it creates a new user-defined function and binds the name `make_withdraw` to that function in the global frame.
-½¨ÁËĞÂµÄÓÃ»§¶¨Òåº¯Êı£¬²¢ÇÒ½«Ãû³Æ`make_withdraw`ÔÚÈ«¾ÖÖ¡ÖĞ°ó¶¨µ½ÄÇ¸öº¯ÊıÉÏ
+
+å»ºäº†æ–°çš„ç”¨æˆ·å®šä¹‰å‡½æ•°ï¼Œå¹¶ä¸”å°†åç§°`make_withdraw`åœ¨å…¨å±€å¸§ä¸­ç»‘å®šåˆ°é‚£ä¸ªå‡½æ•°ä¸Š
 
 Next, we call `make_withdraw` with an initial balance argument of `20`.
-ÏÂÃæ£¬ÎÒÃÇÊ¹ÓÃ³õÊ¼µÄÓà¶î²ÎÊı`20`À´µ÷ÓÃ`make_withdraw`¡£
+
+ä¸‹é¢ï¼Œæˆ‘ä»¬ä½¿ç”¨åˆå§‹çš„ä½™é¢å‚æ•°`20`æ¥è°ƒç”¨`make_withdraw`ã€‚
 
 ```
 >>> wd = make_withdraw(20)
@@ -92,12 +113,14 @@ Next, we call `make_withdraw` with an initial balance argument of `20`.
 ```
 
 This assignment statement binds the name `wd` to the returned function in the global frame.
-Õâ¸ö¸³ÖµÓï¾ä½«Ãû³Æ`wd`°ó¶¨µ½È«¾ÖÖ¡ÖĞµÄ·µ»Øº¯ÊıÉÏ£º
+
+è¿™ä¸ªèµ‹å€¼è¯­å¥å°†åç§°`wd`ç»‘å®šåˆ°å…¨å±€å¸§ä¸­çš„è¿”å›å‡½æ•°ä¸Šï¼š
 
 ![](https://wizardforcel.gitbooks.io/sicp-in-python/content/img/nonlocal_assign.png)
 
 The returned function, (intrinsically) called _withdraw_, is associated with the local environment for the _make_withdraw_ invocation in which it was defined. The name `balance` is bound in this local environment. Crucially, there will only be this single binding for the name `balance` throughout the rest of this example.
-**Ãû³Æ`balance`°ó¶¨ºó£¬Ö»ÓĞÕâÒ»¸ö°ó¶¨£¡**
+
+**åç§°`balance`ç»‘å®šåï¼Œåªæœ‰è¿™ä¸€ä¸ªç»‘å®šï¼**
 
 Next, we evaluate an expression that calls _withdraw_ on an amount `5`.
 
@@ -108,22 +131,26 @@ Next, we evaluate an expression that calls _withdraw_ on an amount `5`.
 ```
 
 The name `wd` is bound to the _withdraw_ function, so the body of _withdraw_ is evaluated in a new environment that extends the environment in which _withdraw_ was defined. 
-**Ãû³Æ`wd`°ó¶¨µ½ÁË`withdraw`º¯ÊıÉÏ£¬ÒòÎªÃ¿´Îµ÷ÓÃÒ»¸öº¯Êı£¬¶¼»á²úÉúĞÂµÄÕ»Ö¡£¬ËùÒÔ`withdraw`µÄº¯ÊıÌåÔÚĞÂµÄ»·¾³ÖĞÇóÖµ£¬¶øĞÂµÄ»·¾³´Ó`withdraw`¶¨ÒåËùÔÚµÄ»·¾³ÖĞÀ©Õ¹¶øÀ´¡£**
+
+**åç§°`wd`ç»‘å®šåˆ°äº†`withdraw`å‡½æ•°ä¸Šï¼Œå› ä¸ºæ¯æ¬¡è°ƒç”¨ä¸€ä¸ªå‡½æ•°ï¼Œéƒ½ä¼šäº§ç”Ÿæ–°çš„æ ˆå¸§ï¼Œæ‰€ä»¥`withdraw`çš„å‡½æ•°ä½“åœ¨æ–°çš„ç¯å¢ƒä¸­æ±‚å€¼ï¼Œè€Œæ–°çš„ç¯å¢ƒä»`withdraw`å®šä¹‰æ‰€åœ¨çš„ç¯å¢ƒä¸­æ‰©å±•è€Œæ¥ã€‚**
 
 ![](https://wizardforcel.gitbooks.io/sicp-in-python/content/img/nonlocal_call.png)
 
 The assignment statement in _withdraw_ would normally create a new binding for `balance` in _withdraw_'s local frame. Instead, because of the `nonlocal` statement, the assignment finds the first frame in which `balance`was already defined, and it rebinds the name in that frame. If `balance` had not previously been bound to a value, then the `nonlocal` statement would have given an error.
 
-**`withdraw`µÄ¸³ÖµÓï¾äÍ¨³£ÔÚ`withdraw`µÄ¾Ö²¿Ö¡ÖĞÎª`balance`´´½¨ĞÂµÄ°ó¶¨¡£ÓÉÓÚ`nonlocal`Óï¾ä£¬¸³ÖµÔËËãÕÒµ½ÁË`balance`¶¨ÒåÎ»ÖÃµÄµÚÒ»Ö¡£¬²¢ÔÚÄÇÀïÖØĞÂ°ó¶¨Ãû³Æ¡£**
+**`withdraw`çš„èµ‹å€¼è¯­å¥é€šå¸¸åœ¨`withdraw`çš„å±€éƒ¨å¸§ä¸­ä¸º`balance`åˆ›å»ºæ–°çš„ç»‘å®šã€‚ç”±äº`nonlocal`è¯­å¥ï¼Œèµ‹å€¼è¿ç®—æ‰¾åˆ°äº†`balance`å®šä¹‰ä½ç½®çš„ç¬¬ä¸€å¸§ï¼Œå¹¶åœ¨é‚£é‡Œé‡æ–°ç»‘å®šåç§°ã€‚**
 
-<font color=#FF0000  size=5  face="¿¬Ìå">¡¾*9¡¿nonlocalÀí½â£¨×Ô¼ºµÄÀí½â£©£ºÒòÎªµ÷ÓÃÁËwithdrawº¯Êı£¬ËùÒÔÔÚwithdrawµÄ¾Ö²¿Õ»Ö¡ÖĞ±¾À´´òËãÎªbalance´´½¨Ò»¸öĞÂµÄ°ó¶¨£¬µ«ÒòÎªnonlocalÓï¾ä£¬balanceÖ®Ç°°ó¶¨¹ı£¬ËùÒÔÕÒµ½ÁËÖ®Ç°balance°ó¶¨µÄÄÇ¸öµÚÒ»Ö¡£¬È»ºóÔÚÖ®Ç°ÄÇ¸öµØ·½ÖØĞÂ°ó¶¨¡£</font>
+ã€*9ã€‘nonlocalç†è§£ï¼ˆè‡ªå·±çš„ç†è§£ï¼‰ï¼šå› ä¸ºè°ƒç”¨äº†withdrawå‡½æ•°ï¼Œæ‰€ä»¥åœ¨withdrawçš„å±€éƒ¨æ ˆå¸§ä¸­æœ¬æ¥æ‰“ç®—ä¸ºbalanceåˆ›å»ºä¸€ä¸ªæ–°çš„ç»‘å®šï¼Œä½†å› ä¸ºnonlocalè¯­å¥ï¼Œbalanceä¹‹å‰ç»‘å®šè¿‡ï¼Œæ‰€ä»¥æ‰¾åˆ°äº†ä¹‹å‰balanceç»‘å®šçš„é‚£ä¸ªç¬¬ä¸€å¸§ï¼Œç„¶ååœ¨ä¹‹å‰é‚£ä¸ªåœ°æ–¹é‡æ–°ç»‘å®šã€‚
+---
 
 
 By virtue of changing the binding for `balance`, we have changed the _withdraw_ function as well. The next time _withdraw_ is called, the name `balance` will evaluate to `15` instead of `20`.
-Í¨¹ıĞŞ¸Ä`balance`°ó¶¨µÄĞĞÎª£¬ÎÒÃÇÒ²ĞŞ¸ÄÁË`withdraw`º¯Êı¡£ÏÂ´Î`withdraw`µ÷ÓÃµÄÊ±ºò£¬Ãû³Æ`balance`»áÇóÖµÎª`15`¶ø²»ÊÇ`20`¡£
+
+é€šè¿‡ä¿®æ”¹`balance`ç»‘å®šçš„è¡Œä¸ºï¼Œæˆ‘ä»¬ä¹Ÿä¿®æ”¹äº†`withdraw`å‡½æ•°ã€‚ä¸‹æ¬¡`withdraw`è°ƒç”¨çš„æ—¶å€™ï¼Œåç§°`balance`ä¼šæ±‚å€¼ä¸º`15`è€Œä¸æ˜¯`20`ã€‚
 
 When we call `wd` a second time,
-µ±ÎÒÃÇµÚ¶ş´Îµ÷ÓÃ`wd`Ê±£¬
+
+å½“æˆ‘ä»¬ç¬¬äºŒæ¬¡è°ƒç”¨`wd`æ—¶ï¼Œ
 
 ```
 >>> wd(3)
@@ -135,19 +162,26 @@ we see that the changes to the value bound to the name `balance` are cumulative 
 
 ![img/nonlocal_recall.png](https://wizardforcel.gitbooks.io/sicp-in-python/content/img/nonlocal_recall.png)
 
-<font color=#FF0000  size=5  face="¿¬Ìå">¡¾*10¡¿´ÓÍ¼¿ÉÒÔ¿´µ½£¬µ±µÚ¶ş´Îµ÷ÓÃwithdrawº¯ÊıÊ±£¬ÓÖ´´½¨ÁËÒ»¸öĞÂµÄ¾Ö²¿Õ»Ö¡£¬amount°ó¶¨µ½3£¬µÚÒ»´Îµ÷ÓÃ¶ø´´½¨µÄ¾Ö²¿Õ»Ö¡ÖĞamount°ó¶¨µ½5£¬µ«ÊÇ£¬balanceµÄ°ó¶¨Ò»Ö±¶¼ÊÇÔÚmake_withdrawº¯Êı´´½¨µÄÊ±ºò²úÉúµÄ¾Ö²¿Õ»Ö¡ÖĞ£¬²¢Ã»ÓĞÒòÎªwithdrawµÄµ÷ÓÃ¶ø¸Ä±ä¡£µ«ÊÇÈç¹ûmake_withdrawÔÙ´Îµ÷ÓÃ£¬Ëü»á´´½¨µ¥¶ÀµÄÖ¡£¬banlance½«»á°ó¶¨µ½Õâ¸öĞÂ´´½¨µÄÖ¡¡£</font>
+ã€*10ã€‘ä»å›¾å¯ä»¥çœ‹åˆ°ï¼Œå½“ç¬¬äºŒæ¬¡è°ƒç”¨withdrawå‡½æ•°æ—¶ï¼Œåˆåˆ›å»ºäº†ä¸€ä¸ªæ–°çš„å±€éƒ¨æ ˆå¸§ï¼Œamountç»‘å®šåˆ°3ï¼Œç¬¬ä¸€æ¬¡è°ƒç”¨è€Œåˆ›å»ºçš„å±€éƒ¨æ ˆå¸§ä¸­amountç»‘å®šåˆ°5ï¼Œä½†æ˜¯ï¼Œbalanceçš„ç»‘å®šä¸€ç›´éƒ½æ˜¯åœ¨make_withdrawå‡½æ•°åˆ›å»ºçš„æ—¶å€™äº§ç”Ÿçš„å±€éƒ¨æ ˆå¸§ä¸­ï¼Œå¹¶æ²¡æœ‰å› ä¸ºwithdrawçš„è°ƒç”¨è€Œæ”¹å˜ã€‚ä½†æ˜¯å¦‚æœmake_withdrawå†æ¬¡è°ƒç”¨ï¼Œå®ƒä¼šåˆ›å»ºå•ç‹¬çš„å¸§ï¼Œbanlanceå°†ä¼šç»‘å®šåˆ°è¿™ä¸ªæ–°åˆ›å»ºçš„å¸§ã€‚
+---
 
 
 By introducing `nonlocal` statements, we have created a dual role for assignment statements. Either they change local bindings, or they change nonlocal bindings. In fact, assignment statements already had a dual role: they either created new bindings or re-bound existing names. The many roles of Python assignment can obscure the effects of executing an assignment statement. It is up to you as a programmer to document your code clearly so that the effects of assignment can be understood by others.
 
-<font color=#FF0000  size=5  face="¿¬Ìå">¡¾*11¡¿¸³ÖµÓï¾ä°çÑİÁË2ÖĞ½ÇÉ«
-1¡¢´´½¨ÁËÒ»¸öĞÂµÄ±äÁ¿Ãû°ó¶¨
-2¡¢½â³ı°ó¶¨£¬ÖØĞÂ°ó¶¨Ò»¸öĞÂµÄ±äÁ¿Ãû
-</font>
+ã€*11ã€‘èµ‹å€¼è¯­å¥æ‰®æ¼”äº†2ä¸­è§’è‰²
+---
 
-## 2.4.2 The Benefits of Non-Local Assignment£¨·Ç¾Ö²¿¸³ÖµµÄºÃ´¦£©
+1ã€åˆ›å»ºäº†ä¸€ä¸ªæ–°çš„å˜é‡åç»‘å®š
+---
+
+2ã€è§£é™¤ç»‘å®šï¼Œé‡æ–°ç»‘å®šä¸€ä¸ªæ–°çš„å˜é‡å
+---
+
+
+## 2.4.2 The Benefits of Non-Local Assignmentï¼ˆéå±€éƒ¨èµ‹å€¼çš„å¥½å¤„ï¼‰
 If _make_withdraw_ is called again, then it will create a separate frame with a separate binding for `balance`.
-Èç¹û`make_withdraw`ÔÙ´Îµ÷ÓÃ£¬Ëü»á´´½¨µ¥¶ÀµÄÖ¡£¬banlance½«»á°ó¶¨µ½Õâ¸öĞÂ´´½¨µÄÖ¡¡£
+
+å¦‚æœ`make_withdraw`å†æ¬¡è°ƒç”¨ï¼Œå®ƒä¼šåˆ›å»ºå•ç‹¬çš„å¸§ï¼Œbanlanceå°†ä¼šç»‘å®šåˆ°è¿™ä¸ªæ–°åˆ›å»ºçš„å¸§ã€‚
 
 ```
 >>> wd2 = make_withdraw(7)
@@ -155,14 +189,17 @@ If _make_withdraw_ is called again, then it will create a separate frame with a 
 ```
 
  The name `wd` is still bound to a _withdraw_ function with a balance of `12`, while `wd2` is bound to a new _withdraw_ function with a balance of `7`.
- Ãû³Æ`wd`ÈÔ¾É°ó¶¨µ½Óà¶îÎª`12`µÄ`withdraw`º¯ÊıÉÏ£¬¶ø`wd2`°ó¶¨µ½ÁËÓà¶îÎª`7`µÄĞÂµÄ`withdraw`º¯ÊıÉÏ¡£
+ 
+ åç§°`wd`ä»æ—§ç»‘å®šåˆ°ä½™é¢ä¸º`12`çš„`withdraw`å‡½æ•°ä¸Šï¼Œè€Œ`wd2`ç»‘å®šåˆ°äº†ä½™é¢ä¸º`7`çš„æ–°çš„`withdraw`å‡½æ•°ä¸Šã€‚
 
 ![](https://wizardforcel.gitbooks.io/sicp-in-python/content/img/nonlocal_def2.png)
 
-wdµÄ¾Ö²¿Õ»Ö¡ºÍwd2µÄ¾Ö²¿Õ»Ö¡ÍêÈ«ÊÇ²»Ò»ÑùµÄ¡£wd2ÊÇÖØĞÂ´´½¨ÁËÒ»´Îmake_withdrawµÄÕ»Ö¡¡£
+wdçš„å±€éƒ¨æ ˆå¸§å’Œwd2çš„å±€éƒ¨æ ˆå¸§å®Œå…¨æ˜¯ä¸ä¸€æ ·çš„ã€‚wd2æ˜¯é‡æ–°åˆ›å»ºäº†ä¸€æ¬¡make_withdrawçš„æ ˆå¸§ã€‚
 
 Finally, we call the second _withdraw_ bound to `wd2`:
-×îºó£¬ÎÒÃÇµ÷ÓÃ°ó¶¨µ½`wd2`ÉÏµÄµÚ¶ş¸ö`withdraw`º¯Êı£º
+
+æœ€åï¼Œæˆ‘ä»¬è°ƒç”¨ç»‘å®šåˆ°`wd2`ä¸Šçš„ç¬¬äºŒä¸ª`withdraw`å‡½æ•°ï¼š
+
 ```
 >>> wd2(6)
 1
@@ -170,23 +207,28 @@ Finally, we call the second _withdraw_ bound to `wd2`:
 ```
 
 This call changes the binding of its nonlocal `balance` name, but does not affect the first _withdraw_ bound to the name `wd` in the global frame.
-Õâ¸öµ÷ÓÃĞŞ¸ÄÁË·Ç¾Ö²¿Ãû³Æ`balance`µÄ°ó¶¨£¬µ«ÊÇ²»Ó°ÏìÔÚÈ«¾ÖÖ¡ÖĞ°ó¶¨µ½Ãû³Æ`wd`µÄµÚÒ»¸ö`withdraw`¡£
+
+è¿™ä¸ªè°ƒç”¨ä¿®æ”¹äº†éå±€éƒ¨åç§°`balance`çš„ç»‘å®šï¼Œä½†æ˜¯ä¸å½±å“åœ¨å…¨å±€å¸§ä¸­ç»‘å®šåˆ°åç§°`wd`çš„ç¬¬ä¸€ä¸ª`withdraw`ã€‚
 
 ![img/nonlocal_call2.png](https://wizardforcel.gitbooks.io/sicp-in-python/content/img/nonlocal_call2.png)
 
-**´ÓÍ¼ÖĞ¿ÉÒÔ¿´µ½£¬balanceµÄ°ó¶¨ÊÇÔÚÁíÒ»¸ö¾Ö²¿»·¾³ÖĞ£¬¶ø²»ÊÇÖ®Ç°µÄÄÇ¸ö»·¾³¡£ËùÒÔËµwd2ÊÇµ÷ÓÃmake_withdrawº¯Êıºó´´½¨µÄÒ»¸öĞÂµÄ¾Ö²¿±äÁ¿£¡**
-<font color=#FF0000  size=5  face="¿¬Ìå">¡¾12*¡¿µ±Íâ²¿µÄº¯Êımake_withdrawÖØĞÂµ÷ÓÃ£¬»á´´½¨ÁíÒ»¸ö×Ô¼ºµÄÕ»Ö¡£¬
-</font>
+**ä»å›¾ä¸­å¯ä»¥çœ‹åˆ°ï¼Œbalanceçš„ç»‘å®šæ˜¯åœ¨å¦ä¸€ä¸ªå±€éƒ¨ç¯å¢ƒä¸­ï¼Œè€Œä¸æ˜¯ä¹‹å‰çš„é‚£ä¸ªç¯å¢ƒã€‚æ‰€ä»¥è¯´wd2æ˜¯è°ƒç”¨make_withdrawå‡½æ•°ååˆ›å»ºçš„ä¸€ä¸ªæ–°çš„å±€éƒ¨å˜é‡ï¼**
+
+
+ã€12*ã€‘å½“å¤–éƒ¨çš„å‡½æ•°make_withdrawé‡æ–°è°ƒç”¨ï¼Œä¼šåˆ›å»ºå¦ä¸€ä¸ªè‡ªå·±çš„æ ˆå¸§ï¼Œ
+---
 
 
 
-## 2.4.3 The Cost of Non-Local Assignment£¨·Ç¾Ö²¿¸³ÖµµÄ´ú¼Û£©
+## 2.4.3 The Cost of Non-Local Assignmentï¼ˆéå±€éƒ¨èµ‹å€¼çš„ä»£ä»·ï¼‰
 
 Previously, our values did not change; only our names and bindings changed. When two names `a` and `b`were both bound to the value `4`, it did not matter whether they were bound to the same `4` or different `4`'s. As far as we could tell, there was only one `4` object that never changed.
-Ö®Ç°£¬ÎÒÃÇµÄÖµ²¢Ã»ÓĞ¸Ä±ä£¬½ö½öÊÇÎÒÃÇµÄÃû³ÆºÍ°ó¶¨·¢ÉúÁË±ä»¯¡£µ±Á½¸öÃû³Æ`a`ºÍ`b`°ó¶¨µ½`4`ÉÏÊ±£¬ËüÃÇ°ó¶¨µ½ÁËÏàÍ¬µÄ`4`»¹ÊÇ²»Í¬µÄ`4`²¢²»ÖØÒª¡£ÎÒÃÇËµ£¬Ö»ÓĞÒ»¸ö`4`¶ÔÏó£¬²¢ÇÒËüÓÀ²»»á¸Ä±ä¡£
+
+ä¹‹å‰ï¼Œæˆ‘ä»¬çš„å€¼å¹¶æ²¡æœ‰æ”¹å˜ï¼Œä»…ä»…æ˜¯æˆ‘ä»¬çš„åç§°å’Œç»‘å®šå‘ç”Ÿäº†å˜åŒ–ã€‚å½“ä¸¤ä¸ªåç§°`a`å’Œ`b`ç»‘å®šåˆ°`4`ä¸Šæ—¶ï¼Œå®ƒä»¬ç»‘å®šåˆ°äº†ç›¸åŒçš„`4`è¿˜æ˜¯ä¸åŒçš„`4`å¹¶ä¸é‡è¦ã€‚æˆ‘ä»¬è¯´ï¼Œåªæœ‰ä¸€ä¸ª`4`å¯¹è±¡ï¼Œå¹¶ä¸”å®ƒæ°¸ä¸ä¼šæ”¹å˜ã€‚
 
 However, functions with state do not behave this way. When two names `wd` and `wd2` are both bound to a _withdraw_ function, it _does_ matter whether they are bound to the same function or different instances of that function. Consider the following example, which contrasts the one we just analyzed.
-µ«ÊÇ£¬´øÓĞ×´Ì¬µÄº¯Êı²»ÊÇÕâÑùµÄ¡£µ±Á½¸öÃû³Æ`wd`ºÍ`wd2`¶¼°ó¶¨µ½`withdraw`º¯ÊıÊ±£¬ËüÃÇ°ó¶¨µ½ÏàÍ¬º¯Êı»¹ÊÇº¯ÊıµÄÁ½¸ö²»Í¬ÊµÀı£¬¾ÍºÜÖØÒªÁË¡£¿¼ÂÇÏÂÃæµÄÀı×Ó£¬ËüÓëÎÒÃÇÖ®Ç°·ÖÎöµÄÄÇ¸öÕıºÃÏà·´£º
+
+ä½†æ˜¯ï¼Œå¸¦æœ‰çŠ¶æ€çš„å‡½æ•°ä¸æ˜¯è¿™æ ·çš„ã€‚å½“ä¸¤ä¸ªåç§°`wd`å’Œ`wd2`éƒ½ç»‘å®šåˆ°`withdraw`å‡½æ•°æ—¶ï¼Œå®ƒä»¬ç»‘å®šåˆ°ç›¸åŒå‡½æ•°è¿˜æ˜¯å‡½æ•°çš„ä¸¤ä¸ªä¸åŒå®ä¾‹ï¼Œå°±å¾ˆé‡è¦äº†ã€‚è€ƒè™‘ä¸‹é¢çš„ä¾‹å­ï¼Œå®ƒä¸æˆ‘ä»¬ä¹‹å‰åˆ†æçš„é‚£ä¸ªæ­£å¥½ç›¸åï¼š
 
 ```
 >>> wd = make_withdraw(12)
@@ -199,29 +241,41 @@ However, functions with state do not behave this way. When two names `wd` and `w
 ```
 
 In this case, calling the function named by `wd2` did change the value of the function named by `wd`, because both names refer to the same function. The environment diagram after these statements are executed shows this fact.
-ÕâÀï£¬Í¨¹ı`wd2`µ÷ÓÃº¯Êı»áĞŞ¸ÄÃû³ÆÎª`wd`µÄº¯ÊıµÄÖµ£¬ÒòÎªÁ½¸öÃû³Æ¶¼Ö¸ÏòÏàÍ¬µÄº¯Êı¡£ÕâĞ©Óï¾äÖ´ĞĞÖ®ºóµÄ»·¾³Í¼Ê¾Õ¹Ê¾ÁËÕâ¸öÏÖÏó£º
+
+è¿™é‡Œï¼Œé€šè¿‡`wd2`è°ƒç”¨å‡½æ•°ä¼šä¿®æ”¹åç§°ä¸º`wd`çš„å‡½æ•°çš„å€¼ï¼Œå› ä¸ºä¸¤ä¸ªåç§°éƒ½æŒ‡å‘ç›¸åŒçš„å‡½æ•°ã€‚è¿™äº›è¯­å¥æ‰§è¡Œä¹‹åçš„ç¯å¢ƒå›¾ç¤ºå±•ç¤ºäº†è¿™ä¸ªç°è±¡ï¼š
 
 ![img/nonlocal_corefer.png](https://wizardforcel.gitbooks.io/sicp-in-python/content/img/nonlocal_corefer.png)
 
 The key to correctly analyzing code with non-local assignment is to remember that only function calls can introduce new frames. Assignment statements always change bindings in existing frames. In this case, unless _make_withdraw_ is called twice, there can be only one binding for `balance`.
 
-<font color=#FF0000  size=5  face="¿¬Ìå">¡¾13*¡¿ÕıÈ··ÖÎö´øÓĞnonlocal¸³Öµ´úÂëµÄ¹Ø¼üÊÇ
-1¡¢Ö»ÓĞº¯Êıµ÷ÓÃ»á²úÉúĞÂµÄÕ»Ö¡
-2¡¢¸³ÖµÓï¾äÖ»¸Ä±äÒÑ´æÔÚÕ»Ö¡µÄ°ó¶¨¹ØÏµ¡£
-</font>
+
+ã€13*ã€‘æ­£ç¡®åˆ†æå¸¦æœ‰nonlocalèµ‹å€¼ä»£ç çš„å…³é”®æ˜¯
+---
+
+1ã€åªæœ‰å‡½æ•°è°ƒç”¨ä¼šäº§ç”Ÿæ–°çš„æ ˆå¸§
+---
+
+2ã€èµ‹å€¼è¯­å¥åªæ”¹å˜å·²å­˜åœ¨æ ˆå¸§çš„ç»‘å®šå…³ç³»ã€‚
+---
 
 
-**ÕâÀï£¬³ı·Ç`make_withdraw`µ÷ÓÃÁËÁ½´Î£¬`balance`»¹ÊÇÖ»ÓĞÒ»¸ö°ó¶¨¡£**
+**è¿™é‡Œï¼Œé™¤é`make_withdraw`è°ƒç”¨äº†ä¸¤æ¬¡ï¼Œ`balance`è¿˜æ˜¯åªæœ‰ä¸€ä¸ªç»‘å®šã€‚**
 
-## 2.4.4 Lists(ÁĞ±í)
+## 2.4.4 Lists(åˆ—è¡¨)
+
 All of these _mutation operations_ change the value of the list; they do not create new list objects.
-ÁĞ±íÊÇ¿É±äÊı¾İÀàĞÍ
+åˆ—è¡¨æ˜¯å¯å˜æ•°æ®ç±»å‹
 
-<font color=#FF0000  size=5  face="¿¬Ìå">¡¾*14¡¿is ºÍ is notÅĞ¶ÏÊÇ·ñÎªÍ¬Ò»¸ö¶ÔÏó
-Á½¸ö¶ÔÏóµ±ÇÒ½öµ±ÔÚÄÚ´æÖĞµÄÎ»ÖÃÏàÍ¬Ê±ÎªÍ¬Ò»¸ö¶ÔÏó</font>
+
+ã€*14ã€‘is å’Œ is notåˆ¤æ–­æ˜¯å¦ä¸ºåŒä¸€ä¸ªå¯¹è±¡
+---
+
+ä¸¤ä¸ªå¯¹è±¡å½“ä¸”ä»…å½“åœ¨å†…å­˜ä¸­çš„ä½ç½®ç›¸åŒæ—¶ä¸ºåŒä¸€ä¸ªå¯¹è±¡
+---
+
  Python includes two comparison operators, called `is` and `is not`, that test whether two expressions in fact evaluate to the identical object. Two objects are identical if they are equal in their current value, and any change to one will always be reflected in the other. Identity is a stronger condition than equality.
 
-Python ÒıÈëÁËÁ½¸ö±È½ÏÔËËã·û£¬½Ğ×ö`is`ºÍ`is not`£¬²âÊÔÁËÁ½¸ö±í´ïÊ½Êµ¼ÊÉÏÊÇ·ñÇóÖµÎªÍ¬Ò»¸ö¶ÔÏó¡£Èç¹ûÁ½¸ö¶ÔÏóµÄµ±Ç°ÖµÏàµÈ£¬²¢ÇÒÒ»¸ö¶ÔÏóµÄ¸Ä±äÊ¼ÖÕ»áÓ°ÏìÁíÒ»¸ö£¬ÄÇÃ´Á½¸ö¶ÔÏóÊÇÍ¬Ò»¸ö¶ÔÏó¡£Éí·İÊÇ¸ö±ÈÏàµÈĞÔ¸üÇ¿µÄÌõ¼ş¡£
+Python å¼•å…¥äº†ä¸¤ä¸ªæ¯”è¾ƒè¿ç®—ç¬¦ï¼Œå«åš`is`å’Œ`is not`ï¼Œæµ‹è¯•äº†ä¸¤ä¸ªè¡¨è¾¾å¼å®é™…ä¸Šæ˜¯å¦æ±‚å€¼ä¸ºåŒä¸€ä¸ªå¯¹è±¡ã€‚å¦‚æœä¸¤ä¸ªå¯¹è±¡çš„å½“å‰å€¼ç›¸ç­‰ï¼Œå¹¶ä¸”ä¸€ä¸ªå¯¹è±¡çš„æ”¹å˜å§‹ç»ˆä¼šå½±å“å¦ä¸€ä¸ªï¼Œé‚£ä¹ˆä¸¤ä¸ªå¯¹è±¡æ˜¯åŒä¸€ä¸ªå¯¹è±¡ã€‚èº«ä»½æ˜¯ä¸ªæ¯”ç›¸ç­‰æ€§æ›´å¼ºçš„æ¡ä»¶ã€‚
 
 ```
 >>> suits is nest[0]
@@ -234,20 +288,28 @@ True
 ```
 
 The final two comparisons illustrate the difference between `is` and `==`. The former checks for identity, while the latter checks for the equality of contents.
-**×îºóµÄÁ½¸ö±È½ÏÕ¹Ê¾ÁË`is`ºÍ`==`µÄÇø±ğ£¬Ç°Õß¼ì²éÉí·İ£¬¶øºóÕß¼ì²éÄÚÈİµÄÏàµÈĞÔ¡£**
+
+**æœ€åçš„ä¸¤ä¸ªæ¯”è¾ƒå±•ç¤ºäº†`is`å’Œ`==`çš„åŒºåˆ«ï¼Œå‰è€…æ£€æŸ¥èº«ä»½ï¼Œè€Œåè€…æ£€æŸ¥å†…å®¹çš„ç›¸ç­‰æ€§ã€‚**
 
 
-<font color=#FF0000  size=5  face="¿¬Ìå">**¡¾*15¡¿List comprehensions.**£¨ÁĞ±íÍÆµ¼Ê½£©</font>
+ã€*15ã€‘List comprehensions.ï¼ˆåˆ—è¡¨æ¨å¯¼å¼ï¼‰
+---
+
 A list comprehension uses an extended syntax for creating lists, analogous to the syntax of generator expressions.
-±íÍÆµ¼Ê½Ê¹ÓÃÀ©Õ¹Óï·¨À´´´½¨ÁĞ±í£¬ÓëÉú³ÉÆ÷±í´ïÊ½µÄÓï·¨ÏàËÆ¡£
+
+è¡¨æ¨å¯¼å¼ä½¿ç”¨æ‰©å±•è¯­æ³•æ¥åˆ›å»ºåˆ—è¡¨ï¼Œä¸ç”Ÿæˆå™¨è¡¨è¾¾å¼çš„è¯­æ³•ç›¸ä¼¼ã€‚
+
 ``` python
 a = [(x,y) for x in range(10) for y in range(10) if x % 2 == 0 if y % 2 != 0]
 ```
 
 Our mutable list is a dispatch function, just as our functional implementation of a pair was a dispatch function. It checks the input "message" against known messages and takes an appropriate action for each different input. Our mutable list responds to five different messages. The first two implement the behaviors of the sequence abstraction. The next two add or remove the first element of the list. The final message returns a string representation of the whole list contents.
 
-ÎÒÃÇµÄ¿É±äÁĞ±íÊÇ¸öµ÷¶Èº¯Êı£¬¾ÍÏñÎÒÃÇÅ¼¶ÔµÄº¯ÊıÊ½ÊµÏÖÒ²ÊÇ¸öµ÷¶Èº¯Êı¡£Ëü¼ì²éÊäÈë¡°ĞÅÏ¢¡±ÊÇ·ñÎªÒÑÖªĞÅÏ¢£¬²¢ÇÒ¶ÔÃ¿¸ö²»Í¬µÄÊäÈëÖ´ĞĞÏàÓ¦µÄ²Ù×÷¡£ÎÒÃÇµÄ¿É±äÁĞ±í¿ÉÏìÓ¦Îå¸ö²»Í¬µÄĞÅÏ¢¡£Ç°Á½¸öÊµÏÖÁËĞòÁĞ³éÏóµÄĞĞÎª¡£½ÓÏÂÀ´µÄÁ½¸öÌí¼Ó»òÉ¾³ıÁĞ±íµÄµÚÒ»¸öÔªËØ¡£×îºóµÄĞÅÏ¢·µ»ØÕû¸öÁĞ±íÄÚÈİµÄ×Ö·û´®±íÊ¾¡£
-<font color=#FF0000  size=5  face="¿¬Ìå">ÔõÃ´Í¨¹ıº¯ÊıÊµÏÖÁĞ±í</font>
+æˆ‘ä»¬çš„å¯å˜åˆ—è¡¨æ˜¯ä¸ªè°ƒåº¦å‡½æ•°ï¼Œå°±åƒæˆ‘ä»¬å¶å¯¹çš„å‡½æ•°å¼å®ç°ä¹Ÿæ˜¯ä¸ªè°ƒåº¦å‡½æ•°ã€‚å®ƒæ£€æŸ¥è¾“å…¥â€œä¿¡æ¯â€æ˜¯å¦ä¸ºå·²çŸ¥ä¿¡æ¯ï¼Œå¹¶ä¸”å¯¹æ¯ä¸ªä¸åŒçš„è¾“å…¥æ‰§è¡Œç›¸åº”çš„æ“ä½œã€‚æˆ‘ä»¬çš„å¯å˜åˆ—è¡¨å¯å“åº”äº”ä¸ªä¸åŒçš„ä¿¡æ¯ã€‚å‰ä¸¤ä¸ªå®ç°äº†åºåˆ—æŠ½è±¡çš„è¡Œä¸ºã€‚æ¥ä¸‹æ¥çš„ä¸¤ä¸ªæ·»åŠ æˆ–åˆ é™¤åˆ—è¡¨çš„ç¬¬ä¸€ä¸ªå…ƒç´ ã€‚æœ€åçš„ä¿¡æ¯è¿”å›æ•´ä¸ªåˆ—è¡¨å†…å®¹çš„å­—ç¬¦ä¸²è¡¨ç¤ºã€‚
+
+ã€*16ã€‘æ€ä¹ˆé€šè¿‡å‡½æ•°å®ç°åˆ—è¡¨
+---
+ 
 ```
 >>> def make_mutable_rlist():
         """Return a functional implementation of a mutable recursive list."""
@@ -271,7 +333,9 @@ Our mutable list is a dispatch function, just as our functional implementation o
 ```
 
 We can also add a convenience function to construct a functionally implemented recursive list from any built-in sequence, simply by adding each element in reverse order.
-ÎÒÃÇÒ²¿ÉÒÔÌí¼ÓÒ»¸ö¸¨Öúº¯Êı£¬À´´ÓÈÎºÎÄÚ½¨ĞòÁĞÖĞ¹¹½¨º¯ÊıÊ½ÊµÏÖµÄµİ¹éÁĞ±í¡£Ö»ĞèÒªÒÔµİ¹éË³ĞòÌí¼ÓÃ¿¸öÔªËØ¡£
+
+æˆ‘ä»¬ä¹Ÿå¯ä»¥æ·»åŠ ä¸€ä¸ªè¾…åŠ©å‡½æ•°ï¼Œæ¥ä»ä»»ä½•å†…å»ºåºåˆ—ä¸­æ„å»ºå‡½æ•°å¼å®ç°çš„é€’å½’åˆ—è¡¨ã€‚åªéœ€è¦ä»¥é€’å½’é¡ºåºæ·»åŠ æ¯ä¸ªå…ƒç´ ã€‚
+
 ```
 >>> def to_mutable_rlist(source):
         """Return a functional list with the same contents as source."""
@@ -283,10 +347,12 @@ We can also add a convenience function to construct a functionally implemented r
 ```
 
 In the definition above, the function `reversed` takes and returns an iterable value; it is another example of a function that uses the conventional interface of sequences.
-ÔÚÉÏÃæµÄ¶¨ÒåÖĞ£¬º¯Êı`reversed`½ÓÊÜ²¢·µ»Ø¿Éµü´úÖµ¡£ËüÊÇÊ¹ÓÃĞòÁĞµÄ½Ó¿ÚÔ¼¶¨µÄÁíÒ»¸öÊ¾Àı¡£
+
+åœ¨ä¸Šé¢çš„å®šä¹‰ä¸­ï¼Œå‡½æ•°`reversed`æ¥å—å¹¶è¿”å›å¯è¿­ä»£å€¼ã€‚å®ƒæ˜¯ä½¿ç”¨åºåˆ—çš„æ¥å£çº¦å®šçš„å¦ä¸€ä¸ªç¤ºä¾‹ã€‚
 
 At this point, we can construct a functionally implemented lists. Note that the list itself is a function.
-ÕâÀï£¬ÎÒÃÇ¿ÉÒÔ¹¹Ôìº¯ÊıÊ½ÊµÏÖµÄÁĞ±í£¬Òª×¢ÒâÁĞ±í×ÔÉíÒ²ÊÇ¸öº¯Êı¡£
+
+è¿™é‡Œï¼Œæˆ‘ä»¬å¯ä»¥æ„é€ å‡½æ•°å¼å®ç°çš„åˆ—è¡¨ï¼Œè¦æ³¨æ„åˆ—è¡¨è‡ªèº«ä¹Ÿæ˜¯ä¸ªå‡½æ•°ã€‚
 
 ```
 >>> s = to_mutable_rlist(suits)
@@ -298,7 +364,8 @@ At this point, we can construct a functionally implemented lists. Note that the 
 ```
 
 In addition, we can pass messages to the list `s` that change its contents, for instance removing the first element.
-ÁíÍâ£¬ÎÒÃÇ¿ÉÒÔÏñÁĞ±í`s`´«µİĞÅÏ¢À´ĞŞ¸ÄËüµÄÄÚÈİ£¬±ÈÈçÒÆ³ıµÚÒ»¸öÔªËØ¡£
+
+å¦å¤–ï¼Œæˆ‘ä»¬å¯ä»¥åƒåˆ—è¡¨`s`ä¼ é€’ä¿¡æ¯æ¥ä¿®æ”¹å®ƒçš„å†…å®¹ï¼Œæ¯”å¦‚ç§»é™¤ç¬¬ä¸€ä¸ªå…ƒç´ ã€‚
 
 ```
 >>> s('pop_first')
@@ -310,12 +377,15 @@ In addition, we can pass messages to the list `s` that change its contents, for 
 
 In principle, the operations `push_first` and `pop_first` suffice to make arbitrary changes to a list. We can always empty out the list entirely and then replace its old contents with the desired result.
 
-## 2.4.5 Dictionaries£¨×Öµä£©
+## 2.4.5 Dictionariesï¼ˆå­—å…¸ï¼‰
+
  A dictionary contains key-value pairs, where both the keys and values are objects. The purpose of a dictionary is to provide an abstraction for storing and retrieving values that are indexed not by consecutive integers, but by descriptive keys.
- ×Öµä°üº¬ÁË¼üÖµ¶Ô£¬ÆäÖĞ¼üºÍÖµ¶¼¿ÉÒÔÊÇ¶ÔÏó¡£×ÖµäµÄÄ¿µÄÊÇÌá¹©Ò»ÖÖ³éÏó£¬ÓÃÓÚ´¢´æºÍ»ñÈ¡ÏÂ±ê²»ÊÇÕûÊı£¬¶øÊÇÃèÊöĞÔµÄ¼üµÄÖµ¡£
+ 
+ å­—å…¸åŒ…å«äº†é”®å€¼å¯¹ï¼Œå…¶ä¸­é”®å’Œå€¼éƒ½å¯ä»¥æ˜¯å¯¹è±¡ã€‚å­—å…¸çš„ç›®çš„æ˜¯æä¾›ä¸€ç§æŠ½è±¡ï¼Œç”¨äºå‚¨å­˜å’Œè·å–ä¸‹æ ‡ä¸æ˜¯æ•´æ•°ï¼Œè€Œæ˜¯æè¿°æ€§çš„é”®çš„å€¼ã€‚
  
  Looking up values by their keys uses the element selection operator that we previously applied to sequences.
- ÎÒÃÇ¿ÉÒÔÊ¹ÓÃÔªËØÑ¡ÔñÔËËã·û£¬À´Í¨¹ı¼ü²éÕÒÖµ£¬ÎÒÃÇÖ®Ç°½«ÆäÓÃÓÚĞòÁĞ¡£
+ 
+ æˆ‘ä»¬å¯ä»¥ä½¿ç”¨å…ƒç´ é€‰æ‹©è¿ç®—ç¬¦ï¼Œæ¥é€šè¿‡é”®æŸ¥æ‰¾å€¼ï¼Œæˆ‘ä»¬ä¹‹å‰å°†å…¶ç”¨äºåºåˆ—ã€‚
 
 ```
 >>> numerals['X']
@@ -324,7 +394,8 @@ In principle, the operations `push_first` and `pop_first` suffice to make arbitr
 ```
 
 A dictionary can have at most one value for each key. Adding new key-value pairs and changing the existing value for a key can both be achieved with assignment statements.
-×ÖµäµÄÃ¿¸ö¼ü×î¶àÖ»ÄÜÓµÓĞÒ»¸öÖµ¡£Ìí¼ÓĞÂµÄ¼üÖµ¶Ô»òÕßĞŞ¸ÄÄ³¸ö¼üµÄÒÑÓĞÖµ£¬¿ÉÒÔÊ¹ÓÃ¸³ÖµÔËËã·ûÀ´Íê³É¡£
+
+å­—å…¸çš„æ¯ä¸ªé”®æœ€å¤šåªèƒ½æ‹¥æœ‰ä¸€ä¸ªå€¼ã€‚æ·»åŠ æ–°çš„é”®å€¼å¯¹æˆ–è€…ä¿®æ”¹æŸä¸ªé”®çš„å·²æœ‰å€¼ï¼Œå¯ä»¥ä½¿ç”¨èµ‹å€¼è¿ç®—ç¬¦æ¥å®Œæˆã€‚
 
 ```
 >>> numerals['I'] = 1
@@ -333,19 +404,27 @@ A dictionary can have at most one value for each key. Adding new key-value pairs
 {'I': 1, 'X': 10, 'L': 50, 'V': 5}
 ```
 Notice that `'L'` was not added to the end of the output above. Dictionaries are unordered collections of key-value pairs.
-Òª×¢Òâ£¬`'L'`²¢Ã»ÓĞÌí¼Óµ½ÉÏÃæÊä³öµÄÄ©Î²¡£×ÖµäÊÇÎŞĞòµÄ¼üÖµ¶Ô¼¯ºÏ¡£
+
+è¦æ³¨æ„ï¼Œ`'L'`å¹¶æ²¡æœ‰æ·»åŠ åˆ°ä¸Šé¢è¾“å‡ºçš„æœ«å°¾ã€‚å­—å…¸æ˜¯æ— åºçš„é”®å€¼å¯¹é›†åˆã€‚
 
 Dictionaries do have some restrictions:
 
 *   A key of a dictionary cannot be an object of a mutable built-in type.
 *   There can be at most one value for a given key.
-<font color=#FF0000  size=5  face="¿¬Ìå">¡¾*16¡¿Ô¼Êø£º
-1¡¢key±ØĞëÊÇ²»¿É±ä¶ÔÏó
-2¡¢Ã¿Ò»¸ökeyÖ»ÄÜÓĞÒ»¸övalue</font>
+
+ã€*16ã€‘çº¦æŸï¼š
+---
+
+1ã€keyå¿…é¡»æ˜¯ä¸å¯å˜å¯¹è±¡
+---
+
+2ã€æ¯ä¸€ä¸ªkeyåªèƒ½æœ‰ä¸€ä¸ªvalue
+---
 
 Dictionaries also have a comprehension syntax analogous to those of lists and generator expressions. Evaluating a dictionary comprehension yields a new dictionary object.
-<font color=#FF0000  size=5  face="¿¬Ìå">¡¾*17¡¿×ÖµäÍÆµ¼Ê½£º¡ı
-×ÖµäÒ²ÓµÓĞÍÆµ¼Ê½Óï·¨£¬ºÍÁĞ±íÍÆµ¼Ê½ºÍÉú³ÉÆ÷±í´ïÊ½ÀàËÆ¡£Çó½â×ÖµäÍÆµ¼Ê½»á²úÉúĞÂµÄ×Öµä¶ÔÏó¡£</font>
+
+ã€*17ã€‘å­—å…¸æ¨å¯¼å¼ï¼šå­—å…¸ä¹Ÿæ‹¥æœ‰æ¨å¯¼å¼è¯­æ³•ï¼Œå’Œåˆ—è¡¨æ¨å¯¼å¼å’Œç”Ÿæˆå™¨è¡¨è¾¾å¼ç±»ä¼¼ã€‚æ±‚è§£å­—å…¸æ¨å¯¼å¼ä¼šäº§ç”Ÿæ–°çš„å­—å…¸å¯¹è±¡ã€‚
+---
 
 
 ```
@@ -353,7 +432,9 @@ Dictionaries also have a comprehension syntax analogous to those of lists and ge
 {3: 9, 4: 16, 5: 25}
 ```
 **Implementation.** We can implement an abstract data type that conforms to the dictionary abstraction as a list of records, each of which is a two-element list consisting of a key and the associated value.
-ÎÒÃÇ¿ÉÒÔÊµÏÖÒ»¸ö³éÏóÊı¾İÀàĞÍ£¬ËüÊÇÒ»¸ö¼ÇÂ¼µÄÁĞ±í£¬Óë×Öµä³éÏóÒ»ÖÂ¡£Ã¿¸ö¼ÇÂ¼¶¼ÊÇÁ½¸öÔªËØµÄÁĞ±í£¬°üº¬¼üºÍÏà¹ØµÄÖµ¡£
+
+æˆ‘ä»¬å¯ä»¥å®ç°ä¸€ä¸ªæŠ½è±¡æ•°æ®ç±»å‹ï¼Œå®ƒæ˜¯ä¸€ä¸ªè®°å½•çš„åˆ—è¡¨ï¼Œä¸å­—å…¸æŠ½è±¡ä¸€è‡´ã€‚æ¯ä¸ªè®°å½•éƒ½æ˜¯ä¸¤ä¸ªå…ƒç´ çš„åˆ—è¡¨ï¼ŒåŒ…å«é”®å’Œç›¸å…³çš„å€¼ã€‚
+
 ```
 def make_dict():
     """Return a functional implementation of a dictionary."""
