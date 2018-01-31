@@ -5,7 +5,7 @@
 【*1】面向对象和数据抽象的3条相同点：↓
 ---
 
-**1、Like abstract data types, objects create an abstraction barrier between the use and implementation of data
+**1、Like abstract data types, objects create an abstraction barrier between the use and implementation of data**
 
 **与抽象数据类型一样, 对象在数据的使用和实现之间创建一个抽象边界**
 
