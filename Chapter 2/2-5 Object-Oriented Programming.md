@@ -6,13 +6,16 @@
 ---
 
 **1、Like abstract data types, objects create an abstraction barrier between the use and implementation of data
-与抽象数据类型一样, 对象在数据的使用和实现之间创建一个抽象边界**
 
-**2、objects respond to behavioral requests.
-对象响应行为请求**
+**与抽象数据类型一样, 对象在数据的使用和实现之间创建一个抽象边界**
 
-**3、objects have local state that is not directly accessible from the global environment.
-对象拥有局部状态，并且不能直接从全局环境访问**
+**2、objects respond to behavioral requests.**
+
+**对象响应行为请求**
+
+**3、objects have local state that is not directly accessible from the global environment.**
+
+**对象拥有局部状态，并且不能直接从全局环境访问**
 
 OOP：将数据抽象实现出来
 
