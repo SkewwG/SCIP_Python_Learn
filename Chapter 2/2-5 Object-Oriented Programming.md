@@ -347,6 +347,7 @@ In some cases, there are instance variables and methods that are related to the 
 【*10】下划线
 ---
 **“单下划线” 开始的成员变量叫做保护变量，意思是只有类对象和子类对象自己能访问到这些变量；**
+
 **“双下划线” 开始的是私有成员，意思是只有类对象自己能访问，连子类对象也不能访问到这个数据。**
 
 
