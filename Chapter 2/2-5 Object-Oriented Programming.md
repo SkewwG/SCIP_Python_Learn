@@ -1,94 +1,122 @@
 # 2.5 Object-Oriented Programming
-¡¾*0¡¿Àà¡¢·½·¨¡¢¼Ì³ĞºÍµãÔËËã·û
+ã€*0ã€‘ç±»ã€æ–¹æ³•ã€ç»§æ‰¿å’Œç‚¹è¿ç®—ç¬¦
 ---
 
-¡¾*1¡¿ÃæÏò¶ÔÏóºÍÊı¾İ³éÏóµÄ3ÌõÏàÍ¬µã£º¡ı
+ã€*1ã€‘é¢å‘å¯¹è±¡å’Œæ•°æ®æŠ½è±¡çš„3æ¡ç›¸åŒç‚¹ï¼šâ†“
 ---
 
-**1¡¢Like abstract data types, objects create an abstraction barrier between the use and implementation of data
-Óë³éÏóÊı¾İÀàĞÍÒ»Ñù, ¶ÔÏóÔÚÊı¾İµÄÊ¹ÓÃºÍÊµÏÖÖ®¼ä´´½¨Ò»¸ö³éÏó±ß½ç
-2¡¢objects respond to behavioral requests.
-¶ÔÏóÏìÓ¦ĞĞÎªÇëÇó
-3¡¢objects have local state that is not directly accessible from the global environment.
-¶ÔÏóÓµÓĞ¾Ö²¿×´Ì¬£¬²¢ÇÒ²»ÄÜÖ±½Ó´ÓÈ«¾Ö»·¾³·ÃÎÊ**
+**1ã€Like abstract data types, objects create an abstraction barrier between the use and implementation of data
+ä¸æŠ½è±¡æ•°æ®ç±»å‹ä¸€æ ·, å¯¹è±¡åœ¨æ•°æ®çš„ä½¿ç”¨å’Œå®ç°ä¹‹é—´åˆ›å»ºä¸€ä¸ªæŠ½è±¡è¾¹ç•Œ**
 
-OOP£º½«Êı¾İ³éÏóÊµÏÖ³öÀ´
+**2ã€objects respond to behavioral requests.
+å¯¹è±¡å“åº”è¡Œä¸ºè¯·æ±‚**
+
+**3ã€objects have local state that is not directly accessible from the global environment.
+å¯¹è±¡æ‹¥æœ‰å±€éƒ¨çŠ¶æ€ï¼Œå¹¶ä¸”ä¸èƒ½ç›´æ¥ä»å…¨å±€ç¯å¢ƒè®¿é—®**
+
+OOPï¼šå°†æ•°æ®æŠ½è±¡å®ç°å‡ºæ¥
 
 Each object bundles together local state and behavior in a way that hides the complexity of both behind a data abstraction.
-Ã¿¸ö¶ÔÏóÒÔÒ»ÖÖÒş²ØÊı¾İ³éÏó±³ºóµÄ¸´ÔÓĞÔµÄ·½Ê½½«¾Ö²¿×´Ì¬ºÍĞĞÎª°ó¶¨ÔÚÒ»Æğ¡£
+
+æ¯ä¸ªå¯¹è±¡ä»¥ä¸€ç§éšè—æ•°æ®æŠ½è±¡èƒŒåçš„å¤æ‚æ€§çš„æ–¹å¼å°†å±€éƒ¨çŠ¶æ€å’Œè¡Œä¸ºç»‘å®šåœ¨ä¸€èµ·ã€‚
 
 Not only do objects pass messages, they also share behavior among other objects of the same type and inherit characteristics from related types.
-¶ÔÏó²»½öÍ¶µİÏûÏ¢, ËüÃÇ»¹ÔÚÍ¬Ò»ÀàĞÍµÄÆäËû¶ÔÏóÖ®¼ä¹²ÏíĞĞÎª, ²¢´ÓÏà¹ØÀàĞÍ¼Ì³ĞÌØÕ÷¡£
+
+å¯¹è±¡ä¸ä»…æŠ•é€’æ¶ˆæ¯, å®ƒä»¬è¿˜åœ¨åŒä¸€ç±»å‹çš„å…¶ä»–å¯¹è±¡ä¹‹é—´å…±äº«è¡Œä¸º, å¹¶ä»ç›¸å…³ç±»å‹ç»§æ‰¿ç‰¹å¾ã€‚
 
 We have seen that an object is a data value that has methods and attributes, accessible via dot notation.
-ÎÒÃÇÒÑ¾­¿´µ½, Ò»¸ö¶ÔÏóÊÇÒ»¸öÊı¾İÖµ, Ëü¾ßÓĞ·½·¨ºÍÊôĞÔ, ¿ÉÍ¨¹ıµã±íÊ¾·¨·ÃÎÊ¡£
 
-## 2.5.1 Objects and Classes£¨¶ÔÏóºÍÀà£©
+æˆ‘ä»¬å·²ç»çœ‹åˆ°, ä¸€ä¸ªå¯¹è±¡æ˜¯ä¸€ä¸ªæ•°æ®å€¼, å®ƒå…·æœ‰æ–¹æ³•å’Œå±æ€§, å¯é€šè¿‡ç‚¹è¡¨ç¤ºæ³•è®¿é—®ã€‚
+
+## 2.5.1 Objects and Classesï¼ˆå¯¹è±¡å’Œç±»ï¼‰
+
 A class serves as a template for all objects whose type is that class. Every object is an instance of some particular class.
-ÀàÊÇËùÓĞ¶ÔÏóµÄÄ£°å, ÆäÀàĞÍÎª¸ÃÀà¡£Ã¿¸ö¶ÔÏó¶¼ÊÇÄ³¸öÌØ¶¨ÀàµÄÊµÀı¡£
+
+ç±»æ˜¯æ‰€æœ‰å¯¹è±¡çš„æ¨¡æ¿, å…¶ç±»å‹ä¸ºè¯¥ç±»ã€‚æ¯ä¸ªå¯¹è±¡éƒ½æ˜¯æŸä¸ªç‰¹å®šç±»çš„å®ä¾‹ã€‚
 
 The act of creating a new object instance is known as _instantiating_ the class.
-´´½¨¶ÔÏóµÄĞĞÎª½Ğ×ö¶ÔÏóÊµÀı»¯
+
+åˆ›å»ºå¯¹è±¡çš„è¡Œä¸ºå«åšå¯¹è±¡å®ä¾‹åŒ–
 
 An _attribute_ of an object is a name-value pair associated with the object, which is accessible via dot notation.
-¶ÔÏóµÄÊôĞÔÊÇÓë¸Ã¶ÔÏó¹ØÁªµÄÃû³Æ-Öµ¶Ô, ¿ÉÍ¨¹ıµã±íÊ¾·¨·ÃÎÊËü¡£
+
+å¯¹è±¡çš„å±æ€§æ˜¯ä¸è¯¥å¯¹è±¡å…³è”çš„åç§°-å€¼å¯¹, å¯é€šè¿‡ç‚¹è¡¨ç¤ºæ³•è®¿é—®å®ƒã€‚
 
 instance attributes may also be called _fields_, _properties_, or _instance variables_.
-ÊµÀıÊôĞÔ£º×Ö¶Î¡¢ÊôĞÔ¡¢ÊµÀı±äÁ¿
+
+å®ä¾‹å±æ€§ï¼šå­—æ®µã€å±æ€§ã€å®ä¾‹å˜é‡
 
 The side effects and return value of a method can depend upon, and change, other attributes of the object.
-²úÉúµÄ¸±×÷ÓÃºÍ·½·¨µÄ·µ»ØÖµÒÀÀµÓÚ¶ÔÏóµÄÆäËûÊôĞÔ¡£
 
-## 2.5.2 Defining Classes£¨ÀàµÄ¶¨Òå£©
+äº§ç”Ÿçš„å‰¯ä½œç”¨å’Œæ–¹æ³•çš„è¿”å›å€¼ä¾èµ–äºå¯¹è±¡çš„å…¶ä»–å±æ€§ã€‚
+
+
+## 2.5.2 Defining Classesï¼ˆç±»çš„å®šä¹‰ï¼‰
 
 When a class statement is executed, a new class is created and bound to &lt;name&gt; in the first frame of the current environment. The suite is then executed. Any names bound within the &lt;suite&gt; of a class statement, through def or assignment statements, create or modify attributes of the class.
-**µ±ÀàÓï¾äÖ´ĞĞºó£¬Ò»¸öĞÂµÄÀà±»´´½¨£¬²¢ÇÒÔÚµ±Ç°»·¾³µÄµÚÒ»¸öÕ»Ö¡ÉÏ°ó¶¨µ½name¡£È»ºósuiteÓï¾äÖ´ĞĞ£¬ÔÚclassÓï¾äÄÚµÄsuiteÀï£¬ÈÎºÎname°ó¶¨¡£Í¨¹ıdef»òÕß¸³ÖµÓï¾ä£¬´´½¨»òÕßĞŞ¸ÄÀàµÄÊôĞÔ**
+
+**å½“ç±»è¯­å¥æ‰§è¡Œåï¼Œä¸€ä¸ªæ–°çš„ç±»è¢«åˆ›å»ºï¼Œå¹¶ä¸”åœ¨å½“å‰ç¯å¢ƒçš„ç¬¬ä¸€ä¸ªæ ˆå¸§ä¸Šç»‘å®šåˆ°nameã€‚ç„¶åsuiteè¯­å¥æ‰§è¡Œï¼Œåœ¨classè¯­å¥å†…çš„suiteé‡Œï¼Œä»»ä½•nameç»‘å®šã€‚é€šè¿‡defæˆ–è€…èµ‹å€¼è¯­å¥ï¼Œåˆ›å»ºæˆ–è€…ä¿®æ”¹ç±»çš„å±æ€§**
 
 Classes are typically organized around manipulating instance attributes,
-ÀàÍ¨³£Î§ÈÆ²Ù×÷ÊµÀıÊôĞÔÀ´×éÖ¯
+
+ç±»é€šå¸¸å›´ç»•æ“ä½œå®ä¾‹å±æ€§æ¥ç»„ç»‡
 
 The class specifies the instance attributes of its objects by defining a method for initializing new objects.
-ÀàÍ¨¹ı¶¨Òå³õÊ¼»¯ĞÂ¶ÔÏóµÄ·½·¨À´Ö¸¶¨¶ÔÏóµÄÊµÀıÊôĞÔ
+
+ç±»é€šè¿‡å®šä¹‰åˆå§‹åŒ–æ–°å¯¹è±¡çš„æ–¹æ³•æ¥æŒ‡å®šå¯¹è±¡çš„å®ä¾‹å±æ€§
  
 The method that initializes objects has a special name in Python,
-³õÊ¼»¯¶ÔÏóµÄ·½·¨ÔÚ Python ÖĞÓĞÒ»¸öÌØÊâµÄÃû³Æ,
+
+åˆå§‹åŒ–å¯¹è±¡çš„æ–¹æ³•åœ¨ Python ä¸­æœ‰ä¸€ä¸ªç‰¹æ®Šçš„åç§°,
 
 **Identity**
 Object identity is compared using the `is` and `is not` operators.
-Éí·İÈÏÖ¤£ºÍ¨¹ıis ºÍ is notÈ¥±È½Ï
+
+èº«ä»½è®¤è¯ï¼šé€šè¿‡is å’Œ is notå»æ¯”è¾ƒ
 
 As usual, binding an object to a new name using assignment does not create a new object.
-**Í¨¹ı¸³ÖµÓï¾ä¸øÒ»¸ö¶ÔÏóÖØĞÂ°ó¶¨Ò»¸öĞÂµÄ±äÁ¿ÃûÊÇ²»»á´´½¨Ò»¸ö¶ÔÏóµÄ£¬Ö»ÊÇ¶ÔÏóµÄÒıÓÃ¡£**
+
+**é€šè¿‡èµ‹å€¼è¯­å¥ç»™ä¸€ä¸ªå¯¹è±¡é‡æ–°ç»‘å®šä¸€ä¸ªæ–°çš„å˜é‡åæ˜¯ä¸ä¼šåˆ›å»ºä¸€ä¸ªå¯¹è±¡çš„ï¼Œåªæ˜¯å¯¹è±¡çš„å¼•ç”¨ã€‚**
+
 New objects that have user-defined classes are only created when a class (such as `Account`) is instantiated with call expression syntax.
-**µ±ÎÒÃÇ¶¨ÒåµÄÄÇĞ©class£¬ÔÚÍ¨¹ıµ÷ÓÃ±í´ïÊ½Óï·¨À´µ÷ÓÃµÄÊ±ºò£¬²Å»áÈ¥³õÊ¼»¯Ò»¸öÀàµÄ¶ÔÏó¡£**
+
+**å½“æˆ‘ä»¬å®šä¹‰çš„é‚£äº›classï¼Œåœ¨é€šè¿‡è°ƒç”¨è¡¨è¾¾å¼è¯­æ³•æ¥è°ƒç”¨çš„æ—¶å€™ï¼Œæ‰ä¼šå»åˆå§‹åŒ–ä¸€ä¸ªç±»çš„å¯¹è±¡ã€‚**
 
 
 **Methods.** Object methods are also defined by a `def` statement in the suite of a `class` statement.
-·½·¨.¶ÔÏó·½·¨Í¨¹ı def Óï¾ä¶¨Òå¡£
+
+æ–¹æ³•.å¯¹è±¡æ–¹æ³•é€šè¿‡ def è¯­å¥å®šä¹‰ã€‚
 
 Each method definition again includes a special first parameter `self`, which is bound to the object on which the method is invoked.
-Ã¿¸ö·½·¨¶¨Òå¶¼°üº¬Ò»¸öÌØÊâµÄµÚÒ»¸ö²ÎÊı self, Ëü°ó¶¨µ½µ÷ÓÃ¸Ã·½·¨µÄ¶ÔÏó¡£
-¡¾*2¡¿self£¬°Ñº¯Êı°ó¶¨¸øself£¬self¾ÍÊÇÀà×Ô¼º±¾Éí£ºÊ²Ã´Ê±ºò°ó¶¨£¿º¯Êıµ÷ÓÃµÄÊ±ºò²Å°ó¶¨¡£
+
+æ¯ä¸ªæ–¹æ³•å®šä¹‰éƒ½åŒ…å«ä¸€ä¸ªç‰¹æ®Šçš„ç¬¬ä¸€ä¸ªå‚æ•° self, å®ƒç»‘å®šåˆ°è°ƒç”¨è¯¥æ–¹æ³•çš„å¯¹è±¡ã€‚
+
+ã€*2ã€‘selfï¼ŒæŠŠå‡½æ•°ç»‘å®šç»™selfï¼Œselfå°±æ˜¯ç±»è‡ªå·±æœ¬èº«ï¼šä»€ä¹ˆæ—¶å€™ç»‘å®šï¼Ÿå‡½æ•°è°ƒç”¨çš„æ—¶å€™æ‰ç»‘å®šã€‚
 ---
 
 When a method is invoked via dot notation, the object itself (bound to `tom_account`, in this case) plays a dual role. First, it determines what the name `withdraw` means; `withdraw` is not a name in the environment, but instead a name that is local to the `Account` class. Second, it is bound to the first parameter `self` when the `withdraw` method is invoked. The details of the procedure for evaluating dot notation follow in the next section.
-µ±·½·¨Í¨¹ıµãµ÷ÓÃ£¬¶ÔÏó°çÑİÁË2¸ö½ÇÉ«
-1¡¢¼ì²éwithdrawÊÇÊ²Ã´
-2¡¢µ±µ÷ÓÃ·½·¨Ê±, Ëü°ó¶¨µ½µÚÒ»¸ö²ÎÊı self¡£
+
+å½“æ–¹æ³•é€šè¿‡ç‚¹è°ƒç”¨ï¼Œå¯¹è±¡æ‰®æ¼”äº†2ä¸ªè§’è‰²
+1ã€æ£€æŸ¥withdrawæ˜¯ä»€ä¹ˆ
+2ã€å½“è°ƒç”¨æ–¹æ³•æ—¶, å®ƒç»‘å®šåˆ°ç¬¬ä¸€ä¸ªå‚æ•° selfã€‚
 
 
 ## 2.5.3 Message Passing and Dot Expressions
+
 The central idea in message passing was that data values should have behavior by responding to messages that are relevant to the abstract type they represent. Dot notation is a syntactic feature of Python that formalizes the message passing metaphor. 
-ÏûÏ¢´«µİÖĞµÄÖĞĞÄË¼ÏëÊÇ, Êı¾İÖµÓ¦¸Ã¾ßÓĞÏìÓ¦ÓëËüÃÇËù±íÊ¾µÄ³éÏóÀàĞÍÏà¹ØµÄÏûÏ¢µÄĞĞÎª¡£µã±íÊ¾·¨ÊÇ Python µÄÒ»ÖÖ¾ä·¨ÌØÕ÷, ËüĞÎÊ½»¯ÁËÏûÏ¢´«µİµÄÒşÓ÷¡£
+
+æ¶ˆæ¯ä¼ é€’ä¸­çš„ä¸­å¿ƒæ€æƒ³æ˜¯, æ•°æ®å€¼åº”è¯¥å…·æœ‰å“åº”ä¸å®ƒä»¬æ‰€è¡¨ç¤ºçš„æŠ½è±¡ç±»å‹ç›¸å…³çš„æ¶ˆæ¯çš„è¡Œä¸ºã€‚ç‚¹è¡¨ç¤ºæ³•æ˜¯ Python çš„ä¸€ç§å¥æ³•ç‰¹å¾, å®ƒå½¢å¼åŒ–äº†æ¶ˆæ¯ä¼ é€’çš„éšå–»ã€‚
 
 ```
 <expression> . <name>
 ```
-**<name>±ØĞëÊÇ¸ö¼òµ¥µÄÃû³Æ£¨¶ø²»ÊÇÇóÖµÎªnameµÄ±í´ïÊ½£©
-ÀıÈç£ºÕıÈ·µÄ£ºlist.append       ´íÎóµÄ£ºlist.('append')**
+**<name>å¿…é¡»æ˜¯ä¸ªç®€å•çš„åç§°ï¼ˆè€Œä¸æ˜¯æ±‚å€¼ä¸ºnameçš„è¡¨è¾¾å¼ï¼‰
+ 
+ä¾‹å¦‚ï¼šæ­£ç¡®çš„ï¼šlist.append       é”™è¯¯çš„ï¼šlist.('append')**
 
 Using `getattr`, we can look up an attribute using a string, just as we did with a dispatch dictionary.
-Ê¹ÓÃ "getattr", ÎÒÃÇ¿ÉÒÔÊ¹ÓÃ×Ö·û´®²éÕÒÊôĞÔ, ¾ÍÏñÎÒÃÇÊ¹ÓÃµ÷¶È×ÖµäÒ»Ñù¡£
+
+ä½¿ç”¨ "getattr", æˆ‘ä»¬å¯ä»¥ä½¿ç”¨å­—ç¬¦ä¸²æŸ¥æ‰¾å±æ€§, å°±åƒæˆ‘ä»¬ä½¿ç”¨è°ƒåº¦å­—å…¸ä¸€æ ·ã€‚
 
 ```
 >>> getattr(tom_account, 'balance')
@@ -97,7 +125,8 @@ Using `getattr`, we can look up an attribute using a string, just as we did with
 ```
 
 We can also test whether an object has a named attribute with `hasattr`.
-ÎÒÃÇ»¹¿ÉÒÔ²âÊÔÒ»¸ö¶ÔÏóÊÇ·ñ¾ßÓĞ¾ßÓĞ hasattr µÄÃû×ÖÊôĞÔ¡£
+
+æˆ‘ä»¬è¿˜å¯ä»¥æµ‹è¯•ä¸€ä¸ªå¯¹è±¡æ˜¯å¦å…·æœ‰å…·æœ‰ hasattr çš„åå­—å±æ€§ã€‚
 
 ```
 >>> hasattr(tom_account, 'deposit')
@@ -105,16 +134,19 @@ True
 ```
 
 **Method and functions.**
- Method£ºthe object is bound to the parameter `self`.
-¡¾*3¡¿Èç¹ûºÍself°ó¶¨ÁË£¬ÄÇ¾ÍÊÇmethod£¬Ã»°ó¶¨¾ÍÊÇfunction¡£MethodÖ¸´úÒ»ÖÖÌØÊâµÄFunction£¬±¾ÖÊ¶¼ÊÇFunction
+
+ Methodï¼šthe object is bound to the parameter `self`.
+ 
+ã€*3ã€‘å¦‚æœå’Œselfç»‘å®šäº†ï¼Œé‚£å°±æ˜¯methodï¼Œæ²¡ç»‘å®šå°±æ˜¯functionã€‚MethodæŒ‡ä»£ä¸€ç§ç‰¹æ®Šçš„Functionï¼Œæœ¬è´¨éƒ½æ˜¯Function
 ---
 
-function£º     `class.º¯ÊıÃû³Æ`
-method £º      `obejct.º¯ÊıÃû³Æ`
+functionï¼š     `class.å‡½æ•°åç§°`
+method ï¼š      `obejct.å‡½æ•°åç§°`
 
 
 As an attribute of a class, a method is just a function, but as an attribute of an instance, it is a bound method:
-×÷ÎªÀàµÄÒ»¸öÊôĞÔ, ·½·¨Ö»ÊÇÒ»¸öº¯Êı, µ«×÷ÎªÒ»¸öÊµÀıµÄÊôĞÔ, ËüÊÇÒ»¸ö°ó¶¨·½·¨:
+
+ä½œä¸ºç±»çš„ä¸€ä¸ªå±æ€§, æ–¹æ³•åªæ˜¯ä¸€ä¸ªå‡½æ•°, ä½†ä½œä¸ºä¸€ä¸ªå®ä¾‹çš„å±æ€§, å®ƒæ˜¯ä¸€ä¸ªç»‘å®šæ–¹æ³•:
 
 ``` python
 >>> class A:
@@ -122,19 +154,19 @@ As an attribute of a class, a method is just a function, but as an attribute of 
         pass
 
 >>> A.hello()
->>> type(A.hello)       # ÕâÊÇÀà±¾Éíµ÷ÓÃ£¬Ã»ÓĞ°ó¶¨£¬ËùÒÔÊÇfunction
+>>> type(A.hello)       # è¿™æ˜¯ç±»æœ¬èº«è°ƒç”¨ï¼Œæ²¡æœ‰ç»‘å®šï¼Œæ‰€ä»¥æ˜¯function
 <class 'function'>
->>> type(A().hello)     # ÕâÊÇ¶ÔÏóµ÷ÓÃ£¬°ó¶¨ÁË£¬ËùÒÔÊÇMethod
+>>> type(A().hello)     # è¿™æ˜¯å¯¹è±¡è°ƒç”¨ï¼Œç»‘å®šäº†ï¼Œæ‰€ä»¥æ˜¯Method
 <class 'method'>
 ```
 
-¡¾*4¡¿@staticmethod
+ã€*4ã€‘@staticmethod
 ---
 
-<font color=#FF0000  size=5  face="¿¬Ìå">¾²Ì¬·½·¨¾ÍÊÇfunction£¬Ã»ÓĞ°ó¶¨Àà¡£</font>
-**¾²Ì¬·½·¨ÓëÒ»°ãµÄº¯ÊıÃ»ÓĞÇø±ğ£¬ËùÓĞ²ÎÊıÃ»ÓĞÒ»¸öºÍclassÏà¹Ø¡£
-ÒòÎªÔÚÓĞĞ©¸´ÔÓÀàµÄ´´½¨¹ı³ÌÖĞ£¬ÏëÒªÓÃµÄÄÇ¸öfunctionºÍÕâ¸öÀàµÄ¹ØÏµ²»Ò»¶¨ĞèÒª°ó¶¨¹ØÏµ£¬Ö»ÊÇ´¿´â×÷ÎªÒ»¸ö¹¤¾ß¹©ÄãÕâ¸öÀàÊ¹ÓÃ£¬**
-<font color=#FF0000  size=5  face="¿¬Ìå">¾²Ì¬·½·¨¿ÉÒÔ±»ËùÓĞµÄÊµÀıËùµ÷ÓÃ£¬Ò²¿ÉÒÔ±»Ààµ÷ÓÃ</font>
+<font color=#FF0000  size=5  face="æ¥·ä½“">é™æ€æ–¹æ³•å°±æ˜¯functionï¼Œæ²¡æœ‰ç»‘å®šç±»ã€‚</font>
+**é™æ€æ–¹æ³•ä¸ä¸€èˆ¬çš„å‡½æ•°æ²¡æœ‰åŒºåˆ«ï¼Œæ‰€æœ‰å‚æ•°æ²¡æœ‰ä¸€ä¸ªå’Œclassç›¸å…³ã€‚
+å› ä¸ºåœ¨æœ‰äº›å¤æ‚ç±»çš„åˆ›å»ºè¿‡ç¨‹ä¸­ï¼Œæƒ³è¦ç”¨çš„é‚£ä¸ªfunctionå’Œè¿™ä¸ªç±»çš„å…³ç³»ä¸ä¸€å®šéœ€è¦ç»‘å®šå…³ç³»ï¼Œåªæ˜¯çº¯ç²¹ä½œä¸ºä¸€ä¸ªå·¥å…·ä¾›ä½ è¿™ä¸ªç±»ä½¿ç”¨ï¼Œ**
+<font color=#FF0000  size=5  face="æ¥·ä½“">é™æ€æ–¹æ³•å¯ä»¥è¢«æ‰€æœ‰çš„å®ä¾‹æ‰€è°ƒç”¨ï¼Œä¹Ÿå¯ä»¥è¢«ç±»è°ƒç”¨</font>
 ``` python
 >>> class B:
     @staticmethod
@@ -145,16 +177,16 @@ As an attribute of a class, a method is just a function, but as an attribute of 
 <class 'function'>
 >>> type(B().hi)
 <class 'function'>
->>> B.hi(1)                     # Ààµ÷ÓÃ
+>>> B.hi(1)                     # ç±»è°ƒç”¨
 1
->>> B().hi(2)                   # ÊµÀıµ÷ÓÃ
+>>> B().hi(2)                   # å®ä¾‹è°ƒç”¨
 2
 ```
-¡¾*5¡¿@staticmethodÓÃÍ¾(¸úÀàÓĞ¹ØÏµµÄ¹¦ÄÜµ«ÔÚÔËĞĞÊ±ÓÖ²»ĞèÒªÊµÀıºÍÀà²ÎÓëµÄÇé¿öÏÂ:¼´½«º¯Êı·ÅÔÚÀàÖĞ, µ«²»ÄÜ·ÃÎÊ¸ÃÀàµÄÊµÀı.×¢Òâ£º@staticmethod¶¨ÒåµÄº¯ÊıÃ»ÓĞself²ÎÊı)£º¡ı
+ã€*5ã€‘@staticmethodç”¨é€”(è·Ÿç±»æœ‰å…³ç³»çš„åŠŸèƒ½ä½†åœ¨è¿è¡Œæ—¶åˆä¸éœ€è¦å®ä¾‹å’Œç±»å‚ä¸çš„æƒ…å†µä¸‹:å³å°†å‡½æ•°æ”¾åœ¨ç±»ä¸­, ä½†ä¸èƒ½è®¿é—®è¯¥ç±»çš„å®ä¾‹.æ³¨æ„ï¼š@staticmethodå®šä¹‰çš„å‡½æ•°æ²¡æœ‰selfå‚æ•°)ï¼šâ†“
 ---
-¾­³£ÓĞÒ»Ğ©¸úÀàÓĞ¹ØÏµµÄ¹¦ÄÜµ«ÔÚÔËĞĞÊ±ÓÖ²»ĞèÒªÊµÀıºÍÀà²ÎÓëµÄÇé¿öÏÂĞèÒªÓÃµ½¾²Ì¬·½·¨**.** ±ÈÈç¸ü¸Ä»·¾³±äÁ¿»òÕßĞŞ¸ÄÆäËûÀàµÄÊôĞÔµÈÄÜÓÃµ½¾²Ì¬·½·¨**.** ÕâÖÖÇé¿ö¿ÉÒÔÖ±½ÓÓÃº¯Êı½â¾ö, µ«ÕâÑùÍ¬Ñù»áÀ©É¢ÀàÄÚ²¿µÄ´úÂë£¬Ôì³ÉÎ¬»¤À§ÄÑ<meta charset="utf-8">
+ç»å¸¸æœ‰ä¸€äº›è·Ÿç±»æœ‰å…³ç³»çš„åŠŸèƒ½ä½†åœ¨è¿è¡Œæ—¶åˆä¸éœ€è¦å®ä¾‹å’Œç±»å‚ä¸çš„æƒ…å†µä¸‹éœ€è¦ç”¨åˆ°é™æ€æ–¹æ³•**.** æ¯”å¦‚æ›´æ”¹ç¯å¢ƒå˜é‡æˆ–è€…ä¿®æ”¹å…¶ä»–ç±»çš„å±æ€§ç­‰èƒ½ç”¨åˆ°é™æ€æ–¹æ³•**.** è¿™ç§æƒ…å†µå¯ä»¥ç›´æ¥ç”¨å‡½æ•°è§£å†³, ä½†è¿™æ ·åŒæ ·ä¼šæ‰©æ•£ç±»å†…éƒ¨çš„ä»£ç ï¼Œé€ æˆç»´æŠ¤å›°éš¾<meta charset="utf-8">
 
-±ÈÈçÕâÑù:
+æ¯”å¦‚è¿™æ ·:
 
 ```
 
@@ -176,7 +208,7 @@ ik1.do_reset()
 ik1.set_db()
 ```
 
-<meta charset="utf-8">Èç¹ûÊ¹ÓÃ@staticmethod¾ÍÄÜ°ÑÏà¹ØµÄ´úÂë·Åµ½¶ÔÓ¦µÄÎ»ÖÃÁË**.**
+**å¦‚æœä½¿ç”¨@staticmethodå°±èƒ½æŠŠç›¸å…³çš„ä»£ç æ”¾åˆ°å¯¹åº”çš„ä½ç½®äº†**
 
 ```
 
@@ -201,11 +233,11 @@ ik1.set_db()
 ```
 
 
-¡¾*6¡¿@classmethod
+ã€*6ã€‘@classmethod
 ---
-<font color=#FF0000  size=5  face="¿¬Ìå">Àà·½·¨¾ÍÊÇMethod£¬¶¼°ó¶¨ÁËÀà¡£¿ÉÒÔ±»ËùÓĞµÄÊµÀıËùµ÷ÓÃ£¬Ò²¿ÉÒÔ±»Ààµ÷ÓÃ£¬</font>
-**ÊÇ±»ËùÓĞµÄÊµÀı¹²ÓÃµÄ£¬ËüµÄ×´Ì¬ºÍÀàÏà¹Ø£¬¶ø²»ÊÇËµºÍÊµÀıÏà¹Ø¡£**
-**±ÈÈç£ºÒøĞĞµÄÀûÂÊÊÇËùÓĞÕË»§¶¼Ò»ÑùµÄ£¬ËùÒÔ¿ÉÒÔÓÃclassmethod¡¢**
+**ç±»æ–¹æ³•å°±æ˜¯Methodï¼Œéƒ½ç»‘å®šäº†ç±»ã€‚å¯ä»¥è¢«æ‰€æœ‰çš„å®ä¾‹æ‰€è°ƒç”¨ï¼Œä¹Ÿå¯ä»¥è¢«ç±»è°ƒç”¨ï¼Œ**
+**æ˜¯è¢«æ‰€æœ‰çš„å®ä¾‹å…±ç”¨çš„ï¼Œå®ƒçš„çŠ¶æ€å’Œç±»ç›¸å…³ï¼Œè€Œä¸æ˜¯è¯´å’Œå®ä¾‹ç›¸å…³ã€‚**
+**æ¯”å¦‚ï¼šé“¶è¡Œçš„åˆ©ç‡æ˜¯æ‰€æœ‰è´¦æˆ·éƒ½ä¸€æ ·çš„ï¼Œæ‰€ä»¥å¯ä»¥ç”¨classmethodã€**
 ``` python
 >>> class C:
     @classmethod
@@ -216,13 +248,13 @@ ik1.set_db()
 <class 'method'>
 >>> type(C().ci)
 <class 'method'>
->>> C().ci(1)                   # ÊµÀıµ÷ÓÃ
+>>> C().ci(1)                   # å®ä¾‹è°ƒç”¨
 1
->>> C.ci(2)                     # Ààµ÷ÓÃ
+>>> C.ci(2)                     # ç±»è°ƒç”¨
 2
 ```
 
-¡¾*7¡¿@classmethodÓÃ´¦(Ö»ÔÚÀàÖĞÔËĞĞ¶ø²»ÔÚÊµÀıÖĞÔËĞĞµÄ·½·¨£º¼´ÔÚfunc2·½·¨ÄÚ¿ÉÒÔÊ¹ÓÃÀà¼°ÆäÊôĞÔ, ¶ø²»ÊÇÌØ¶¨µÄÊµÀı¡£×¢Òâ£º@classmethod¶¨ÒåµÄ·½·¨ÓĞÒ»¸ö²ÎÊıÊÇcls£¬´ú±íÀà±¾Éí)£º¡ı
+ã€*7ã€‘@classmethodç”¨å¤„(åªåœ¨ç±»ä¸­è¿è¡Œè€Œä¸åœ¨å®ä¾‹ä¸­è¿è¡Œçš„æ–¹æ³•ï¼šå³åœ¨func2æ–¹æ³•å†…å¯ä»¥ä½¿ç”¨ç±»åŠå…¶å±æ€§, è€Œä¸æ˜¯ç‰¹å®šçš„å®ä¾‹ã€‚æ³¨æ„ï¼š@classmethodå®šä¹‰çš„æ–¹æ³•æœ‰ä¸€ä¸ªå‚æ•°æ˜¯clsï¼Œä»£è¡¨ç±»æœ¬èº«)ï¼šâ†“
 ---
 
 ``` python
@@ -234,13 +266,13 @@ class A(object):
     def func2(cls):
         print ('func2')
         print (cls.bar)
-        cls().func1()   # µ÷ÓÃ foo ·½·¨
+        cls().func1()   # è°ƒç”¨ foo æ–¹æ³•
  
-A.func2()               # ²»ĞèÒªÊµÀı»¯
+A.func2()               # ä¸éœ€è¦å®ä¾‹åŒ–
 ```
 <meta charset="utf-8">
 
-Èç¹ûÏÖÔÚÎÒÃÇÏëĞ´Ò»Ğ©½ö½öÓëÀà½»»¥¶ø²»ÊÇºÍÊµÀı½»»¥µÄ·½·¨»áÔõÃ´ÑùÄØ£¿ÎÒÃÇ¿ÉÒÔÔÚÀàÍâÃæĞ´Ò»¸ö¼òµ¥µÄ·½·¨À´×öÕâĞ©£¬µ«ÊÇÕâÑù×ö¾ÍÀ©É¢ÁËÀà´úÂëµÄ¹ØÏµµ½Àà¶¨ÒåµÄÍâÃæ. Èç¹ûÏñÏÂÃæÕâÑùĞ´¾Í»áµ¼ÖÂÒÔºó´úÂëÎ¬»¤µÄÀ§ÄÑ:
+å¦‚æœç°åœ¨æˆ‘ä»¬æƒ³å†™ä¸€äº›ä»…ä»…ä¸ç±»äº¤äº’è€Œä¸æ˜¯å’Œå®ä¾‹äº¤äº’çš„æ–¹æ³•ä¼šæ€ä¹ˆæ ·å‘¢ï¼Ÿæˆ‘ä»¬å¯ä»¥åœ¨ç±»å¤–é¢å†™ä¸€ä¸ªç®€å•çš„æ–¹æ³•æ¥åšè¿™äº›ï¼Œä½†æ˜¯è¿™æ ·åšå°±æ‰©æ•£äº†ç±»ä»£ç çš„å…³ç³»åˆ°ç±»å®šä¹‰çš„å¤–é¢. å¦‚æœåƒä¸‹é¢è¿™æ ·å†™å°±ä¼šå¯¼è‡´ä»¥åä»£ç ç»´æŠ¤çš„å›°éš¾:
 
 ```
 
@@ -256,9 +288,9 @@ print(get_no_of_instances(Kls))
 
 ```
 @classmethod
-ÎÒÃÇÒªĞ´Ò»¸öÖ»ÔÚÀàÖĞÔËĞĞ¶ø²»ÔÚÊµÀıÖĞÔËĞĞµÄ·½·¨ Èç¹ûÎÒÃÇÏëÈÃ·½·¨²»ÔÚÊµÀıÖĞÔËĞĞ£¬¿ÉÒÔÕâÃ´×ö:
+æˆ‘ä»¬è¦å†™ä¸€ä¸ªåªåœ¨ç±»ä¸­è¿è¡Œè€Œä¸åœ¨å®ä¾‹ä¸­è¿è¡Œçš„æ–¹æ³• å¦‚æœæˆ‘ä»¬æƒ³è®©æ–¹æ³•ä¸åœ¨å®ä¾‹ä¸­è¿è¡Œï¼Œå¯ä»¥è¿™ä¹ˆåš:
 
-Ê¹ÓÃ@classmethod×°ÊÎÆ÷À´´´½¨Àà·½·¨**.**
+ä½¿ç”¨@classmethodè£…é¥°å™¨æ¥åˆ›å»ºç±»æ–¹æ³•**.**
 
 ```
 
@@ -276,19 +308,19 @@ print Kls.get_no_of_instance()
 
 ```
 
-Êä³ö:
+è¾“å‡º:
 2
 2
-ÕâÑùµÄºÃ´¦ÊÇ: ²»¹ÜÕâ¸ö·½Ê½ÊÇ´ÓÊµÀıµ÷ÓÃ»¹ÊÇ´ÓÀàµ÷ÓÃ£¬Ëü¶¼ÓÃµÚÒ»¸ö²ÎÊı°ÑÀà´«µİ¹ıÀ´
+è¿™æ ·çš„å¥½å¤„æ˜¯: ä¸ç®¡è¿™ä¸ªæ–¹å¼æ˜¯ä»å®ä¾‹è°ƒç”¨è¿˜æ˜¯ä»ç±»è°ƒç”¨ï¼Œå®ƒéƒ½ç”¨ç¬¬ä¸€ä¸ªå‚æ•°æŠŠç±»ä¼ é€’è¿‡æ¥
 
-¡¾*8¡¿Ó¢ÎÄ½âÊÍ£º¡ı
+ã€*8ã€‘è‹±æ–‡è§£é‡Šï¼šâ†“
 ---
 
 ``` python
 @classmethod means: when this method is called, we pass the class as the first argument instead of the instance of that class (as we normally do with methods). This means you can use the class and its properties inside that method rather than a particular instance
 @staticmethod means: when this method is called, we don't pass an instance of the class to it (as we normally do with methods). This means you can put a function inside a class but you can't access the instance of that class (this is useful when your method does not use the instance).
-@classmethod ÒâÎ¶×Å: µ±µ÷ÓÃ´Ë·½·¨Ê±, ÎÒÃÇ½«Àà×÷ÎªµÚÒ»¸ö²ÎÊı´«µİ, ¶ø²»ÊÇ¸ÃÀàµÄÊµÀı (ÎÒÃÇÍ¨³£Ê¹ÓÃ·½·¨)¡£ÕâÒâÎ¶×ÅÄú¿ÉÒÔÔÚ¸Ã·½·¨ÖĞÊ¹ÓÃÀà¼°ÆäÊôĞÔ, ¶ø²»ÊÇÌØ¶¨µÄÊµÀı
-@staticmethod ÒâÎ¶×Å: µ±µ÷ÓÃ´Ë·½·¨Ê±, ÎÒÃÇ²»»á½«ÀàµÄÊµÀı´«µİ¸øËü (ÕıÈçÎÒÃÇÍ¨³£Ê¹ÓÃ·½·¨ÄÇÑù)¡£ÕâÒâÎ¶×Å¿ÉÒÔ½«º¯Êı·ÅÔÚÀàÖĞ, µ«²»ÄÜ·ÃÎÊ¸ÃÀàµÄÊµÀı (µ±·½·¨²»Ê¹ÓÃ¸ÃÊµÀıÊ±, ÕâºÜÓĞÓÃ)¡£
+@classmethod æ„å‘³ç€: å½“è°ƒç”¨æ­¤æ–¹æ³•æ—¶, æˆ‘ä»¬å°†ç±»ä½œä¸ºç¬¬ä¸€ä¸ªå‚æ•°ä¼ é€’, è€Œä¸æ˜¯è¯¥ç±»çš„å®ä¾‹ (æˆ‘ä»¬é€šå¸¸ä½¿ç”¨æ–¹æ³•)ã€‚è¿™æ„å‘³ç€æ‚¨å¯ä»¥åœ¨è¯¥æ–¹æ³•ä¸­ä½¿ç”¨ç±»åŠå…¶å±æ€§, è€Œä¸æ˜¯ç‰¹å®šçš„å®ä¾‹
+@staticmethod æ„å‘³ç€: å½“è°ƒç”¨æ­¤æ–¹æ³•æ—¶, æˆ‘ä»¬ä¸ä¼šå°†ç±»çš„å®ä¾‹ä¼ é€’ç»™å®ƒ (æ­£å¦‚æˆ‘ä»¬é€šå¸¸ä½¿ç”¨æ–¹æ³•é‚£æ ·)ã€‚è¿™æ„å‘³ç€å¯ä»¥å°†å‡½æ•°æ”¾åœ¨ç±»ä¸­, ä½†ä¸èƒ½è®¿é—®è¯¥ç±»çš„å®ä¾‹ (å½“æ–¹æ³•ä¸ä½¿ç”¨è¯¥å®ä¾‹æ—¶, è¿™å¾ˆæœ‰ç”¨)ã€‚
 ```
 
 
@@ -299,40 +331,47 @@ We can call `deposit` in two ways: as a function and as a bound method. In the f
 >>> tom_account.deposit(1000)           # The deposit method takes 1 argument
 2011
 ```
-¡¾*9¡¿µ÷ÓÃ·½·¨2ÖÖ£º¡ı
+ã€*9ã€‘è°ƒç”¨æ–¹æ³•2ç§ï¼šâ†“
 ---
-1¡¢ÀàÃû.·½·¨(ÊµÀıµÄ¶ÔÏó£¬²ÎÊıÖµ)
+1ã€ç±»å.æ–¹æ³•(å®ä¾‹çš„å¯¹è±¡ï¼Œå‚æ•°å€¼)
 ---
-2¡¢ÊµÀıµÄ¶ÔÏó.·½·¨(²ÎÊıÖµ)
+2ã€å®ä¾‹çš„å¯¹è±¡.æ–¹æ³•(å‚æ•°å€¼)
 ---
 
 
 In some cases, there are instance variables and methods that are related to the maintenance and consistency of an object that we don't want users of the object to see or use. They are not part of the abstraction defined by a class, but instead part of the implementation. Python's convention dictates that if an attribute name starts with an underscore, it should only be accessed within methods of the class itself, rather than by users of the class.
 
-¡¾*10¡¿ÏÂ»®Ïß
+ã€*10ã€‘ä¸‹åˆ’çº¿
 ---
-**¡°µ¥ÏÂ»®Ïß¡± ¿ªÊ¼µÄ³ÉÔ±±äÁ¿½Ğ×ö±£»¤±äÁ¿£¬ÒâË¼ÊÇÖ»ÓĞÀà¶ÔÏóºÍ×ÓÀà¶ÔÏó×Ô¼ºÄÜ·ÃÎÊµ½ÕâĞ©±äÁ¿£»**
-**¡°Ë«ÏÂ»®Ïß¡± ¿ªÊ¼µÄÊÇË½ÓĞ³ÉÔ±£¬ÒâË¼ÊÇÖ»ÓĞÀà¶ÔÏó×Ô¼ºÄÜ·ÃÎÊ£¬Á¬×ÓÀà¶ÔÏóÒ²²»ÄÜ·ÃÎÊµ½Õâ¸öÊı¾İ¡£**
+**â€œå•ä¸‹åˆ’çº¿â€ å¼€å§‹çš„æˆå‘˜å˜é‡å«åšä¿æŠ¤å˜é‡ï¼Œæ„æ€æ˜¯åªæœ‰ç±»å¯¹è±¡å’Œå­ç±»å¯¹è±¡è‡ªå·±èƒ½è®¿é—®åˆ°è¿™äº›å˜é‡ï¼›**
+**â€œåŒä¸‹åˆ’çº¿â€ å¼€å§‹çš„æ˜¯ç§æœ‰æˆå‘˜ï¼Œæ„æ€æ˜¯åªæœ‰ç±»å¯¹è±¡è‡ªå·±èƒ½è®¿é—®ï¼Œè¿å­ç±»å¯¹è±¡ä¹Ÿä¸èƒ½è®¿é—®åˆ°è¿™ä¸ªæ•°æ®ã€‚**
 
 
-## 2.5.4 Class Attributes£¨ÀàÊôĞÔ£©
-¡¾*11¡¿ÀàÊôĞÔ£¨¾²Ì¬±äÁ¿£©£º¶¨ÒåÔÚsuiteÀïÃæ£¬¼´ÔÚClassÀïÃæ£¬ÔÚMethodÍâÃæ¡£
+## 2.5.4 Class Attributesï¼ˆç±»å±æ€§ï¼‰
+
+ã€*11ã€‘ç±»å±æ€§ï¼ˆé™æ€å˜é‡ï¼‰ï¼šå®šä¹‰åœ¨suiteé‡Œé¢ï¼Œå³åœ¨Classé‡Œé¢ï¼Œåœ¨Methodå¤–é¢ã€‚
 ---
 Some attribute values are shared across all objects of a given class.
-**ÀàÊôĞÔ£ºÒ»Ğ©ÊôĞÔÔÚËùÓĞ¶ÔÏóÖĞ¹²Ïí**
+
+**ç±»å±æ€§ï¼šä¸€äº›å±æ€§åœ¨æ‰€æœ‰å¯¹è±¡ä¸­å…±äº«**
 
 Class attributes are created by assignment statements in the suite of a `class` statement, outside of any method definition.
-**¶¨ÒåÔÚsuiteÀïÃæ£¬¼´ÔÚClassÀïÃæ£¬ÔÚMethodÍâÃæ¡£**
+
+**å®šä¹‰åœ¨suiteé‡Œé¢ï¼Œå³åœ¨Classé‡Œé¢ï¼Œåœ¨Methodå¤–é¢ã€‚**
 
 class attributes may also be called class variables or static variables.
-**ÀàÊôĞÔÒ²¿ÉÒÔ³ÆÎªÀà±äÁ¿»ò¾²Ì¬±äÁ¿¡£**
+
+**ç±»å±æ€§ä¹Ÿå¯ä»¥ç§°ä¸ºç±»å˜é‡æˆ–é™æ€å˜é‡ã€‚**
 
 This attribute can still be accessed from any instance of the class.
-**¿ÉÒÔ±»Õâ¸öÀàµÄÈÎºÎÊµÀı·ÃÎÊ**
+
+**å¯ä»¥è¢«è¿™ä¸ªç±»çš„ä»»ä½•å®ä¾‹è®¿é—®**
 
 However, a single assignment statement to a class attribute changes the value of the attribute for all instances of the class.
-¡¾*11¡¿¶ÔÀàÊôĞÔµÄµ¥¸ö¸³ÖµÓï¾ä»á¸ü¸Ä¸ÃÀàµÄËùÓĞÊµÀıµÄÊôĞÔµÄÊıÖµ¡£
+
+ã€*11ã€‘å¯¹ç±»å±æ€§çš„å•ä¸ªèµ‹å€¼è¯­å¥ä¼šæ›´æ”¹è¯¥ç±»çš„æ‰€æœ‰å®ä¾‹çš„å±æ€§çš„æ•°å€¼ã€‚
 ---
+
 To evaluate a dot expression:
 
 1.  Evaluate the `&lt;expression&gt;` to the left of the dot, which yields the _object_ of the dot expression.
@@ -340,40 +379,52 @@ To evaluate a dot expression:
 3.  If `&lt;name&gt;` does not appear among instance attributes, then `&lt;name&gt;` is looked up in the class, which yields a class attribute value.
 4.  That value is returned unless it is a function, in which case a bound method is returned instead.
 
-ÎªÁËÇó½âµã±í´ïÊ½£º
-1.  Çó³öµã×ó±ßµÄ`<expression>`£¬»á²úÉúµãÔËËã·ûµÄ¶ÔÏó¡£
-2.  `<name>`»áºÍ¶ÔÏóµÄÊµÀıÊôĞÔÆ¥Åä£»Èç¹û¸ÃÃû³ÆµÄÊôĞÔ´æÔÚ£¬»á·µ»ØËüµÄÖµ¡£
-3.  Èç¹û`<name>`²»´æÔÚÓÚÊµÀıÊôĞÔ£¬ÄÇÃ´»áÔÚÀàÖĞ²éÕÒ`<name>`£¬Õâ»á²úÉúÀàµÄÊôĞÔÖµ¡£
-4.  Õâ¸öÖµ»á±»·µ»Ø£¬Èç¹ûËüÊÇ¸öº¯Êı£¬Ôò»á·µ»Ø°ó¶¨·½·¨¡£
+**ä¸ºäº†æ±‚è§£ç‚¹è¡¨è¾¾å¼ï¼š**
+1.  æ±‚å‡ºç‚¹å·¦è¾¹çš„`<expression>`ï¼Œä¼šäº§ç”Ÿç‚¹è¿ç®—ç¬¦çš„å¯¹è±¡ã€‚
+2.  `<name>`ä¼šå’Œå¯¹è±¡çš„å®ä¾‹å±æ€§åŒ¹é…ï¼›å¦‚æœè¯¥åç§°çš„å±æ€§å­˜åœ¨ï¼Œä¼šè¿”å›å®ƒçš„å€¼ã€‚
+3.  å¦‚æœ`<name>`ä¸å­˜åœ¨äºå®ä¾‹å±æ€§ï¼Œé‚£ä¹ˆä¼šåœ¨ç±»ä¸­æŸ¥æ‰¾`<name>`ï¼Œè¿™ä¼šäº§ç”Ÿç±»çš„å±æ€§å€¼ã€‚
+4.  è¿™ä¸ªå€¼ä¼šè¢«è¿”å›ï¼Œå¦‚æœå®ƒæ˜¯ä¸ªå‡½æ•°ï¼Œåˆ™ä¼šè¿”å›ç»‘å®šæ–¹æ³•ã€‚
 
-## 2.5.5 Inheritance£¨¼Ì³Ğ£©
+## 2.5.5 Inheritanceï¼ˆç»§æ‰¿ï¼‰
+
 Two classes may have similar attributes, but one represents a special case of the other.
-Á½¸öÀà¿ÉÄÜÓµÓĞÏàËÆµÄÊôĞÔ£¬µ«ÊÇÒ»¸ö±íÊ¾ÁíÒ»¸öµÄÌØÊâÇé¿ö¡£
 
-base class    »ùÀà
-subclass      ×ÓÀà
+ä¸¤ä¸ªç±»å¯èƒ½æ‹¥æœ‰ç›¸ä¼¼çš„å±æ€§ï¼Œä½†æ˜¯ä¸€ä¸ªè¡¨ç¤ºå¦ä¸€ä¸ªçš„ç‰¹æ®Šæƒ…å†µã€‚
 
-ÖØÔØ£º·½·¨ÃûÏàÍ¬£¬²ÎÊı¸öÊıÏàÍ¬£¬µ«²ÎÊıÀàĞÍ¿ÉÄÜ²»Í¬
-ÖØĞ´£º·½·¨ÃûÏàÍ¬£¬²ÎÊı¸öÊıÒ²¿ÉÄÜ²»Í¬
+base class    åŸºç±»
+
+subclass      å­ç±»
+
+é‡è½½ï¼šæ–¹æ³•åç›¸åŒï¼Œå‚æ•°ä¸ªæ•°ç›¸åŒï¼Œä½†å‚æ•°ç±»å‹å¯èƒ½ä¸åŒ
+
+é‡å†™ï¼šæ–¹æ³•åç›¸åŒï¼Œå‚æ•°ä¸ªæ•°ä¹Ÿå¯èƒ½ä¸åŒ
 
 With inheritance, we only specify what is different between the subclass and the base class. Anything that we leave unspecified in the subclass is automatically assumed to behave just as it would for the base class.
-**ÔÚ¼Ì³ĞµÄ»ù´¡ÉÏ, ÎÒÃÇÖ»Ö¸¶¨×ÓÀàºÍ»ùÀàÖ®¼äµÄ²»Í¬¡£ÎÒÃÇÔÚ×ÓÀàÖĞ±£ÁôµÄÈÎºÎÎ´Ö¸¶¨µÄÄÚÈİ¶¼½«×Ô¶¯¼Ù¶¨ÎªÓë»ùÀàÒ»ÑùµÄĞĞÎª¡£**
 
-## 2.5.6 Using Inheritance£¨Ê¹ÓÃ¼Ì³Ğ£©
+**åœ¨ç»§æ‰¿çš„åŸºç¡€ä¸Š, æˆ‘ä»¬åªæŒ‡å®šå­ç±»å’ŒåŸºç±»ä¹‹é—´çš„ä¸åŒã€‚æˆ‘ä»¬åœ¨å­ç±»ä¸­ä¿ç•™çš„ä»»ä½•æœªæŒ‡å®šçš„å†…å®¹éƒ½å°†è‡ªåŠ¨å‡å®šä¸ºä¸åŸºç±»ä¸€æ ·çš„è¡Œä¸ºã€‚**
+
+## 2.5.6 Using Inheritanceï¼ˆä½¿ç”¨ç»§æ‰¿ï¼‰
+
 We can define this procedure recursively. To look up a name in a class.
 
 1.  If it names an attribute in the class, return the attribute value.
 2.  Otherwise, look up the name in the base class, if there is one.
-ÎÒÃÇÍ¨¹ı½«»ùÀà·ÅÖÃµ½ÀàÃû³ÆºóÃæµÄÔ²À¨ºÅÄÚÀ´Ö¸¶¨¼Ì³Ğ¡£
-1.  Èç¹ûÀàÖĞÓĞ´øÓĞÕâ¸öÃû³ÆµÄÊôĞÔ£¬·µ»ØÊôĞÔÖµ¡£
-2.  ·ñÔò£¬Èç¹ûÓĞ»ùÀàµÄ»°£¬ÔÚ»ùÀàÖĞ²éÕÒ¸ÃÃû³Æ¡£
 
-## 2.5.7 Multiple Inheritance£¨¶àÖØ¼Ì³Ğ£©
+æˆ‘ä»¬é€šè¿‡å°†åŸºç±»æ”¾ç½®åˆ°ç±»åç§°åé¢çš„åœ†æ‹¬å·å†…æ¥æŒ‡å®šç»§æ‰¿ã€‚
+
+1.  å¦‚æœç±»ä¸­æœ‰å¸¦æœ‰è¿™ä¸ªåç§°çš„å±æ€§ï¼Œè¿”å›å±æ€§å€¼ã€‚
+
+2.  å¦åˆ™ï¼Œå¦‚æœæœ‰åŸºç±»çš„è¯ï¼Œåœ¨åŸºç±»ä¸­æŸ¥æ‰¾è¯¥åç§°ã€‚
+
+
+## 2.5.7 Multiple Inheritanceï¼ˆå¤šé‡ç»§æ‰¿ï¼‰
 AsSeenOnTVAccount, CheckingAccount, SavingsAccount, Account, object
 [![](https://github.com/wizardforcel/sicp-py-zh/raw/master/img/multiple_inheritance.png)
-¡¾*12¡¿¶à¼Ì³ĞµÄ²éÕÒË³Ğò£º
+
+ã€*12ã€‘å¤šç»§æ‰¿çš„æŸ¥æ‰¾é¡ºåºï¼š
 ---
-¶ÔÓÚÏñÕâÑùµÄ¼òµ¥¡°ÁâĞÎ¡±£¬Python ´Ó×óµ½ÓÒ½âÎöÃû³Æ£¬Ö®ºóÏòÉÏ¡£Õâ¸öÀı×ÓÖĞ£¬Python °´ÏÂÁĞË³Ğò¼ì²éÃû³Æ£¬Ö±µ½ÕÒµ½ÁË¾ßÓĞ¸ÃÃû³ÆµÄÊôĞÔ£ºµ±Ç°Àà£¬ÉÏÒ»²ãµÄ´Ó×óµ½ÓÒÕÒ£¬ÔÙÉÏÒ»²ãÕÒ
+
+å¯¹äºåƒè¿™æ ·çš„ç®€å•â€œè±å½¢â€ï¼ŒPython ä»å·¦åˆ°å³è§£æåç§°ï¼Œä¹‹åå‘ä¸Šã€‚è¿™ä¸ªä¾‹å­ä¸­ï¼ŒPython æŒ‰ä¸‹åˆ—é¡ºåºæ£€æŸ¥åç§°ï¼Œç›´åˆ°æ‰¾åˆ°äº†å…·æœ‰è¯¥åç§°çš„å±æ€§ï¼šå½“å‰ç±»ï¼Œä¸Šä¸€å±‚çš„ä»å·¦åˆ°å³æ‰¾ï¼Œå†ä¸Šä¸€å±‚æ‰¾
 ---
 
 ``` python
